@@ -1,0 +1,79 @@
+body{
+    background-image: url("../img/Abstract-Gaming-Background-edit-online-1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Prompt', sans-serif;
+}
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    margin-top: 60px;
+}
+#formulario-login{
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    height:480px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+}
+label{
+    font-size: 25px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+input{
+    border-radius: 10px;
+    margin-top: -10px;
+    padding: 5px;
+}
+#submit{
+    padding: 10px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+.info{
+    font-size: 10px;
+    position: relative;
+    top: 10px;
+}
+a{
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+    margin-top: 50px;
+}
+a:hover{
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.password-container #mostrarContrasenya {
+    position: absolute;
+    right: 10px;
+    bottom: 4px;
+    cursor: pointer;
+}
+.prompt-bold {
+    font-family: "Prompt", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
