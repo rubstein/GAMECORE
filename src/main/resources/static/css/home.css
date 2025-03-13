@@ -14,14 +14,35 @@ body{
     height: 42px;
     width: 263px;
     cursor: pointer;
+    background-color: transparent;
 }
 #inicioSesion{
     display: inline-block;
-    width: 250px;
+    width: 200px;
 } 
 a{
     text-decoration: none;
     color: black;
     display: inline-block;
     margin-top: 5px;
-}  
+} 
+#id-busqueda{
+    margin-top: 20px;
+    float: right;
+    border-radius: 35px;
+    padding-left: 10px;
+    padding: 8px;
+    width: 300px;
+    border-color: black;
+}
+#img-lupa{
+    border: none;
+    float: right;
+    background-color: transparent;
+}
+#lupa{
+    width: 30px;
+    height: 30px;
+    margin-top: 24px;
+    cursor: pointer;
+}
