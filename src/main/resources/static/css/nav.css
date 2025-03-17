@@ -1,15 +1,38 @@
-.container{
-    margin-left: 200px;
-    margin-right: 200px;
-    margin-top: 20px;
-    /*background-color: rgb(62, 61, 61);*/
-}
 #navigationBar{
+    display: flex;
     margin-left: 200px;
     margin-right: 200px;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid black;
+}
+.busqueda {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    gap: 5px; 
+    margin-left: auto;
+}
+#id-busqueda {
+    border-radius: 50px;
+    padding: 8px;
+    width: 500px; 
+    border: 1px solid black;
+}
+#img-lupa {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+#lupa {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+#inicioSesion {
+    position: relative;
+    width: 300px;
+    float: right;
+    margin-left: auto;
 }
 #logo{
     height: 42px;
@@ -17,17 +40,10 @@
     cursor: pointer;
     background-color: transparent;
 }
-#inicioSesion{
-    position: relative;
-    width: 210px;
-    float: right;
-    top: 10px;
-} 
 a{
     text-decoration: none;
     color: black;
     display: inline-block;
-    margin-top: 5px;
     margin-right: 5px;
     margin-left: 5px;
 } 

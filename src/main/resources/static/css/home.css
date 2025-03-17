@@ -1,26 +1,6 @@
-body{
-    margin-left: 200px;
+.container{
+    margin-top: 20px;
     margin-right: 200px;
-    margin-top: 20px;
+    margin-left: 200px;
     /*background-color: rgb(62, 61, 61);*/
-}
-#id-busqueda{
-    margin-top: 20px;
-    float: right;
-    border-radius: 35px;
-    padding-left: 10px;
-    padding: 8px;
-    width: 300px;
-    border-color: black;
-}
-#img-lupa{
-    border: none;
-    float: right;
-    background-color: transparent;
-}
-#lupa{
-    width: 30px;
-    height: 30px;
-    margin-top: 24px;
-    cursor: pointer;
 }
