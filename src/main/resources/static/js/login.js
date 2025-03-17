@@ -1,11 +1,16 @@
 document.getElementsByTagName("i")[0].onclick = mostrarContrasenya
 
-function validarUsuario(){
+function validarUsuario()
+{
     var usuario = document.miFormulario.usuario.value;
     var regex = /^[A-Za-z0-9]+$/;
-    if (regex.test(usuario) && usuario.length !== 0){
+
+    if (regex.test(usuario) && usuario.length !== 0)
+    {
         return true;
-    } else {
+    }
+    else
+    {
         return false;
     }
 }

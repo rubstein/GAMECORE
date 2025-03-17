@@ -1,0 +1,33 @@
+.container{
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 20px;
+    /*background-color: rgb(62, 61, 61);*/
+}
+#navigationBar{
+    margin-left: 200px;
+    margin-right: 200px;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+}
+#logo{
+    height: 42px;
+    width: 263px;
+    cursor: pointer;
+    background-color: transparent;
+}
+#inicioSesion{
+    position: relative;
+    width: 210px;
+    float: right;
+    top: 10px;
+} 
+a{
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+} 
