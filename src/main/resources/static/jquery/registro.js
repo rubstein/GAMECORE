@@ -1,4 +1,4 @@
-$('#submit').on('mouseover', function(){
+$('#redireccionar').on('mouseover', function(){
     $(this).css({
         'transform': 'scale(1.1)',
         'transition': '0.5s'
@@ -9,4 +9,8 @@ $('#submit').on('mouseover', function(){
         'transition': '0.5s'
     })
 })
-$('#idNuevaEdad').datepicker();
+$('#idFecha').datepicker({
+    dateFormat: 'dd-mm-yy',
+    changeMonth: true,
+    changeYear: true
+});
