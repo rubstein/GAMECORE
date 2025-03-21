@@ -4,3 +4,14 @@
     margin-left: 200px;
     /*background-color: rgb(62, 61, 61);*/
 }
+#plataformas{
+    display: flex;
+    width: 200px;
+    align-items: center;
+}
+li{
+    list-style: none;
+    margin-top: 20px;
+    text-align: center;
+    cursor: pointer;
+}
