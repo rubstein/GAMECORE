@@ -9,7 +9,4 @@ $('#submit').on('mouseover', function(){
         'transition': '0.5s'
     })
 })
-$('#idNuevaEdad').datepicker({
-    changeMonth: true,
-    changeYear: true
-});
+$('#idNuevaEdad').datepicker();

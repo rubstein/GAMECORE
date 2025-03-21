@@ -4,6 +4,7 @@
     margin-right: 200px;
     align-items: center;
     justify-content: space-between;
+    /*position*/
 }
 .busqueda {
     display: flex; 
