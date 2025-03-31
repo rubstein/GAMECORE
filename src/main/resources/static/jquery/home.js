@@ -1,4 +1,4 @@
-$('li').on('mouseover', function(){
+$('a').on('mouseover', function(){
     $(this).css({
         'transform': 'scale(1.1)',
         'transition': '0.5s'
@@ -8,4 +8,20 @@ $('li').on('mouseover', function(){
         'transform': 'scale(1)',
         'transition': '0.5s'
     })
-})
+});
+
+$('.negro').on('mouseover', function(){
+    $(this).css('color', 'black');
+});
+$('.verde').on('mouseover', function(){
+    $(this).css('color', 'green');
+}).on('mouseout', function(){
+    $(this).css('color', 'black');
+});
+$('.rojo').on('mouseover', function(){
+    $(this).css('color', 'red');
+}).on('mouseout', function(){
+    $(this).css('color', 'black');
+});
+
+
