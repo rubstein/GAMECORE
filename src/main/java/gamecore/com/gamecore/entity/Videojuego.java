@@ -31,7 +31,7 @@ public class Videojuego {
     private Double valoracion;
 
     public Videojuego(String Director, LocalDate anyo, String descripcion, String estudio, String genero, Long id, String nombre, String plataforma, Double precio, Double valoracion) {
-        
+
         this.Director = Director;
         this.anyo = anyo;
         this.descripcion = descripcion;
@@ -43,8 +43,4 @@ public class Videojuego {
         this.precio = precio;
         this.valoracion = valoracion;
     }
-
-
-
-
 }
