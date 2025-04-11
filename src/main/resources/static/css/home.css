@@ -1,61 +1,9 @@
 .container {
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
-    margin-right: 200px;
-    margin-left: 200px;
+    width: 85%;
+    margin-top: 4%;
 }
-.filaPlataformas {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 8px;
-    width: 100%;
-}
-.ultimasNovedades {
-    position: relative;
-    margin-top: 50px; 
-    height: 500px;
-    width: 100%;
-    left: 25px;
-}
-.novedades {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap; /* Permite que los elementos se ajusten a una nueva fila */
-    justify-content: space-between;
-    margin-top: 8px;
-    width: 100%;
-}
-.novedad {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-right: 30px;
-    margin-top: 8px;
-    width: calc(33.33% - 30px); /* Ajusta el ancho para que quepan 3 elementos por fila */
-    box-sizing: border-box; /* Asegura que el padding y el borde no afecten el ancho */
-}
-img {
-    width: 300px;
-    height: 160px;
-    border-radius: 5px;
-    transform: scale(1);
-    transition: 0.5s;
-    cursor: pointer;
-}
-img:hover {
-    transform: scale(1.05);
-    opacity: 0.3;
-}
-
-.novedad label{
-    margin-top: 8px;
-}
-
 .montserrat-font{
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
