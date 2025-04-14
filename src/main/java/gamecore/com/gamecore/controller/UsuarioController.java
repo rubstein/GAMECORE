@@ -1,7 +1,5 @@
 package gamecore.com.gamecore.controller;
 
-import java.time.LocalDate;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -24,7 +22,10 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     @GetMapping("/registro")
-    public String registro(ModelMap m) {
+    public String registro(ModelMap m, HttpSession hs) {
+
+        Usuario u = (Usuario) hs.getAttribute("usuario");
+        m.put("usuario", u);
         m.put("view", "usuario/registro");
         return "_t/frame";
     }
@@ -39,22 +40,27 @@ public class UsuarioController {
     public String registroPost(@RequestParam String nuevoUsuario, 
                             @RequestParam String nuevaContrasenya,
                             @RequestParam String nuevoEmail,
-                            @RequestParam LocalDate nuevaEdad) throws DangerException {
+                            @RequestParam String nuevaEdad,
+                            HttpSession s) throws DangerException {
+                                System.out.println("Datos recibidos");
                                 try 
                                 {
-                                    this.usuarioService.validarUsuarioRegistro(nuevoUsuario, nuevaContrasenya, nuevoEmail, nuevaEdad);
+                                    Usuario u = this.usuarioService.validarUsuarioRegistro(nuevoUsuario, nuevaContrasenya, nuevoEmail, nuevaEdad);
+                                    s.setAttribute("usuario", u);
                                 }
                                 catch (Exception e) 
                                 {
                                     PRG.error("Error al registrar el usuario", "/usuario/registro");
                                 }
                         
-                                return "redirect:/usuario/registro";
+                                return "redirect:/";
 }
 
     @GetMapping("/login")
-    public String login(ModelMap m) 
+    public String login(ModelMap m, HttpSession hs) 
     {
+        Usuario u = (Usuario) hs.getAttribute("usuario");
+        m.put ("usuario", u);
         m.put("view", "usuario/login");
         return "_t/frame";
     }
@@ -72,5 +78,10 @@ public class UsuarioController {
             PRG.error("Usuario o contraseña incorrectos", "/usuario/login");
         }
             return "redirect:/";
+    }
+    @GetMapping("/logout")
+    public String logout(HttpSession s) {
+    s.invalidate(); 
+    return "redirect:/";
     }
 }

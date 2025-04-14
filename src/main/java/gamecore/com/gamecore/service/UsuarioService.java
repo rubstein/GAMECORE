@@ -1,6 +1,7 @@
 package gamecore.com.gamecore.service;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -11,14 +12,16 @@ import gamecore.com.gamecore.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
+
+    public final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public void validarUsuarioRegistro(String nombreUsuario, String contrasenya, String email, LocalDate fecha) {
-        Usuario u = new Usuario(nombreUsuario, new BCryptPasswordEncoder().encode(contrasenya), email, fecha);
+    public Usuario validarUsuarioRegistro(String nombreUsuario, String contrasenya, String email, String fecha) {
+        Usuario u = new Usuario(nombreUsuario, new BCryptPasswordEncoder().encode(contrasenya), email, LocalDate.parse(fecha, dtf));
         
-        usuarioRepository.save(u);
+        return usuarioRepository.save(u);
     }
 
     public Usuario validarUsuarioLogin(String nombreUsuario, String contrasenya) throws Exception {

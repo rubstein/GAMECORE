@@ -1,4 +1,4 @@
-#navigationBar {
+#navigationBarNoLogin, #navigationBarLogin {
     position: fixed; 
     top: 0;
     left: 8%;
@@ -53,7 +53,7 @@
     position: absolute;
     right: 5px;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-60%);
     background: none;
     border: none;
     cursor: pointer;
@@ -72,11 +72,42 @@
     display: flex;
     gap: 10px;
 }
-.is, .r {
+.is, .r, #usuario {
     background-color: orange;
     color: black;
     padding: 6px 12px;
     border-radius: 5px;
     font-weight: bold;
     text-decoration: none;
+    cursor: pointer;
+}
+#perfilLogin{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+#desplegable{
+    display: none;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    width: 150px;
+}
+.desplegable a {
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+}
+#perfilLogin:hover #desplegable {
+    display: block;
+}
+li{
+    list-style: none;
 }
