@@ -1,7 +1,7 @@
 .container {
     display: flex;
     flex-direction: column;
-    width: 85%;
+    /*width: 85%;*/
     margin-top: 4%;
 }
 .montserrat-font{
@@ -9,4 +9,18 @@
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
+}
+.juegoTrending img {
+    height: 150px;
+    width: 280px;
+    cursor: pointer;
+    transform: scale(1);
+    transition: 0.5s;
+}
+.juegoTrending img:hover{
+    transform: scale(1.05);
+    opacity: 0.8;
+}
+.juegoTrending label {
+    margin-top: 8px;
 }
