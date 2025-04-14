@@ -7,6 +7,5 @@ import gamecore.com.gamecore.entity.Usuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
-    
     public Usuario findByNombreUsuario(String nombreUsuario);
 }
