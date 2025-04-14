@@ -12,6 +12,7 @@
     z-index: 1;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    margin-bottom: 100px;
 }
 #logo {
     height: 32px;
@@ -62,7 +63,7 @@
     width: 18px;
     height: 18px;
 }
-#carrito i{
+#carrito i, #wishlist i{
     font-size: 30px;
     cursor: pointer;
     margin-right: 40px;
