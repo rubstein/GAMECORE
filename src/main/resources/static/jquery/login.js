@@ -1,6 +1,6 @@
 $('#submit').on('mouseover', function(){
     $(this).css({
-        'transform': 'scale(1.1)',
+        'transform': 'scale(1.05)',
         'transition': '0.5s'
     })
 }).on('mouseout', function(){

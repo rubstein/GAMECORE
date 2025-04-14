@@ -4,9 +4,11 @@
             <label for="idUsuario" >Usuario:</label>
             <input type="text" id="idUsuario" name="usuario" autofocus required>
             <br>
-
-            <label for="idContrasenya">Contraseña:</label>
-            <input type="password" id="idContrasenya" name="contrasenya"  autofocus required>
+            <label>Contraseña:</label>
+            <div class="password-container" style="position: relative; display: flex; align-items: center;">
+                <input type="password" id="idContrasenya" name="contrasenya" autofocus required>
+                <i class="fa-solid fa-eye" id="togglePassword" style="position: absolute; right: 10px; cursor: pointer;"></i>
+            </div>
             <input type="submit" value="Iniciar sesión" name="iniciarSesion" id="submit">
             <label class="info montserrat-font">¿No tienes una cuenta? <a href="registro">Regístrate aquí</a></label>
         </form>
@@ -15,6 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <script src="/js/login.js"></script>
 <script src="/jquery/login.js"></script>

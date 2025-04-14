@@ -11,15 +11,14 @@ body{
 }
 form{
     background-color: white;
-    border: 1px solid black;
-    border-radius: 50px;
+    border-top: 1px solid black;
     padding: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 800px;
-    margin-top: 100px;
+    width: 650px;
+    margin-top: 150px;
 }
 form label, input{
     width: 100%;
@@ -29,26 +28,25 @@ form label{
     text-align: center;
 }
 form input{
-    border-radius: 9px;
+    border-radius: 6px;
     text-align: center;
     margin-bottom: 20px;
-    padding: 8px;
+    padding: 3px;
 }
 #redireccionar{
     margin-top: 50px;
     padding: 15px;
+    background-color: orange;
 }
 .info{
     font-size: 15px;
     margin-bottom: 20px;
 }
-
 .terminos {
     display: flex;
     align-items: center;  
     gap: 10px; 
 }
-
 #id-terminos {
     width: 16px; 
     height: 16px;
@@ -56,12 +54,10 @@ form input{
     margin-bottom: 0;
 
 }
-
 .enlaceTerminos {
     font-size: 15px;
     cursor: pointer;
 }
-
 .montserrat-font{
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
@@ -70,4 +66,11 @@ form input{
 }
 .incorrecto{
     font-size: 12px;
+}
+h1 {
+    margin-bottom: 50px;
+}
+.password-container{
+    width: 100%; 
+    box-sizing: border-box; 
 }
