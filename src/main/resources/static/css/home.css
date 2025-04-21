@@ -1,14 +1,14 @@
-.container {
-    display: flex;
-    flex-direction: column;
-    /*width: 85%;*/
-    margin-top: 4%;
-}
 .montserrat-font{
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    /*width: 85%;*/
+    margin-top: 4%;
 }
 .juegoTrending img {
     height: 150px;

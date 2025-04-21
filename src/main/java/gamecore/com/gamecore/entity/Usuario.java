@@ -9,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -29,6 +30,11 @@ public class Usuario {
     private String email;
 
     private LocalDate fecha;
+    
+    @ManyToOne
+    private Rol rol;
+
+    
 
     public Usuario(String nombreUsuario, String contrasenya, String email, LocalDate fecha) {
         this.nombreUsuario = nombreUsuario;

@@ -35,4 +35,14 @@ public class UsuarioService {
         }
         return u;
     }
+
+    public Usuario u(Long id, String nuevoNombre, String nuevoEmail){
+        Usuario u = usuarioRepository.findById(id).orElse(null);
+        if (u != null) {
+            u.setNombreUsuario(nuevoNombre);
+            u.setEmail(nuevoEmail);
+            return usuarioRepository.save(u);
+        }
+        return null;
+    }
 }

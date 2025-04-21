@@ -1,0 +1,17 @@
+<div class="container">
+    <h1 th:text="'Perfil de ' + ${usuario.nombreUsuario}"></h1>
+    <div class ="editarDatos">
+        <h3>Editar datos</h3>
+        <hr>
+        <form action ="/usuario/perfil" method ="post" id ="formulario">
+            <label for ="nuevoNombreUsuario">Nombre de usuario:</label>
+            <input type ="text" id ="nuevoNombreUsuario" name ="nuevoNombreUsuario" th:value="${usuario.nombreUsuario}" disabled><br>
+            <label for ="nuevoEmail">Email:</label>
+            <input type ="text" id ="nuevoEmail" name ="nuevoEmail" th:value="${usuario.email}" disabled><br>
+            <input type ="button" value ="Editar" id ="editar" class ="boton">    
+        </form>
+    </div>
+</div>
+
+<link rel ="stylesheet" href="/css/perfil.css">
+<script src ="/js/perfil.js"></script>
