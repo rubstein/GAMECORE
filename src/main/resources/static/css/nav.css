@@ -1,3 +1,10 @@
+.montserrat-font{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
 #navigationBarNoLogin, #navigationBarLogin {
     position: fixed; 
     top: 0;
@@ -98,7 +105,8 @@
     padding: 10px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
-    width: 150px;
+    width: 200px;
+    text-decoration: none;
 }
 .desplegable a {
     color: white;

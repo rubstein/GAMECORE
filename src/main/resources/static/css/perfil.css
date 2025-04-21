@@ -1,0 +1,30 @@
+.montserrat-font{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+h1, .editarDatos{
+    margin-top: 100px;
+}
+.container{
+    width: 100%;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    font-size: 20px;
+    margin-top: -20px;
+}
+input[type="text"]{
+    margin-bottom: -20px;
+}
+label{
+    margin-top: 20px;
+}
+.boton{
+    margin-top: 35px;
+    padding: 15px;
+    background-color: orange;
+}

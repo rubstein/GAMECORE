@@ -1,3 +1,9 @@
+.montserrat-font{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
 body{
     background-size: cover;
     background-repeat: no-repeat;
@@ -40,12 +46,6 @@ form input{
 .info{
     font-size: 18px;
     margin-top: 10px;
-}
-.montserrat-font{
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;
 }
 h1 {
     margin-bottom: 50px;
