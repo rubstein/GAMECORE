@@ -1,8 +1,0 @@
-package gamecore.com.gamecore.controller;
-
-import org.springframework.stereotype.Controller;
-
-@Controller
-public class RolController {
-    
-}

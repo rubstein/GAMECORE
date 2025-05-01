@@ -40,12 +40,11 @@ public class UsuarioController {
     public String registroPost(@RequestParam String nuevoUsuario, 
                             @RequestParam String nuevaContrasenya,
                             @RequestParam String nuevoEmail,
-                            @RequestParam String nuevaEdad,
                             HttpSession s) throws DangerException {
                                 System.out.println("Datos recibidos");
                                 try 
                                 {
-                                    Usuario u = this.usuarioService.validarUsuarioRegistro(nuevoUsuario, nuevaContrasenya, nuevoEmail, nuevaEdad);
+                                    Usuario u = this.usuarioService.validarUsuarioRegistro(nuevoUsuario, nuevaContrasenya, nuevoEmail, "user");
                                     s.setAttribute("usuario", u);
                                 }
                                 catch (Exception e) 

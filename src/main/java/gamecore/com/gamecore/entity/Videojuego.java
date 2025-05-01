@@ -1,12 +1,15 @@
 package gamecore.com.gamecore.entity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,33 +17,52 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Videojuego {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
     private String nombre;
-    private LocalDate anyo;
-    private String estudio;
-    private String Director;
-    private String genero;
-    private Double precio;
-    private String plataforma;
+
+    @Column(length = 1000)
     private String descripcion;
-    private Double valoracion;
 
-    public Videojuego(String Director, LocalDate anyo, String descripcion, String estudio, String genero, Long id, String nombre, String plataforma, Double precio, Double valoracion) {
+    private String imagenUrl;
 
-        this.Director = Director;
-        this.anyo = anyo;
-        this.descripcion = descripcion;
-        this.estudio = estudio;
-        this.genero = genero;
-        this.id = id;
+    private LocalDate fechaLanzamiento;
+
+    private Double puntuacionMedia;
+
+    private String creadores;
+
+    private Double precio;
+
+    @ManyToMany
+    private Collection<Genero> generos;
+
+    @ManyToMany
+    private Collection<Plataforma> plataformas;
+
+    public Videojuego(String nombre, String descripcion, String imagenUrl, LocalDate fechaLanzamiento, 
+                      Double puntuacionMedia, String creadores, Double precio) {
         this.nombre = nombre;
-        this.plataforma = plataforma;
+        this.descripcion = descripcion;
+        this.imagenUrl = imagenUrl;
+        this.fechaLanzamiento = fechaLanzamiento;
+        this.puntuacionMedia = puntuacionMedia;
+        this.creadores = creadores;
         this.precio = precio;
-        this.valoracion = valoracion;
+        this.generos = new ArrayList<>();
+        this.plataformas = new ArrayList<>();
+    }
+
+    public String getColorPorPuntuacion() {
+        if (this.puntuacionMedia >= 7.0) {
+            return "color-verde";
+        } else if (this.puntuacionMedia >= 5.0) {
+            return "color-naranja";
+        } else {
+            return "color-rojo";
+        }
     }
 }

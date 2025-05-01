@@ -5,15 +5,15 @@ function activarEdicion(){
     var botonGuardar = document.createElement("button");
     botonGuardar.innerHTML = "Guardar Cambios";
     botonGuardar.id ="guardarCambios";
-    botonGuardar.className = "boton";
+    botonGuardar.className = "button-perfil";
 
     document.getElementById("nuevoNombreUsuario").disabled = false;
     document.getElementById("nuevoEmail").disabled = false;
-    
+
     document.getElementById("editar").value = "Cancelar"
     document.getElementById("editar").id = "cancelar";
-    
-    
+
+
     if (!document.getElementById("guardarCambios")) {
         document.getElementById("formulario").appendChild(botonGuardar);
     }

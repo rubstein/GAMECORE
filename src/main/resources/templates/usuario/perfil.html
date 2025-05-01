@@ -1,17 +1,27 @@
-<div class="container">
-    <h1 th:text="'Perfil de ' + ${usuario.nombreUsuario}"></h1>
-    <div class ="editarDatos">
-        <h3>Editar datos</h3>
-        <hr>
-        <form action ="/usuario/perfil" method ="post" id ="formulario">
-            <label for ="nuevoNombreUsuario">Nombre de usuario:</label>
-            <input type ="text" id ="nuevoNombreUsuario" name ="nuevoNombreUsuario" th:value="${usuario.nombreUsuario}" disabled><br>
-            <label for ="nuevoEmail">Email:</label>
-            <input type ="text" id ="nuevoEmail" name ="nuevoEmail" th:value="${usuario.email}" disabled><br>
-            <input type ="button" value ="Editar" id ="editar" class ="boton">    
-        </form>
+<div class="back">
+    <div class="main">
+        <h1 class="title-perfil" th:text="'Perfil de ' + ${usuario.nombreUsuario}"></h1>
+        <div class="editarDatos">
+            <p class="subtitle-perfil">Editar datos</p>
+            <hr>
+            <form action="/usuario/perfil" method="post" id="formulario">
+                <div class="data-perfil">
+                    <label for="nuevoNombreUsuario" class="txt-form-perfil">Nombre de usuario:</label>
+                    <input type="text" id="nuevoNombreUsuario" name="nuevoNombreUsuario"
+                        th:value="${usuario.nombreUsuario}" disabled class="input-form-perfil"><br>
+                </div>
+                <div class="data-perfil">
+                    <label for="nuevoEmail" class="txt-form-perfil">Email:</label>
+                    <input type="text" id="nuevoEmail" name="nuevoEmail" th:value="${usuario.email}" disabled
+                        class="input-form-perfil"><br>
+                    <input type="button" value="Editar" id="editar" class="button-perfil">
+                    <!--<button class="button-perfil" type="submit" id="editar">
+                        <p class="button-text">Editar</p>
+                    </button>-->
+                </div>
+            </form>
+        </div>
     </div>
 </div>
-
-<link rel ="stylesheet" href="/css/perfil.css">
-<script src ="/js/perfil.js"></script>
+<link rel="stylesheet" href="/css/perfil.css">
+<script src="/js/perfil.js"></script>
