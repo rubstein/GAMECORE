@@ -1,24 +1,27 @@
-<div class="container">
-        <form action="/usuario/login" method="post" name="miFormulario" class = "montserrat-font">
-            <h1>Iniciar sesión</h1>
-            <label for="idUsuario" >Usuario:</label>
-            <input type="text" id="idUsuario" name="usuario" autofocus required>
-            <br>
-            <label>Contraseña:</label>
-            <div class="password-container" style="position: relative; display: flex; align-items: center;">
-                <input type="password" id="idContrasenya" name="contrasenya" autofocus required>
-                <i class="fa-solid fa-eye" id="togglePassword" style="position: absolute; right: 10px; cursor: pointer;"></i>
-            </div>
-            <input type="submit" value="Iniciar sesión" name="iniciarSesion" id="submit">
-            <label class="info montserrat-font">¿No tienes una cuenta? <a href="registro">Regístrate aquí</a></label>
-        </form>
+<div class="back">
+    <div class="main">
+        <div class="container">
+            <form action="/usuario/login" method="post" name="miFormulario">
+                <p class="title-login">Sign In</p>
+                <p class="subtitle-login">Welcome back!</p>
+                <div class="info-usuario-logueado">
+                    <div class="email-login">
+                        <label class="txt-email-password" for="idUsuario">Email:</label>
+                        <input class="input-email-password" type="text" id="idUsuario" name="usuario" autofocus required
+                            placeholder="Email">
+                    </div>
+                    <div class="password-login">
+                        <label class="txt-email-password" for="idUsuario">Password:</label>
+                        <input class="input-email-password" type="password" id="idContrasenya" name="contrasenya"
+                            autofocus required placeholder="Password">
+                    </div>
+                </div>
+                <p class="link-register">New here?<a href="registro"> Create an account</a></p>
+                <button class="button-login" type="submit">
+                    <p class="button-text">Sign In</p>
+                </button>
+            </form>
+        </div>
+    </div>
 </div>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<script src="/js/login.js"></script>
-<script src="/jquery/login.js"></script>
 <link rel="stylesheet" href="/css/login.css">

@@ -40,12 +40,11 @@ public class UsuarioController {
     public String registroPost(@RequestParam String nuevoUsuario, 
                             @RequestParam String nuevaContrasenya,
                             @RequestParam String nuevoEmail,
-                            @RequestParam String nuevaEdad,
                             HttpSession s) throws DangerException {
                                 System.out.println("Datos recibidos");
                                 try 
                                 {
-                                    Usuario u = this.usuarioService.validarUsuarioRegistro(nuevoUsuario, nuevaContrasenya, nuevoEmail, nuevaEdad);
+                                    Usuario u = this.usuarioService.validarUsuarioRegistro(nuevoUsuario, nuevaContrasenya, nuevoEmail, "user");
                                     s.setAttribute("usuario", u);
                                 }
                                 catch (Exception e) 
@@ -83,5 +82,33 @@ public class UsuarioController {
     public String logout(HttpSession s) {
     s.invalidate(); 
     return "redirect:/";
+    }
+    
+    @GetMapping("/perfil")
+    public String perfil(ModelMap m, HttpSession hs) {
+        Usuario u = (Usuario) hs.getAttribute("usuario");
+        m.put("usuario", u);
+        m.put("view", "usuario/perfil");
+        return "_t/frame";
+    }
+    
+    @PostMapping("/perfil")
+    public String perfilPost(@RequestParam String nuevoNombreUsuario,
+                             @RequestParam String nuevoEmail,
+                             HttpSession s) throws DangerException {
+        try {
+            Usuario usuarioActual = (Usuario) s.getAttribute("usuario");
+            if (usuarioActual == null) {
+                throw new DangerException("No hay un usuario autenticado.");
+            }
+            Usuario usuarioActualizado = usuarioService.u(usuarioActual.getId(), nuevoNombreUsuario, nuevoEmail);
+
+            s.setAttribute("usuario", usuarioActualizado);
+
+            return "redirect:/usuario/perfil";
+        } catch (Exception e) {
+            PRG.error("Error al actualizar el perfil: " + e.getMessage(), "/usuario/perfil");
+            return null; 
+        }
     }
 }

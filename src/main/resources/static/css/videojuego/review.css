@@ -1,0 +1,9 @@
+.background-img {
+    display: flex;
+    height: 540px;
+    padding: 10px;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+    background: radial-gradient(139.63% 52.36% at 52.36% 50%, rgba(255, 255, 255, 0.00) 0%, rgba(0, 0, 0, 0.50) 70.19%, #000 97.6%), url(<path-to-image>) lightgray 50% / cover no-repeat;
+}

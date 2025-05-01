@@ -1,4 +1,56 @@
-<div class="container">
+<div class="back">
+    <div class="main">
+        <div class="container">
+            <form action="/usuario/registro" method="post" name="miFormulario">
+                <p class="title-register">Register</p>
+                <p class="subtitle-register">Join GAMECORE</p>
+                <div class="info-usuario-register">
+                    <div class="data-register">
+                        <label for="idUsuario" class="txt-form-register">Nombre de usuario:</label>
+                        <input type="text" name="nuevoUsuario" id="idUsuario" required class="input-form-register">
+                        <label class="incorrecto" id="infoUsuario"></label>
+                    </div>
+                    <div class="data-register">
+                        <label for="idContrasenya" class="txt-form-register">Contraseña: </label>
+                        <div class="password-container" style="position: relative; display: flex; align-items: center">
+                            <input type="password" name="nuevaContrasenya" id="idContrasenya" required
+                                class="input-form-register">
+                            <i class="fa-solid fa-eye" id="togglePassword"
+                                style="position: absolute; right: 10px;cursor: pointer;"></i>
+                        </div>
+
+                        <label class="incorrecto" id="infoContrasenya"></label>
+                    </div>
+                    <div class="data-register">
+                        <label for="idContrasenya" class="txt-form-register">Repita la contraseña: </label>
+                        <input type="password" name="nuevaContrasenya2" id="idContrasenya2" required
+                            class="input-form-register">
+                        <label class="incorrecto" id="infoContrasenya2"></label>
+                    </div>
+                    <div class="data-register">
+                        <label for="idEmail" class="txt-form-register">Email: </label>
+                        <input type="email" name="nuevoEmail" id="idEmail" required class="input-form-register">
+                        <label class="incorrecto" id="infoEmail"></label>
+                    </div>
+
+
+                    <div class="terminos">
+                        <input type="checkbox" id="id-terminos">
+                        <label class="enlaceTerminos" for="id-terminos">Acepto los <a href="/usuario/terminos"><b>
+                                    términos
+                                    y
+                                    las condiciones</b></a></label>
+                    </div>
+                    <button class="button-register" type="submit">
+                        <p class="button-text">Register</p>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--<div class="container">
     <form action="/usuario/registro" method="post" name="miFormulario" class = "montserrat-font">
         <h1>Registro de nuevo usuario</h1>
         <label for = "idUsuario">Nombre de usuario:</label>
@@ -31,10 +83,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-<link rel ="stylesheet" href="/css/registro.css">
+
 <link rel ="stylesheet" href="/lib/jquery-ui.css">
 <link rel ="stylesheet" href="/lib/jquery-ui.structure.css">
-
-<script src ="/lib/jquery-ui.js"></script>
-<script src ="/jquery/registro.js"></script>
-<script src = "/js/registro.js"></script>
+-->
+<script src="/lib/jquery-ui.js"></script>
+<script src="/jquery/registro.js"></script>
+<link rel="stylesheet" href="/css/register.css">
+<script src="/js/registro.js"></script>

@@ -1,114 +1,301 @@
-#navigationBarNoLogin, #navigationBarLogin {
-    position: fixed; 
-    top: 0;
-    left: 8%;
-    right: 8%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: black;
-    padding: 10px 20px;
-    height: 70px;
-    z-index: 1;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    margin-bottom: 100px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+html,
+body {
+    min-height: 100%;  
+}
+
+.admin-bar {
+    display: flex;
+    padding: 10px 48px;
+    align-items: center;
+    align-self: stretch;
+    background: #000;
+}
+
+.admin-text {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.back {
+    width: 100%;
+    display: flex;
+    min-height: 100%;
+    justify-content: center;
+}
+
+.nav-bg {
+    width: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+}
+
+.navcontainer {
+    background-color: black;
+    display: flex;
+    width: 1440px;
+    height: 72px;
+    padding: 4px 56px;
+    justify-content: space-between;
+    align-items: center;
+}
+
 #logo {
     height: 32px;
     width: auto;
 }
+
 .nav-links {
     display: flex;
     align-items: center;
     gap: 20px;
     margin-left: 30px;
+
 }
+
 .nav-links a {
     color: white;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    color: #FF8E0C;
     font-weight: bold;
     text-decoration: none;
 }
-.nav-button {
-    background-color: orange;
-    color: black;
-    padding: 6px 12px;
-    border-radius: 5px;
-}
+
 .busqueda {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-}
-.input-container {
     position: relative;
-    width: 250px;
+    border-radius: 8px;
+    background: #FFF;
+    display: flex;
+    width: 360px;
+    height: 48px;
+    padding: 0px 16px 0px 16px;
+    justify-content: flex-start;
+    align-items: center;
+    flex-shrink: 0;
 }
+
 #id-busqueda {
     width: 100%;
-    padding: 6px 30px 6px 10px;
+    height: 100%;
     border-radius: 4px;
     border: none;
+    outline: none;
 }
+
 #img-lupa {
     position: absolute;
-    right: 5px;
+    right: 10px;
+    /* lo coloca dentro del input, en el borde derecho */
     top: 50%;
-    transform: translateY(-60%);
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
     background: none;
     border: none;
     cursor: pointer;
 }
-#lupa {
-    width: 18px;
-    height: 18px;
+
+#img-lupa img {
+    width: 24px;
+    height: 24px;
 }
-#carrito i, #wishlist i{
-    font-size: 30px;
-    cursor: pointer;
-    margin-right: 40px;
+
+#carrito {
+    width: 55px;
+    height: 55px;
+}
+
+svg {
+    width: 55px;
+    height: 55px;
+    text-decoration: none;
     color: white;
 }
+
+.botones-nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
 #inicioSesion {
     display: flex;
-    gap: 10px;
+    width: 112px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    border: 2px solid #FF8E0C;
+    background: #000;
+    transition: transform 0.3s ease-in-out;
 }
-.is, .r, #usuario {
-    background-color: orange;
-    color: black;
-    padding: 6px 12px;
-    border-radius: 5px;
-    font-weight: bold;
+
+#registro {
+    display: flex;
+    width: 112px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    background: #FF8E0C;
+    transition: transform 0.3s ease-in-out;
+}
+
+#registro {
+    color: #000;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
     text-decoration: none;
-    cursor: pointer;
 }
-#perfilLogin{
+
+#inicioSesion {
+    color: #FF8E0C;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-decoration: none;
+}
+
+#registro:hover,
+#inicioSesion:hover {
+    transform: scale(1.1);
+    /* Aumenta el tamaño del botón */
+}
+
+.iconbg {
+    display: flex;
+    width: 55px;
+    height: 55px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: #FF8E0C;
+}
+
+.iconUser {
+    width: 39px;
+    height: 39px;
+}
+
+
+#desplegable {
+    display: none;
+    width: 149px;
+    padding: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    position: absolute;
+    right: 0px;
+    top: 55px;
+    border-radius: 8px;
+    background: #000;
+    z-index: 1;
+}
+
+#perfilLogin {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 10px;
-    position: relative;
 }
-#desplegable{
+
+#perfilLogin:hover #desplegable {
+    display: flex;
+}
+
+li {
+    list-style: none;
+}
+
+.user-name {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.elementos-desplegable {
+    text-decoration: none;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.elementos-desplegable:hover {
+    color: #FF8E0C;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
     display: none;
     position: absolute;
-    top: 30px;
-    right: 0;
-    background-color: #ffffff;
-    border-radius: 5px;
+    width: 239px;
     padding: 10px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    width: 150px;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 10; /* Asegúrate de que sea suficientemente alto */
+    background: #000;
+    border-radius: 8px;
+    right: -155px;
+    top: 45px;
 }
-.desplegable a {
-    color: white;
-    padding: 8px 16px;
+
+.dropdown:hover .dropdown-content,
+.dropdown-content:hover {
+    display: block;
+}
+
+.dropdown-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.txt-deplegable-genero {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
     text-decoration: none;
     display: block;
-}
-#perfilLogin:hover #desplegable {
-    display: block;
-}
-li{
-    list-style: none;
+    padding: 8
 }

@@ -1,38 +1,159 @@
-<div class="container montserrat-font" style ="width: 85%">
-    <h4>Trending</h4>
-    <hr>
-    <div class ="row text-center">
-        <div class="col">
-            <div class ="juegoTrending">
-                <img src ="img/jurassic_park.jpg" alt="jurassic_park">
-                <label class ="labelJuegoTrending">Jurassic Park: Survival</label>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<div class="back">
+    <div class="main">
+        <div class="news">
+            <div class="separador">
+                <h1>News</h1>
+                <hr>
+            </div>
+            <div class="cards-news">
+                <div class="cards1">
+                    <div class="bg" th:classappend="' ' + ${videojuegos[0].colorPorPuntuacion}"></div>
+                    <a th:href="@{'/videojuego/' + ${videojuegos[0].nombre}}" class="card-link">
+                        <img th:src="@{${videojuegos[0].imagenUrl}}" alt="imagen del videojuego" class="imgCards1">
+                        <div class="info-juego">
+                            <p class="titulo-juego" th:text="${videojuegos[0].nombre}">Nombre del juego</p>
+                        </div>
+                    </a>
+                    <div class="valoracion-juego">
+                        <hr class="card-line">
+                        <div class="footer-card">
+                            <p class="average1-text">Average</p>
+                            <div class="average1" th:classappend="' ' + ${videojuegos[0].colorPorPuntuacion}">
+                                <p th:text="${videojuegos[0].puntuacionMedia}">0.0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cards1">
+                    <div class="bg" th:classappend="' ' + ${videojuegos[1].colorPorPuntuacion}"></div>
+                    <a th:href="@{'/videojuego/' + ${videojuegos[1].nombre}}" class="card-link">
+                        <img th:src="@{${videojuegos[1].imagenUrl}}" alt="imagen del videojuego" class="imgCards1">
+                        <div class="info-juego">
+                            <p class="titulo-juego" th:text="${videojuegos[1].nombre}">Nombre del juego</p>
+                        </div>
+                    </a>
+                    <div class="valoracion-juego">
+                        <hr class="card-line">
+                        <div class="footer-card">
+                            <p class="average1-text">Average</p>
+                            <div class="average1" th:classappend="' ' + ${videojuegos[1].colorPorPuntuacion}">
+                                <p th:text="${videojuegos[1].puntuacionMedia}">0.0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="cards1">
+                    <div class="bg" th:classappend="' ' + ${videojuegos[2].colorPorPuntuacion}"></div>
+                    <a th:href="@{'/videojuego/' + ${videojuegos[2].nombre}}" class="card-link">
+                        <img th:src="@{${videojuegos[2].imagenUrl}}" alt="imagen del videojuego" class="imgCards1">
+                        <div class="info-juego">
+                            <p class="titulo-juego" th:text="${videojuegos[2].nombre}">Nombre del juego</p>
+                        </div>
+                    </a>
+                    <div class="valoracion-juego">
+                        <hr class="card-line">
+                        <div class="footer-card">
+                            <p class="average1-text">Average</p>
+                            <div class="average1" th:classappend="' ' + ${videojuegos[2].colorPorPuntuacion}">
+                                <p th:text="${videojuegos[2].puntuacionMedia}">0.0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cards1">
+                    <div class="bg" th:classappend="' ' + ${videojuegos[3].colorPorPuntuacion}"></div>
+                    <a th:href="@{'/videojuego/' + ${videojuegos[3].nombre}}" class="card-link">
+                        <img th:src="@{${videojuegos[3].imagenUrl}}" alt="imagen del videojuego" class="imgCards1">
+                        <div class="info-juego">
+                            <p class="titulo-juego" th:text="${videojuegos[3].nombre}">Nombre del juego</p>
+                        </div>
+                    </a>
+                    <div class="valoracion-juego">
+                        <hr class="card-line">
+                        <div class="footer-card">
+                            <p class="average1-text">Average</p>
+                            <div class="average1" th:classappend="' ' + ${videojuegos[3].colorPorPuntuacion}">
+                                <p th:text="${videojuegos[3].puntuacionMedia}">0.0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col">
-            <div class ="juegoTrending">
-                <img src ="img/Mario-kart.jpg" alt="mario_kart">
-                <label class ="labelJuegoTrending">Mario Kart</label>
+
+        <div class="top-games">
+            <div class="separador1">
+                <h1>Top Games</h1>
+                <hr>
+            </div>
+            <!-- Grupo 1 -->
+            <div class="grupo1-cards2">
+                <div class="cards2" th:each="videojuego : ${grupo1}">
+                    <a th:href="@{'/videojuego/' + ${videojuego.nombre}}" class="card-link">
+                        <div class="background-card"
+                            th:style="'background-image: url(' + ${videojuego.imagenUrl} + ')'">
+                            <div class="average2" th:classappend="' ' + ${videojuego.colorPorPuntuacion}">
+                                <p class="average2-text" th:text="${videojuego.puntuacionMedia}">8.6</p>
+                            </div>
+                            <p class="average2-title" th:text="${videojuego.nombre}">Ghost of Yotey</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Grupo 2 -->
+            <div class="grupo1-cards2">
+                <div class="cards2" th:each="videojuego : ${grupo2}">
+                    <a th:href="@{'/videojuego/' + ${videojuego.nombre}}" class="card-link">
+                        <div class="background-card"
+                            th:style="'background-image: url(' + ${videojuego.imagenUrl} + ')'">
+                            <div class="average2" th:classappend="' ' + ${videojuego.colorPorPuntuacion}">
+                                <p class="average2-text" th:text="${videojuego.puntuacionMedia}">8.6</p>
+                            </div>
+                            <p class="average2-title" th:text="${videojuego.nombre}">Ghost of Yotey</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Grupo 3 -->
+            <div class="grupo1-cards2">
+                <div class="cards2" th:each="videojuego : ${grupo3}">
+                    <a th:href="@{'/videojuego/' + ${videojuego.nombre}}" class="card-link">
+                        <div class="background-card"
+                            th:style="'background-image: url(' + ${videojuego.imagenUrl} + ')'">
+                            <div class="average2" th:classappend="' ' + ${videojuego.colorPorPuntuacion}">
+                                <p class="average2-text" th:text="${videojuego.puntuacionMedia}">8.6</p>
+                            </div>
+                            <p class="average2-title" th:text="${videojuego.nombre}">Ghost of Yotey</p>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
-        <div class="col">
-            <div class ="juegoTrending">
-                <img src ="img/TLOU.jpg" alt="the_last_of_us">
-                <label class ="labelJuegoTrending">The Last of Us</label>
+
+        <div class="plataforms">
+            <div class="separador">
+                <h1>Plataforms</h1>
+                <hr>
             </div>
-        </div>
-        <div class="col">
-            <div class ="juegoTrending">
-                <img src ="img/minecraft.jpg" alt="minecraft">
-                <label class ="labelJuegoTrending">Minecraft</label>
+            <div class="plataform-txt-container">
+                <p class="plataform-txt">Access games on your favorite platform</p>
+            </div>
+            <div class="plataforms-img-container">
+                <img src="/img/Playstation.png" alt="" class="img-plataform1">
+                <img src="/img/nintendo.jpg" alt="" class="img-plataform1">
+                <img src="/img/pc.png" alt="" class="img-plataform2">
+                <img src="/img/xbox.png" alt="" class="img-plataform2">
             </div>
         </div>
     </div>
 </div>
-
-<script src = "/jquery/home.js"></script>
 <link rel="stylesheet" href="/css/home.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
-
-
-

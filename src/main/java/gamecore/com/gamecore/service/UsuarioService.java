@@ -1,25 +1,29 @@
 package gamecore.com.gamecore.service;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import gamecore.com.gamecore.entity.Usuario;
+import gamecore.com.gamecore.repository.RolRepository;
 import gamecore.com.gamecore.repository.UsuarioRepository;
+
 
 @Service
 public class UsuarioService {
 
-    public final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public Usuario validarUsuarioRegistro(String nombreUsuario, String contrasenya, String email, String fecha) {
-        Usuario u = new Usuario(nombreUsuario, new BCryptPasswordEncoder().encode(contrasenya), email, LocalDate.parse(fecha, dtf));
+    @Autowired
+    private RolRepository rolRepository;
+
+    public Usuario validarUsuarioRegistro(String nombreUsuario, String contrasenya, String email, String rol) {
+        Usuario u = new Usuario(nombreUsuario, new BCryptPasswordEncoder().encode(contrasenya), email);
+
+        u.getRoles().add(rolRepository.findRolByNombre(rol));
         
         return usuarioRepository.save(u);
     }
@@ -35,4 +39,15 @@ public class UsuarioService {
         }
         return u;
     }
+
+    public Usuario u(Long id, String nuevoNombre, String nuevoEmail){
+        Usuario u = usuarioRepository.findById(id).orElse(null);
+        if (u != null) {
+            u.setNombreUsuario(nuevoNombre);
+            u.setEmail(nuevoEmail);
+            return usuarioRepository.save(u);
+        }
+        return null;
+    }
 }
+

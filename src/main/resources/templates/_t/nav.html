@@ -1,70 +1,107 @@
+<head>
+	<meta charset="UTF-8" />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/css/nav.css">
+</head>
 <div id="navigationBarNoLogin" th:if="${usuario == null}">
-    <a href="/">
-        <img src="/img/Logo.png" alt="logo_gamecore" id="logo">
-    </a>
+	<div class="nav-bg">
+		<div class="navcontainer">
+			<a href="/">
+				<img src="/img/Logo.png" alt="logo_gamecore" id="logo">
+			</a>
 
-    <nav class="nav-links">
-        <a href="#" class="nav-button">Menu</a>
-        <a href="#">Juegos</a>
-        <a href="#">Géneros</a>
-    </nav>
+			<nav class="nav-links">
+				<a href="/">Menu</a>
+				<a href="/videojuego/r">Juegos</a>
+				<div class="dropdown">
+					<a href="#">Géneros</a>
+					<div class="dropdown-content">
+						<ul>
+							<li th:each="genero : ${generos}">
+								<a class="txt-deplegable-genero" th:href="@{'/genero/' + ${genero.id}}" th:text="${genero.nombre}">Nombre del Género</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<a href="/usuario/login">Tú Lista</a>
+			</nav>
 
-    <div class="busqueda">
-        <div class="input-container">
-            <input type="text" name="busqueda" id="id-busqueda" placeholder="Buscar"/>
-            <button id="img-lupa">
-                <img src="/img/icons/magnifier.png" alt="lupa" id="lupa">
-            </button>
-        </div>
-    </div>
+			<div class="busqueda">
+				<input type="text" name="busqueda" id="id-busqueda" placeholder="Buscar" />
+				<button id="img-lupa">
+					<img src="/img/icons/magnifier.png" alt="lupa" id="lupa">
+				</button>
+			</div>
 
-    <a href="/usuario/carrito" id="carrito">
-        <i class="fas fa-shopping-cart"></i>
-    </a>
+			<div id="carrito">
+				<a href="/usuario/login">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+						class="bi bi-cart" viewBox="0 0 16 16">
+						<path
+							d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+					</svg>
+				</a>
+			</div>
 
-    <div id="inicioSesion">
-        <a href="/usuario/login" class="is">Iniciar sesión</a>
-        <a href="/usuario/registro" class="r">Registro</a>
-    </div>
+			<div class="botones-nav">
+				<a id="inicioSesion" href="/usuario/login">Login</a>
+				<a id="registro" href="/usuario/registro">Registro</a>
+			</div>
+		</div>
+	</div>
 </div>
 
 <div id="navigationBarLogin" th:if="${usuario != null}">
-    <a href="/">
-        <img src="/img/Logo.png" alt="logo_gamecore" id="logo">
-    </a>
+	<div class="nav-bg">
+		<div class="navcontainer">
+			<a href="/">
+				<img src="/img/Logo.png" alt="logo_gamecore" id="logo">
+			</a>
 
-    <nav class="nav-links">
-        <a href="#" class="nav-button">Menú</a>
-        <a href="#">Juegos</a>
-        <a href="#">Géneros</a>
-    </nav>
+			<nav class="nav-links">
+				<a href="/">Menu</a>
+				<a href="/videojuego/r">Juegos</a>
+				<a href="#">Géneros</a>
+			</nav>
 
-    <div class="busqueda">
-        <div class="input-container">
-            <input type="text" name="busqueda" id="id-busqueda" placeholder="Buscar"/>
-            <button id="img-lupa">
-                <img src="/img/icons/magnifier.png" alt="lupa" id="lupa">
-            </button>
-        </div>
-    </div>
-    <a href="/usuario/wishlist" id="wishlist">
-        <i class="far fa-heart"></i>
-    </a>
-    <a href="/usuario/carrito" id="carrito">
-        <i class="fas fa-shopping-cart"></i>
-    </a>
-    <div id ="perfilLogin">
-        <span id = "usuario" th:text="${usuario.nombreUsuario}"></span>
-        <div id="desplegable">
-            <ul>
-                <li><a href="/usuario/perfil">Perfil</a></li>
-                <li><a href="/usuario/ajustes">Ajustes</a></li>
-                <li><a href="/usuario/logout">Cerrar sesión</a></li>
-            </ul>
-        </div>
-    </div>
+			<div class="busqueda">
+				<input type="text" name="busqueda" id="id-busqueda" placeholder="Buscar" />
+				<button id="img-lupa">
+					<img src="/img/icons/magnifier.png" alt="lupa" id="lupa">
+				</button>
+			</div>
 
+			<div id="carrito">
+				<a href="/usuario/carrito">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+						class="bi bi-cart" viewBox="0 0 16 16">
+						<path
+							d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+					</svg>
+				</a>
+			</div>
+			<div id="perfilLogin">
+				<div class="iconbg">
+					<div id="iconUser">
+						<svg xmlns="http://www.w3.org/2000/svg" width="39" height="40" viewBox="0 0 39 40" fill="none">
+							<path
+								d="M32.5 34.625V31.375C32.5 29.6511 31.8152 27.9978 30.5962 26.7788C29.3772 25.5598 27.7239 24.875 26 24.875H13C11.2761 24.875 9.62279 25.5598 8.40381 26.7788C7.18482 27.9978 6.5 29.6511 6.5 31.375V34.625"
+								stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+							<path
+								d="M19.5 18.375C23.0899 18.375 26 15.4649 26 11.875C26 8.28515 23.0899 5.375 19.5 5.375C15.9101 5.375 13 8.28515 13 11.875C13 15.4649 15.9101 18.375 19.5 18.375Z"
+								stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+						</svg>
+					</div>
+				</div>
+				<span id="usuario" th:text="${usuario.nombreUsuario}"></span>
+				<div id="desplegable">
+					<ul>
+						<li><span class="user-name" id="usuario" th:text="${usuario.nombreUsuario}"></span></li>
+						<li><a class="elementos-desplegable" href="/usuario/perfil">Perfil</a></li>
+						<li><a class="elementos-desplegable" href="/usuario/logout">Cerrar sesión</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-
-<script src="/jquery/nav.js"></script>
-<link rel="stylesheet" href="/css/nav.css">
