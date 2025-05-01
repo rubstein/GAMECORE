@@ -1,6 +1,6 @@
 package gamecore.com.gamecore.entity;
 
-import java.util.List;
+
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -8,10 +8,15 @@ import java.util.Collection;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+
+
+import jakarta.persistence.ManyToMany;
+
 import lombok.Data;
 
 @Entity
@@ -24,6 +29,14 @@ public class Rol {
 
     @Column(unique = true)
     private String nombre;
+
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "roles")
+    private Collection<Usuario> usuarios;
+
+    // ==========================================================================
+
 
     public Rol(String nombre) {
         this.nombre = nombre;

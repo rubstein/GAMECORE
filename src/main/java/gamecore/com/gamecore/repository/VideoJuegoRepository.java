@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import gamecore.com.gamecore.entity.Videojuego;
 
 @Repository
-public interface VideojuegoRepository extends JpaRepository<Videojuego, Long> {
+public interface VideoJuegoRepository extends JpaRepository<Videojuego, Long> {
     Optional<Videojuego> findByNombre(String nombre);
 }
