@@ -102,6 +102,7 @@ body {
     flex-shrink: 0;
     border-radius: 8px;
     background: #FF8E0C;
+    cursor: pointer;
 }
 
 .button-text{
@@ -110,4 +111,5 @@ body {
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    display: inline;
 }
