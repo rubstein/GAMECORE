@@ -77,7 +77,7 @@ public class BDinit {
     private void crearVideojuego() {
 
         List<Long> generosRPG = List.of(generoService.buscarPorNombre("Rpg").getId());
-        List<Long> plataformasPC = List.of(plataformaService.buscarPorNombre("PC").getId());
+        List<Long> plataformasPC = List.of(plataformaService.buscarPorNombre("PC").getId(), plataformaService.buscarPorNombre("PlayStation").getId());
 
         try {
             videojuegoService.c("Cyberpunk",
@@ -161,7 +161,7 @@ public class BDinit {
         }
 
         try {
-            videojuegoService.c("God of War Ragnarok ",
+            videojuegoService.c("God of War Ragnarok",
                     "Sekiro: Shadows Die Twice es un videojuego de acción y aventura con elementos de sigilo y combate intenso, desarrollado por FromSoftware. Ambientado en un Japón feudal ficticio con toques sobrenaturales, el juego pone al jugador en la piel de Sekiro, un shinobi que busca vengar el secuestro de su joven señor y recuperar su honor.",
                     "/img/GOF.jpg", LocalDate.of(2019, 3, 22),
                     9.2, "FromSoftware", 29.9, generosRPG, plataformasPC);

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -22,7 +21,6 @@ import gamecore.com.gamecore.helper.PRG;
 import gamecore.com.gamecore.service.VideojuegoService;
 
 import org.springframework.ui.Model;
-
 
 @Controller
 @RequestMapping("/videojuego")
@@ -72,14 +70,16 @@ public class VideojuegoController {
         return "redirect:/videojuego/r";
     }
 
-    @GetMapping("/videojuego/{nombre}")
-    public String obtenerVideojuegoPorNombre(@PathVariable String nombre, Model m) {
-        Optional<Videojuego> optionalVideojuego = videojuegoService.obtenerPorNombre(nombre);
+    @GetMapping("/{slug}")
+    public String obtenerVideojuegoPorSlug(@PathVariable String slug, Model m) {
+        Optional<Videojuego> optionalVideojuego = videojuegoService.obtenerPorSlug(slug);
         if (optionalVideojuego.isPresent()) {
             m.addAttribute("videojuego", optionalVideojuego.get());
-            return "videojuego/review"; 
+            m.addAttribute("view", "videojuego/review"); // Se asegura que el atributo 'view' apunte a la vista correcta
+            return "_t/frame";
         } else {
-            return "error/404"; 
+            return "error/404"; // O alguna página de error si no se encuentra el videojuego
         }
     }
+
 }
