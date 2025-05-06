@@ -12,6 +12,8 @@ import gamecore.com.gamecore.exception.DangerException;
 import gamecore.com.gamecore.repository.GeneroRepository;
 import gamecore.com.gamecore.repository.PlataformaRepository;
 import gamecore.com.gamecore.repository.VideoJuegoRepository;
+import gamecore.com.gamecore.repository.VideoJuegoRepository;
+
 
 @Service
 public class VideojuegoService {
@@ -23,6 +25,7 @@ public class VideojuegoService {
     private PlataformaRepository plataformaRepository;
 
     @Autowired
+    private VideoJuegoRepository videojuegoRepository;
     private VideoJuegoRepository videojuegoRepository;
 
     public List<Videojuego> r() {

@@ -5,7 +5,7 @@
     <div class="main">
         <div class="news">
             <div class="separador">
-                <h1>News</h1>
+                <h1>Lo último</h1>
                 <hr>
             </div>
             <div class="cards-news">
@@ -20,7 +20,7 @@
                     <div class="valoracion-juego">
                         <hr class="card-line">
                         <div class="footer-card">
-                            <p class="average1-text">Average</p>
+                            <p class="average1-text">Puntuación media</p>
                             <div class="average1" th:classappend="' ' + ${videojuegos[0].colorPorPuntuacion}">
                                 <p th:text="${videojuegos[0].puntuacionMedia}">0.0</p>
                             </div>
@@ -39,7 +39,7 @@
                     <div class="valoracion-juego">
                         <hr class="card-line">
                         <div class="footer-card">
-                            <p class="average1-text">Average</p>
+                            <p class="average1-text">Puntuación media</p>
                             <div class="average1" th:classappend="' ' + ${videojuegos[1].colorPorPuntuacion}">
                                 <p th:text="${videojuegos[1].puntuacionMedia}">0.0</p>
                             </div>
@@ -59,7 +59,7 @@
                     <div class="valoracion-juego">
                         <hr class="card-line">
                         <div class="footer-card">
-                            <p class="average1-text">Average</p>
+                            <p class="average1-text">Puntuación media</p>
                             <div class="average1" th:classappend="' ' + ${videojuegos[2].colorPorPuntuacion}">
                                 <p th:text="${videojuegos[2].puntuacionMedia}">0.0</p>
                             </div>
@@ -78,7 +78,7 @@
                     <div class="valoracion-juego">
                         <hr class="card-line">
                         <div class="footer-card">
-                            <p class="average1-text">Average</p>
+                            <p class="average1-text">Puntuación media</p>
                             <div class="average1" th:classappend="' ' + ${videojuegos[3].colorPorPuntuacion}">
                                 <p th:text="${videojuegos[3].puntuacionMedia}">0.0</p>
                             </div>
@@ -90,10 +90,10 @@
 
         <div class="top-games">
             <div class="separador1">
-                <h1>Top Games</h1>
+                <h1>Top Juegos</h1>
                 <hr>
             </div>
-            <!-- Grupo 1 -->
+            
             <div class="grupo1-cards2">
                 <div class="cards2" th:each="videojuego : ${grupo1}">
                     <a th:href="@{'/videojuego/' + ${videojuego.slug}}" class="card-link">
@@ -108,7 +108,7 @@
                 </div>
             </div>
 
-            <!-- Grupo 2 -->
+            
             <div class="grupo1-cards2">
                 <div class="cards2" th:each="videojuego : ${grupo2}">
                     <a th:href="@{'/videojuego/' + ${videojuego.slug}}" class="card-link">
@@ -123,7 +123,7 @@
                 </div>
             </div>
 
-            <!-- Grupo 3 -->
+            
             <div class="grupo1-cards2">
                 <div class="cards2" th:each="videojuego : ${grupo3}">
                     <a th:href="@{'/videojuego/' + ${videojuego.slug}}" class="card-link">
@@ -141,11 +141,11 @@
 
         <div class="plataforms">
             <div class="separador">
-                <h1>Plataforms</h1>
+                <h1>Plataformas</h1>
                 <hr>
             </div>
             <div class="plataform-txt-container">
-                <p class="plataform-txt">Access games on your favorite platform</p>
+                <p class="plataform-txt">Accede a juegos en tu plataforma favorita</p>
             </div>
             <div class="plataforms-img-container">
                 <img src="/img/Playstation.png" alt="" class="img-plataform1">
