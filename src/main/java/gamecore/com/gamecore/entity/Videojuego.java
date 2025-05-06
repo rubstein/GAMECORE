@@ -37,6 +37,8 @@ public class Videojuego {
 
     private Double precio;
 
+    private String slug;
+
     @ManyToMany
     private Collection<Genero> generos;
 

@@ -57,10 +57,14 @@ h1 {
 }
 
 .card-container {
-    display: grid; /* antes tenías: display: flex */
-    grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); 
     gap: 16px;
     width: 1376px;
+}
+
+.card:hover{
+    border: #FF8E0C 2px solid;
 }
 
 .card {
@@ -69,8 +73,8 @@ h1 {
     width: 332px;
     height: 200px;
     border-radius: 8px;
-    overflow: hidden; /* Esto es esencial para que el border-radius se vea */
-    background-color: #1c1c1c; /* color de fondo base por si acaso */
+    overflow: hidden; 
+    background-color: #1c1c1c; 
     margin-bottom: 16px;
 }
 
@@ -116,7 +120,7 @@ h1 {
 .nombre-juego {
     color: #FFF;
     font-family: Inter;
-    font-size: 24px;
+    font-size: 22px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
