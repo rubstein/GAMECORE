@@ -15,17 +15,19 @@
                         <img th:src="@{${videojuegos[0].imagenUrl}}" alt="imagen del videojuego" class="imgCards1">
                         <div class="info-juego">
                             <p class="titulo-juego" th:text="${videojuegos[0].nombre}">Nombre del juego</p>
-                        </div>
-                    </a>
-                    <div class="valoracion-juego">
-                        <hr class="card-line">
-                        <div class="footer-card">
-                            <p class="average1-text">Puntuación media</p>
-                            <div class="average1" th:classappend="' ' + ${videojuegos[0].colorPorPuntuacion}">
-                                <p th:text="${videojuegos[0].puntuacionMedia}">0.0</p>
+                            <div class="valoracion-juego">
+                                <div class="footer-card">
+                                    <hr class="card-line">
+                                    <div class="puntuacion-container">
+                                        <p class="average1-text">Puntuación media</p>
+                                        <div class="average1" th:classappend="' ' + ${videojuegos[0].colorPorPuntuacion}">
+                                            <p th:text="${videojuegos[0].puntuacionMedia}">0.0</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
                 <div class="cards1">
@@ -34,19 +36,20 @@
                         <img th:src="@{${videojuegos[1].imagenUrl}}" alt="imagen del videojuego" class="imgCards1">
                         <div class="info-juego">
                             <p class="titulo-juego" th:text="${videojuegos[1].nombre}">Nombre del juego</p>
-                        </div>
-                    </a>
-                    <div class="valoracion-juego">
-                        <hr class="card-line">
-                        <div class="footer-card">
-                            <p class="average1-text">Puntuación media</p>
-                            <div class="average1" th:classappend="' ' + ${videojuegos[1].colorPorPuntuacion}">
-                                <p th:text="${videojuegos[1].puntuacionMedia}">0.0</p>
+                            <div class="valoracion-juego">
+                                <div class="footer-card">
+                                    <hr class="card-line">
+                                    <div class="puntuacion-container">
+                                        <p class="average1-text">Puntuación media</p>
+                                        <div class="average1" th:classappend="' ' + ${videojuegos[1].colorPorPuntuacion}">
+                                            <p th:text="${videojuegos[1].puntuacionMedia}">0.0</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
-
 
                 <div class="cards1">
                     <div class="bg" th:classappend="' ' + ${videojuegos[2].colorPorPuntuacion}"></div>
@@ -54,17 +57,19 @@
                         <img th:src="@{${videojuegos[2].imagenUrl}}" alt="imagen del videojuego" class="imgCards1">
                         <div class="info-juego">
                             <p class="titulo-juego" th:text="${videojuegos[2].nombre}">Nombre del juego</p>
-                        </div>
-                    </a>
-                    <div class="valoracion-juego">
-                        <hr class="card-line">
-                        <div class="footer-card">
-                            <p class="average1-text">Puntuación media</p>
-                            <div class="average1" th:classappend="' ' + ${videojuegos[2].colorPorPuntuacion}">
-                                <p th:text="${videojuegos[2].puntuacionMedia}">0.0</p>
+                            <div class="valoracion-juego">
+                                <div class="footer-card">
+                                    <hr class="card-line">
+                                    <div class="puntuacion-container">
+                                        <p class="average1-text">Puntuación media</p>
+                                        <div class="average1" th:classappend="' ' + ${videojuegos[2].colorPorPuntuacion}">
+                                            <p th:text="${videojuegos[2].puntuacionMedia}">0.0</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
                 <div class="cards1">
@@ -73,17 +78,19 @@
                         <img th:src="@{${videojuegos[3].imagenUrl}}" alt="imagen del videojuego" class="imgCards1">
                         <div class="info-juego">
                             <p class="titulo-juego" th:text="${videojuegos[3].nombre}">Nombre del juego</p>
-                        </div>
-                    </a>
-                    <div class="valoracion-juego">
-                        <hr class="card-line">
-                        <div class="footer-card">
-                            <p class="average1-text">Puntuación media</p>
-                            <div class="average1" th:classappend="' ' + ${videojuegos[3].colorPorPuntuacion}">
-                                <p th:text="${videojuegos[3].puntuacionMedia}">0.0</p>
+                            <div class="valoracion-juego">
+                                <div class="footer-card">
+                                    <hr class="card-line">
+                                    <div class="puntuacion-container">
+                                        <p class="average1-text">Puntuación media</p>
+                                        <div class="average1" th:classappend="' ' + ${videojuegos[3].colorPorPuntuacion}">
+                                            <p th:text="${videojuegos[3].puntuacionMedia}">0.0</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -93,7 +100,7 @@
                 <h1>Top Juegos</h1>
                 <hr>
             </div>
-            
+
             <div class="grupo1-cards2">
                 <div class="cards2" th:each="videojuego : ${grupo1}">
                     <a th:href="@{'/videojuego/' + ${videojuego.slug}}" class="card-link">
@@ -108,7 +115,7 @@
                 </div>
             </div>
 
-            
+
             <div class="grupo1-cards2">
                 <div class="cards2" th:each="videojuego : ${grupo2}">
                     <a th:href="@{'/videojuego/' + ${videojuego.slug}}" class="card-link">
@@ -123,7 +130,7 @@
                 </div>
             </div>
 
-            
+
             <div class="grupo1-cards2">
                 <div class="cards2" th:each="videojuego : ${grupo3}">
                     <a th:href="@{'/videojuego/' + ${videojuego.slug}}" class="card-link">

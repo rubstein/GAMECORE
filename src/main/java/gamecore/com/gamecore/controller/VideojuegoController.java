@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -69,17 +68,15 @@ public class VideojuegoController {
         }
         return "redirect:/videojuego/r";
     }
-
     @GetMapping("/{slug}")
     public String obtenerVideojuegoPorSlug(@PathVariable String slug, Model m) {
-        Optional<Videojuego> optionalVideojuego = videojuegoService.obtenerPorSlug(slug);
-        if (optionalVideojuego.isPresent()) {
-            m.addAttribute("videojuego", optionalVideojuego.get());
-            m.addAttribute("view", "videojuego/review"); // Se asegura que el atributo 'view' apunte a la vista correcta
+        Videojuego videojuego = videojuegoService.obtenerPorSlug(slug);
+        if (videojuego != null) {
+            m.addAttribute("videojuego", videojuego);
+            m.addAttribute("view", "videojuego/review");
             return "_t/frame";
         } else {
-            return "error/404"; // O alguna página de error si no se encuentra el videojuego
+            return "error/404";
         }
     }
-
 }
