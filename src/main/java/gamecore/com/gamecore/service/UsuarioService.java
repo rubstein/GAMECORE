@@ -1,24 +1,31 @@
 package gamecore.com.gamecore.service;
 
-import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import gamecore.com.gamecore.entity.Usuario;
+import gamecore.com.gamecore.repository.RolRepository;
 import gamecore.com.gamecore.repository.UsuarioRepository;
+
 
 @Service
 public class UsuarioService {
+
     
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public void validarUsuarioRegistro(String nombreUsuario, String contrasenya, String email, LocalDate fecha) {
-        Usuario u = new Usuario(nombreUsuario, new BCryptPasswordEncoder().encode(contrasenya), email, fecha);
+    @Autowired
+    private RolRepository rolRepository;
+
+    public Usuario validarUsuarioRegistro(String nombreUsuario, String contrasenya, String email, String rol) {
+        Usuario u = new Usuario(nombreUsuario, new BCryptPasswordEncoder().encode(contrasenya), email);
+
+        u.getRoles().add(rolRepository.findRolByNombre(rol));
         
-        usuarioRepository.save(u);
+        return usuarioRepository.save(u);
     }
 
     public Usuario validarUsuarioLogin(String nombreUsuario, String contrasenya) throws Exception {
@@ -32,4 +39,15 @@ public class UsuarioService {
         }
         return u;
     }
+
+    public Usuario u(Long id, String nuevoNombre, String nuevoEmail){
+        Usuario u = usuarioRepository.findById(id).orElse(null);
+        if (u != null) {
+            u.setNombreUsuario(nuevoNombre);
+            u.setEmail(nuevoEmail);
+            return usuarioRepository.save(u);
+        }
+        return null;
+    }
 }
+

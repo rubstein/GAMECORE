@@ -1,0 +1,98 @@
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<div class="back">
+    <div class="main">
+        <div class="background-img" th:style="'background-image: radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.0) 0%, rgba(0, 0, 0, 0.9) 90%), url(' + ${videojuego.imagenUrl} + ');'"></div>
+        <div class="juego">
+            <div class="info-game">
+                <div class="lado-izquierdo">
+                    <p class="titulo-juego" th:text="${videojuego.nombre}">Nombre del juego</p>
+                    <p class="descripcion-juego" th:text="${videojuego.descripcion}">Descripción</p>
+                    <div class="plataformas-generos-container">
+                        <p class="titulo">Plataformas</p>
+                        <p>
+                            <span th:each="plataforma, iterStat : ${videojuego.plataformas}">
+                                <span class="plataforma-generos-inline" th:text="${plataforma.nombre}"></span>
+                                <span th:if="${!iterStat.last}">, </span>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="plataformas-generos-container">
+                        <p class="titulo">Géneros</p>
+                        <p>
+                            <span th:each="genero, iterStat : ${videojuego.generos}">
+                                <span class="plataforma-generos-inline" th:text="${genero.nombre}"></span>
+                                <span th:if="${!iterStat.last}">, </span>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="fecha-creadores">
+                        <p class="titulo-fecha">Fecha de Lanzamiento</p>
+                        <p class="fecha-juego" th:text="${videojuego.fechaLanzamiento}">Fecha</p>
+                    </div>
+                    <div class="fecha-creadores">
+                        <p class="titulo">Creadores</p>
+                        <p class="creadores-juego" th:text="${videojuego.creadores}">Creadores</p>
+                    </div>
+                </div>
+                <div class="separador-container">
+                    <div class="separador"></div>
+                </div>
+                <div class="lado-derecho">
+                    <div class="puntuacion">
+                        <p class="puntuacion-text">Puntuación</p>
+                        <div class="puntuacion-num" th:classappend="' ' + ${videojuego.colorPorPuntuacion}">
+                            <p class="puntuacionMedia" th:text="${videojuego.puntuacionMedia}"></p>
+                        </div>
+                    </div>
+                    <div class="puntuacion-usuario">
+                        <div class="puntuacion-info">
+                            <p class="puntuacion-text">Mi Puntuación</p>
+                            <div class="puntuacion-usuario-container">
+                                <p id="ratingValue">0</p>
+                            </div>
+                        </div>
+                        <div class="puntuacion-container" id="myRating">
+                            <div class="cuadrado" data-value="1"></div>
+                            <div class="cuadrado" data-value="2"></div>
+                            <div class="cuadrado" data-value="3"></div>
+                            <div class="cuadrado" data-value="4"></div>
+                            <div class="cuadrado" data-value="5"></div>
+                            <div class="cuadrado" data-value="6"></div>
+                            <div class="cuadrado" data-value="7"></div>
+                            <div class="cuadrado" data-value="8"></div>
+                            <div class="cuadrado" data-value="9"></div>
+                            <div class="cuadrado" data-value="10"></div>
+                        </div>
+                    </div>
+                    <div class="anyadir-lista-container">
+                        <p class="puntuacion-text">Añadir a favoritos</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64px" height="64px" fill="black" class="bi bi-heart" viewBox="0 0 16 16" color="black">
+                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
+                        </svg>
+                    </div>
+                    <div class="botones">
+                        <button class="button-review" type="button">
+                            <p class="button-text-review">Añadir Review</p>
+                        </button>
+                        <button class="button-carrito" type="button">
+                            <p class="button-text-carrito">Añadir al Carrito</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="reviews-container">
+                <div class="separador2">
+                    <h1>Todas las reseñas</h1>
+                    <hr>
+                    <div class="reviews">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/review.js"></script>
+<link rel="stylesheet" href="/css/videojuego/review.css">

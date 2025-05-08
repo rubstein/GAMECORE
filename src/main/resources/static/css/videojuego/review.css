@@ -1,0 +1,389 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.back {
+    width: 100%;
+    display: flex;
+    min-height: 100%;
+    justify-content: center;
+}
+
+html,
+body {
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+.main {
+    display: flex;
+    width: 1440px;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 56px;
+    /*padding-left: 32px;
+    padding-right: 32px;*/
+}
+
+.separador {
+    width: 4px;
+    height: 100%;
+    background: #FF8E0C;
+
+}
+
+.separador-container {
+    display: flex;
+    padding: 0px 24px;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+}
+
+hr {
+    width: 1376px;
+    height: 2px;
+}
+
+h1 {
+    font-family: Inter;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.background-img {
+    display: flex;
+    height: 540px;
+    padding: 10px;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+    background: radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 70%, #000 100%);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.juego {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 56px;
+}
+
+.info-game {
+    display: flex;
+    padding: 32px 0px 16px 0px;
+    align-items: flex-start;
+    align-self: stretch;
+}
+
+.lado-izquierdo {
+    display: flex;
+    width: 883px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.titulo-juego {
+    color: #000;
+    font-family: Inter;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.descripcion-juego {
+    align-self: stretch;
+    color: #000;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 859px;
+}
+
+.plataformas-generos-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+}
+
+.titulo {
+    width: 137px;
+    color: #000;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.plataformas {
+    display: inline;
+    color: #000;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+}
+
+.plataforma-generos-inline {
+    display: inline;
+    color: #000;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.fecha-creadores {
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+    align-self: stretch;
+}
+
+.titulo-fecha {
+    color: #000;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.fecha-juego {
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.creadores-juego {
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.lado-derecho {
+    display: flex;
+    width: 445px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+
+.puntuacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+
+.puntuacion-text {
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.puntuacion-num {
+    display: flex;
+    width: 64px;
+    height: 64px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+}
+
+.puntuacionMedia {
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.puntuacion-usuario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    align-self: stretch;
+}
+
+.puntuacion-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+
+.puntuacion-usuario-container {
+    display: flex;
+    width: 64px;
+    height: 64px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    border: 1px solid black;
+}
+
+.puntuacion-container {
+    display: flex;
+    gap: 2px;
+    cursor: pointer;
+}
+
+.cuadrado {
+    width: 24px;
+    height: 16px;
+    padding: 1px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.cuadrado[data-value="1"],
+.cuadrado[data-value="2"],
+.cuadrado[data-value="3"],
+.cuadrado[data-value="4"] {
+    background-color: #FFADAD;
+}
+
+.cuadrado[data-value="5"],
+.cuadrado[data-value="6"],
+.cuadrado[data-value="7"] {
+    background-color: #FFDCB4;
+}
+
+.cuadrado[data-value="8"],
+.cuadrado[data-value="9"],
+.cuadrado[data-value="10"] {
+    background-color: #D9FBDB;
+}
+
+#ratingValue {
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+
+.anyadir-lista-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+
+.bi-heart{
+    margin-right: 15px;
+}
+
+.botones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    width: 100%;
+}
+
+.button-review {
+    display: flex;
+    height: 40px;
+    padding: 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    border-radius: 8px;
+    border: 2px solid #FF8E0C;
+    background: #000;
+}
+
+.button-text-review {
+    color: #FF8E0C;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.button-carrito {
+    display: flex;
+    height: 40px;
+    padding: 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    border-radius: 8px;
+    background: #FF8E0C;
+}
+
+.button-text-carrito {
+    color: #000;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.reviews-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    flex: 1 0 0;
+    align-self: stretch;
+}
+
+.separador2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1 0 0;
+    align-self: stretch;
+}
+
+.color-verde {
+    background-color: #00E60F;
+}
+
+.color-naranja {
+    background-color: #FF8E0C;
+}
+
+.color-rojo {
+    background-color: #FF2727;
+}

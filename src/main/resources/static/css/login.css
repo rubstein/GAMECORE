@@ -1,49 +1,115 @@
-body{
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    font-family: 'Prompt', sans-serif;
+html,
+body {
+    min-height: 100%;
+    overflow-x: hidden;
 }
-.container{
+
+.main {
     display: flex;
-    justify-content: center;
+    width: 1440px;
+    flex-direction: column;
     align-items: center;
+    margin-top: 56px;
+    margin-bottom: 56px;
+    gap: 56px;
 }
-form{
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 50px;
-    padding: 50px;
+
+.container,form {
     display: flex;
+    padding: 32px 16px 32px 16px;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    border-radius: 8px;
+    background: #F5F5F5;
+}
+
+.title-login {
+    font-family: Inter;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.subtitle-login {
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.info-usuario-logueado {
+    display: flex;
+    padding: 0px 24px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 600px;
-    margin-top: 100px;
+    gap: 24px;
+    align-self: stretch;
 }
-form label, input{
-    width: 100%;
+
+.email-login{
+    display: flex;
+    width: 324px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
 }
-form label{
-    font-size: 30px;
-    text-align: center;
+
+.password-login{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
 }
-form input{
-    margin-bottom: 5px;
-    border-radius: 9px;
-    text-align: center;
-}
-#submit{
-    margin-top: 35px;
-    padding: 15px;
-}
-.info{
-    font-size: 18px;
-    margin-top: 10px;
-}
-.montserrat-font{
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 500;
+
+.txt-email-password {
+    font-family: Inter;
+    font-size: 16px;
     font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.input-email-password {
+    display: flex;
+    width: 320px;
+    height: 40px;
+    padding: 10px;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 8px;
+}
+
+.link-register {
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.button-login{
+    display: flex;
+    width: 344px;
+    height: 48px;
+    padding: 12px 140px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: #FF8E0C;
+    cursor: pointer;
+}
+
+.button-text{
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    display: inline;
 }

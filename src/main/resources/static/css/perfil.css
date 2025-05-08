@@ -1,0 +1,88 @@
+html,
+body {
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+.main {
+    display: flex;
+    width: 1440px;
+    flex-direction: column;
+    align-items: center;
+    gap: 56px;
+    margin-top: 56px;
+    margin-bottom: 56px;
+
+}
+
+form {
+    display: flex;
+    padding: 32px 16px 32px 16px;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    border-radius: 8px;
+}
+
+.title-perfil{
+    font-family: Inter;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.subtitle-perfil {
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.data-perfil{
+    display: flex;
+    width: 324px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.txt-form-perfil{
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.input-form-perfil{
+    display: flex;
+    width: 320px;
+    height: 40px;
+    padding: 10px;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 8px;
+}
+
+.button-perfil{
+    display: flex;
+    width: 344px;
+    height: 48px;
+    padding: 12px 140px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: #FF8E0C;
+}
+
+.button-text {
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}

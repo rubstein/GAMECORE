@@ -1,14 +1,18 @@
 package gamecore.com.gamecore.entity;
 
-import java.time.LocalDate;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -23,18 +27,21 @@ public class Usuario {
     @Column(unique = true)
     private String nombreUsuario;
 
+     @ManyToMany(fetch = FetchType.EAGER)
+    private Collection<Rol> roles;
+
     @JsonIgnore
     private String contrasenya;
 
     private String email;
 
-    private LocalDate fecha;
+    
 
-    public Usuario(String nombreUsuario, String contrasenya, String email, LocalDate fecha) {
+    public Usuario(String nombreUsuario, String contrasenya, String email) {
         this.nombreUsuario = nombreUsuario;
         this.contrasenya = contrasenya;
         this.email = email;
-        this.fecha = fecha;
+        this.roles = new ArrayList<>();
     }
 
     public Usuario(String nombreUsuario, String contrasenya){

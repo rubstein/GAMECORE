@@ -1,17 +1,44 @@
-.montserrat-font{
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;
-}
-
-#navigationBarNoLogin, #navigationBarLogin {
+#navigationBar {
     position: fixed; 
     top: 0;
     left: 8%;
     right: 8%;
     display: flex;
+    padding: 10px 48px;
     align-items: center;
+    align-self: stretch;
+    background: #000;
+}
+
+.admin-text {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.back {
+    width: 100%;
+    display: flex;
+    min-height: 100%;
+    justify-content: center;
+}
+
+.nav-bg {
+    width: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+}
+
+.navcontainer {
+    background-color: black;
+    display: flex;
+    width: 1440px;
+    height: 72px;
+    padding: 4px 56px;
     justify-content: space-between;
     background-color: black;
     padding: 10px 20px;
@@ -19,12 +46,13 @@
     z-index: 1;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    margin-bottom: 100px;
 }
 
 #logo {
-    height: 32px;
+    position: relative;
+    height: 35px;
     width: auto;
+    top: 4px;
 }
 
 .nav-links {
@@ -36,158 +64,148 @@
 
 .nav-links a {
     color: white;
-    font-weight: bold;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
     text-decoration: none;
 }
 
+.nav-links a:hover {
+    color: #FF8E0C;
+    font-weight: bold;
+    text-decoration: none;
+}
 .nav-button {
     background-color: orange;
     color: black;
     padding: 6px 12px;
     border-radius: 5px;
 }
-
 .busqueda {
     flex-grow: 1;
     display: flex;
     justify-content: center;
 }
-
 .input-container {
     position: relative;
     width: 250px;
 }
-
 #id-busqueda {
     width: 100%;
-    padding: 6px 30px 6px 10px;
+    height: 100%;
     border-radius: 4px;
     border: none;
+    outline: none;
 }
 
 #img-lupa {
     position: absolute;
-    right: 5px;
+    right: 10px;
     top: 50%;
-    transform: translateY(-60%);
+    transform: translateY(-50%);
     background: none;
     border: none;
     cursor: pointer;
 }
-
 #lupa {
     width: 18px;
     height: 18px;
 }
-
-#carrito i, #wishlist i{
+#carrito i{
     font-size: 30px;
     cursor: pointer;
     margin-right: 40px;
     color: white;
 }
-
 #inicioSesion {
     display: flex;
-    gap: 10px;
-}
-
-.is, .r, #usuario {
-    background-color: orange;
-    color: black;
-    padding: 6px 12px;
-    border-radius: 5px;
-    font-weight: bold;
+    width: 140px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    border: 2px solid #FF8E0C;
+    background: #000;
+    transition: transform 0.3s ease-in-out;
+    color: #FF8E0C;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
     text-decoration: none;
-    cursor: pointer;
 }
 
-#perfilLogin{
+#registro {
+    display: flex;
+    width: 140px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    background: #FF8E0C;
+    transition: transform 0.3s ease-in-out;
+    color: #000;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-decoration: none;
+}
+
+
+#registro:hover,
+#inicioSesion:hover {
+    transform: scale(1.1);
+}
+
+.iconbg {
+    display: flex;
+    width: 45px;
+    height: 45px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: #FF8E0C;
+}
+
+#iconUser {
+    width: 55px;
+    height: 50px;
+}
+
+
+#desplegable {
+    display: none;
+    width: 149px;
+    padding: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    position: absolute;
+    right: 0px;
+    top: 55px;
+    border-radius: 8px;
+    background: #000;
+    z-index: 1;
+}
+
+#perfilLogin {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 10px;
-    position: relative;
 }
-
-#desplegable{
-    display: none;
-    position: absolute;
-    top: 30px;
-    right: 0;
-    background-color: #ffffff;
-    border-radius: 5px;
-    padding: 10px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    width: 200px;
-    text-decoration: none;
-}
-
-.desplegable a {
-    color: white;
-    padding: 8px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-#perfilLogin:hover #desplegable {
-    display: block;
-}
-
-li{
-    list-style: none;
-}
-
-/* --- Dropdown de "Genres" --- */
-.nav-genres {
-    background-color: rgb(116, 114, 111);
+.is, .r {
+    background-color: orange;
     color: black;
     padding: 6px 12px;
     border-radius: 5px;
     font-weight: bold;
     text-decoration: none;
-    cursor: pointer;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    position: absolute;
-    top: 125%;
-    left: 0;
-    background-color: #1a1a1a;
-    min-width: 160px;
-    border-radius: 8px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-    z-index: 1000;
-    display: none;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    overflow: hidden;
-}
-
-/* Enlaces dentro del menú */
-.dropdown-content a {
-    color: white;
-    padding: 12px 16px;
-    display: block;
-    text-decoration: none;
-    transition: background 0.2s ease;
-}
-
-/* Hover en los enlaces */
-.dropdown-content a:hover {
-    background-color: orange;
-    color: black;
-}
-
-/* Activación del dropdown al pasar el ratón por encima del contenedor completo */
-.dropdown:hover .dropdown-content {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
 }
