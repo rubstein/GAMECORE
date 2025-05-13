@@ -9,9 +9,9 @@
                 <hr>
             </div>
             <div class="card-container">
-                <div class="card" >
-                    <a >
-                        <div class="card-img" >
+                <div class="card" th:each="videojuego : ${videojuegos}">
+                    <a  th:href="@{'/videojuego/' + ${videojuego.slug}}" class="card-link">
+                        <div class="card-img" th:style="'background-image: url(' + ${videojuego.imagenUrl} + ')'">
 
                         </div>
                     </a>
