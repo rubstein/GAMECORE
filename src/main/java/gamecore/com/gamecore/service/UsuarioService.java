@@ -28,7 +28,7 @@ public class UsuarioService {
         return usuarioRepository.save(u);
     }
 
-    public Usuario validarUsuarioLogin(String nombreUsuario, String contrasenya) throws Exception {
+    public Usuario usuarioLogin(String nombreUsuario, String contrasenya) throws Exception {
         Usuario u = usuarioRepository.findByNombreUsuario(nombreUsuario);
         if (u == null){
             throw new Exception("Usuario no encontrado");

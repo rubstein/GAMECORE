@@ -1,8 +1,9 @@
 package gamecore.com.gamecore.entity;
 
-
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -27,7 +28,7 @@ public class Usuario {
     @Column(unique = true)
     private String nombreUsuario;
 
-     @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Rol> roles;
 
     @JsonIgnore
@@ -35,17 +36,29 @@ public class Usuario {
 
     private String email;
 
-    
+    @ManyToMany
+    private Set<Videojuego> favoritos;
 
     public Usuario(String nombreUsuario, String contrasenya, String email) {
         this.nombreUsuario = nombreUsuario;
         this.contrasenya = contrasenya;
         this.email = email;
         this.roles = new ArrayList<>();
+        this.favoritos = new HashSet<Videojuego>();
     }
 
-    public Usuario(String nombreUsuario, String contrasenya){
+    public Usuario(String nombreUsuario, String contrasenya) {
         this.nombreUsuario = nombreUsuario;
         this.contrasenya = contrasenya;
     }
+
+    public boolean isAdmin() {
+    if (roles == null) return false;
+    for (Rol rol : roles) {
+        if ("admin".equalsIgnoreCase(rol.getNombre())) {
+            return true;
+        }
+    }
+    return false;
+}
 }

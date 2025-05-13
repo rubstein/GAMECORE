@@ -3,7 +3,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="/css/nav.css">
 </head>
-<div id="navigationBarNoLogin" th:if="${usuario == null}">
+<div id="navigationBarNoLogin" th:if="${session.usuario == null}">
 	<div class="nav-bg">
 		<div class="navcontainer">
 			<a href="/">
@@ -14,6 +14,7 @@
 				<a href="/">Menu</a>
 				<a href="/videojuego/r">Juegos</a>
 				<div class="dropdown">
+					<a href="/usuario/login">Tú Lista</a>
 					<a href="#">Géneros</a>
 					<div class="dropdown-content">
 						<ul>
@@ -23,7 +24,6 @@
 						</ul>
 					</div>
 				</div>
-				<a href="/usuario/login">Tú Lista</a>
 			</nav>
 
 			<div class="busqueda">
@@ -51,7 +51,7 @@
 	</div>
 </div>
 
-<div id="navigationBarLogin" th:if="${usuario != null}">
+<div id="navigationBarLogin" th:if="${session.usuario != null}">
 	<div class="nav-bg">
 		<div class="navcontainer">
 			<a href="/">
@@ -61,6 +61,7 @@
 			<nav class="nav-links">
 				<a href="/">Menu</a>
 				<a href="/videojuego/r">Juegos</a>
+				<a href="/favoritos/lista">Tú lista</a>
 				<a href="#">Géneros</a>
 			</nav>
 
@@ -93,10 +94,10 @@
 						</svg>
 					</div>
 				</div>
-				<span id="usuario" th:text="${usuario.nombreUsuario}"></span>
+				<span id="usuario" th:text="${session.usuario.nombreUsuario}"></span>
 				<div id="desplegable">
 					<ul>
-						<li><span class="user-name" id="usuario" th:text="${usuario.nombreUsuario}"></span></li>
+						<li><span class="user-name" id="usuario" th:text="${session.usuario.nombreUsuario}"></span></li>
 						<li><a class="elementos-desplegable" href="/usuario/perfil">Perfil</a></li>
 						<li><a class="elementos-desplegable" href="/usuario/logout">Cerrar sesión</a></li>
 					</ul>

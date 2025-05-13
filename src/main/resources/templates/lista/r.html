@@ -5,20 +5,14 @@
     <div class="main">
         <div class="juegos">
             <div class="separador">
-                <h1>Juegos</h1>
+                <h1>Tú Lista</h1>
                 <hr>
             </div>
             <div class="card-container">
                 <div class="card" th:each="videojuego : ${videojuegos}">
-                    <a th:href="@{'/videojuego/' + ${videojuego.slug}}" class="card-link">
+                    <a  th:href="@{'/videojuego/' + ${videojuego.slug}}" class="card-link">
                         <div class="card-img" th:style="'background-image: url(' + ${videojuego.imagenUrl} + ')'">
 
-                        </div>
-                        <div class="card-footer">
-                            <div class="average" th:classappend="' ' + ${videojuego.colorPorPuntuacion}">
-                                <p class="average-txt" th:text="${videojuego.puntuacionMedia}"></p>
-                            </div>
-                            <p class="nombre-juego" th:text="${videojuego.nombre}"></p>
                         </div>
                     </a>
                 </div>
@@ -26,4 +20,4 @@
         </div>
     </div>
 </div>
-<link rel="stylesheet" href="/css/videojuego/r.css">
+<link rel="stylesheet" href="/css/lista/r.css">

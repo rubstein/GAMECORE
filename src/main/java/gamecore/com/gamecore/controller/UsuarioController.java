@@ -70,7 +70,7 @@ public class UsuarioController {
                             HttpSession s) throws DangerException {
 
         try{
-            Usuario u = usuarioService.validarUsuarioLogin(usuario, contrasenya); 
+            Usuario u = usuarioService.usuarioLogin(usuario, contrasenya); 
             s.setAttribute("usuario", u);
             
         } catch (Exception e){
