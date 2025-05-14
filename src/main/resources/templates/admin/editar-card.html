@@ -1,13 +1,3 @@
-<form action="/admin/cambiar-card/{id}" method="post">
-    <input type="hidden" name="id" value="${videojuegoActual.id}" />
-    <label for="nuevoId">Seleccione el nuevo videojuego:</label>
-    <select name="nuevoId" id="nuevoId">
-        <option th:each="videojuego : ${todosLosVideojuegos}" th:value="${videojuego.id}"
-            th:text="${videojuego.nombre}"></option>
-    </select>
-    <button type="submit">Cambiar videojuego</button>
-</form>
-
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
