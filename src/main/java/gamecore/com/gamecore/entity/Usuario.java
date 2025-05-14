@@ -1,5 +1,6 @@
 package gamecore.com.gamecore.entity;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -21,6 +22,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Usuario {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -36,6 +38,8 @@ public class Usuario {
 
     private String email;
 
+    private LocalDate fechaRegistro;
+
     @ManyToMany
     private Set<Videojuego> favoritos;
 
@@ -45,6 +49,7 @@ public class Usuario {
         this.email = email;
         this.roles = new ArrayList<>();
         this.favoritos = new HashSet<Videojuego>();
+        this.fechaRegistro = LocalDate.now();
     }
 
     public Usuario(String nombreUsuario, String contrasenya) {
@@ -53,12 +58,24 @@ public class Usuario {
     }
 
     public boolean isAdmin() {
-    if (roles == null) return false;
-    for (Rol rol : roles) {
-        if ("admin".equalsIgnoreCase(rol.getNombre())) {
-            return true;
+
+        boolean isAdmin = false;
+        for (Rol rol : roles) {
+            if ("admin".equalsIgnoreCase(rol.getNombre())) {
+                isAdmin = true;
+            }
         }
+        return isAdmin;
     }
-    return false;
-}
+
+    public boolean isUser() {
+
+        boolean isUser = false;
+        for (Rol rol : roles) {
+            if ("user".equalsIgnoreCase(rol.getNombre())) {
+                isUser = true;
+            }
+        }
+        return isUser;
+    }
 }

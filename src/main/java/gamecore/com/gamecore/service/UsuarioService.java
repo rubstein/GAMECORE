@@ -1,6 +1,8 @@
 package gamecore.com.gamecore.service;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -48,6 +50,10 @@ public class UsuarioService {
             return usuarioRepository.save(u);
         }
         return null;
+    }
+
+    public List<Usuario> r() {
+        return usuarioRepository.findAll();
     }
 }
 
