@@ -81,7 +81,7 @@ public class AdminController {
             imagen.transferTo(rutaDestino);
         } catch (IOException e) {
             e.printStackTrace();
-            // manejar error o redirigir con mensaje
+           
         }
 
         try {

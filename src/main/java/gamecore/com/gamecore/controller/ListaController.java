@@ -16,8 +16,8 @@ import gamecore.com.gamecore.repository.VideoJuegoRepository;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/favoritos")
-public class FavoritoController {
+@RequestMapping("/lista")
+public class ListaController {
 
     @Autowired
     private VideoJuegoRepository videojuegoRepository;
@@ -40,25 +40,28 @@ public class FavoritoController {
         return "redirect:/videojuego/" + slug;
     }
 
-    @GetMapping("/lista")
+    @GetMapping("/favorito")
     public String verFavoritos(HttpSession session, ModelMap model) {
-        // Obtener el usuario desde la sesión
         Usuario usuario = (Usuario) session.getAttribute("usuario");
-
-        // Verificar si el usuario está logueado
         if (usuario == null) {
-            return "redirect:/usuario/login"; // Si no está logueado, redirigir a login
+            return "redirect:/usuario/login"; 
         }
-
-        // Obtener la lista de videojuegos favoritos del usuario
         Collection<Videojuego> videojuegosFavoritos = usuario.getFavoritos();
-
-        // Pasar la lista de videojuegos favoritos a la vista
         model.put("videojuegos", videojuegosFavoritos);
+        model.put("view", "lista/favorito"); 
+        return "_t/frame"; 
+    }
 
-        // Establecer la vista
-        model.put("view", "lista/r"); // Asegúrate de que la vista es correcta
-        return "_t/frame"; // Retornar el frame principal donde se muestra la vista
+    @GetMapping("/carrito")
+    public String carrito(HttpSession session, ModelMap model) {
+        Usuario usuario = (Usuario) session.getAttribute("usuario");
+        if (usuario == null) {
+            return "redirect:/usuario/login"; 
+        }
+        Collection<Videojuego> videojuegosCarrito = usuario.getCarrito();
+        model.put("videojuegos", videojuegosCarrito);
+        model.put("view", "lista/carrito"); 
+        return "_t/frame"; 
     }
 
 }

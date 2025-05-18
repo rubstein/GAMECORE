@@ -5,14 +5,13 @@
     <div class="main">
         <div class="juegos">
             <div class="separador">
-                <h1>Tú Lista</h1>
+                <h1>Tu lista</h1>
                 <hr>
             </div>
             <div class="card-container">
                 <div class="card" th:each="videojuego : ${videojuegos}">
                     <a  th:href="@{'/videojuego/' + ${videojuego.slug}}" class="card-link">
                         <div class="card-img" th:style="'background-image: url(' + ${videojuego.imagenUrl} + ')'">
-
                         </div>
                     </a>
                 </div>

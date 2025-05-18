@@ -1,9 +1,14 @@
 <div class="back">
     <div class="main">
         <div class="container">
-            <form action="/usuario/login" method="post" name="miFormulario">
+            <form id="loginForm">
                 <p class="title-login">Iniciar sesión</p>
                 <p class="subtitle-login">Bienvenido de nuevo</p>
+
+                <div id="error-message" class="error-message" style="display: none;">
+                    <p></p>
+                </div>
+
                 <div class="info-usuario-logueado">
                     <div class="email-login">
                         <label class="txt-email-password" for="idUsuario">Usuario:</label>
@@ -11,13 +16,18 @@
                             placeholder="Email">
                     </div>
                     <div class="password-login">
-                        <label class="txt-email-password" for="idUsuario">Contraseña:</label>
-                        <input class="input-email-password" type="password" id="idContrasenya" name="contrasenya"
-                            autofocus required placeholder="Password">
+                        <label class="txt-email-password" for="idContrasenya">Contraseña:</label>
+                        <div class="password-container">
+                            <input class="input-email-password" type="password" id="idContrasenya" name="contrasenya"
+                                required placeholder="Password">
+                            <span id="togglePassword" class="toggle-password">
+                                👁️
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <p class="link-register">Nuevo? <a href="registro">Crea una cuenta aquí</a></p>
-                <button class="button-login" type="submit">
+                <button class="button-login" type="button" id="loginButton">
                     <p class="button-text">Iniciar sesión</p>
                 </button>
             </form>
@@ -25,3 +35,5 @@
     </div>
 </div>
 <link rel="stylesheet" href="/css/login.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/jquery/login.js"></script>

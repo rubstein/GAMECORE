@@ -43,12 +43,16 @@ public class Usuario {
     @ManyToMany
     private Set<Videojuego> favoritos;
 
+    @ManyToMany
+    private Set<Videojuego> carrito;
+
     public Usuario(String nombreUsuario, String contrasenya, String email) {
         this.nombreUsuario = nombreUsuario;
         this.contrasenya = contrasenya;
         this.email = email;
         this.roles = new ArrayList<>();
         this.favoritos = new HashSet<Videojuego>();
+        this.carrito = new HashSet<Videojuego>();
         this.fechaRegistro = LocalDate.now();
     }
 

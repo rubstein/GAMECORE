@@ -1,0 +1,22 @@
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<div class="back">
+    <div class="main">
+        <div class="juegos">
+            <div class="separador">
+                <h1>Tu carrito</h1>
+                <hr>
+            </div>
+            <div class="card-container">
+                <div class="card" th:each="videojuego : ${videojuegos}">
+                    <a  th:href="@{'/videojuego/' + ${videojuego.slug}}" class="card-link">
+                        <div class="card-img" th:style="'background-image: url(' + ${videojuego.imagenUrl} + ')'">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="/css/lista/r.css">
