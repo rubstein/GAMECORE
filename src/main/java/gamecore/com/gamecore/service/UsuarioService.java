@@ -1,6 +1,8 @@
 package gamecore.com.gamecore.service;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -28,7 +30,7 @@ public class UsuarioService {
         return usuarioRepository.save(u);
     }
 
-    public Usuario validarUsuarioLogin(String nombreUsuario, String contrasenya) throws Exception {
+    public Usuario usuarioLogin(String nombreUsuario, String contrasenya) throws Exception {
         Usuario u = usuarioRepository.findByNombreUsuario(nombreUsuario);
         if (u == null){
             throw new Exception("Usuario no encontrado");
@@ -48,6 +50,10 @@ public class UsuarioService {
             return usuarioRepository.save(u);
         }
         return null;
+    }
+
+    public List<Usuario> r() {
+        return usuarioRepository.findAll();
     }
 }
 
