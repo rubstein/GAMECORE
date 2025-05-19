@@ -25,7 +25,7 @@ form {
     background: #F5F5F5;
 }
 
-.title-register{
+.title-register {
     font-family: Inter;
     font-size: 32px;
     font-style: normal;
@@ -97,4 +97,24 @@ form {
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+}
+
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-form-register {
+    flex: 1;
+    padding-right: 40px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    user-select: none;
+    color: #888;
 }

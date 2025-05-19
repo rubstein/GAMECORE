@@ -8,21 +8,21 @@ import org.springframework.stereotype.Service;
 import gamecore.com.gamecore.entity.Favorito;
 import gamecore.com.gamecore.entity.Usuario;
 import gamecore.com.gamecore.entity.Videojuego;
-import gamecore.com.gamecore.repository.FavoritoRepository;
+import gamecore.com.gamecore.repository.ListaRepository;
 
 @Service
-public class FavoritoService {
+public class ListaService {
 
     @Autowired
-    private FavoritoRepository favoritoRepository;
+    private ListaRepository favoritoRepository;
 
     public boolean toggleFavorite(Usuario usuario, Videojuego videojuego) {
         if (isFavorite(usuario, videojuego)) {
             removeFavorite(usuario, videojuego);
-            return false; // ya no es favorito
+            return false; 
         } else {
             addFavorite(usuario, videojuego);
-            return true; // ahora es favorito
+            return true; 
         }
     }
 
