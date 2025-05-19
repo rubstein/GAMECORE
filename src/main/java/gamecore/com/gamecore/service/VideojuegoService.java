@@ -57,6 +57,10 @@ public class VideojuegoService {
         videojuegoRepository.save(vd);
     }
 
+    public void d(Long id) throws Exception {
+            videojuegoRepository.deleteById(id);
+    }
+
     public Videojuego obtenerPorNombre(String nombre) {
         return videojuegoRepository.findByNombre(nombre);
     }

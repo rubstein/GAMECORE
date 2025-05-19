@@ -49,7 +49,6 @@ public class VideojuegoController {
             @RequestParam("descripcion") String descripcion,
             @RequestParam("imagenUrl") String imagenUrl,
             @RequestParam("fechaLanzamiento") LocalDate fechaLanzamiento,
-            @RequestParam("puntuacionMedia") Double puntuacionMedia,
             @RequestParam("creadores") String creadores,
             @RequestParam("precio") Double precio,
             @RequestParam(value = "idGeneros[]", required = false) List<Long> idsGeneros,
@@ -60,7 +59,7 @@ public class VideojuegoController {
         idsPlataformas = idsPlataformas == null ? new ArrayList<>() : idsPlataformas;
 
         try {
-            this.videojuegoService.c(nombre, descripcion, imagenUrl, fechaLanzamiento, puntuacionMedia, creadores,
+            this.videojuegoService.c(nombre, descripcion, imagenUrl, fechaLanzamiento, 0.0, creadores,
                     precio,
                     idsGeneros, idsPlataformas);
         } catch (Exception e) {
