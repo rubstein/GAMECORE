@@ -55,5 +55,9 @@ public class UsuarioService {
     public List<Usuario> r() {
         return usuarioRepository.findAll();
     }
+
+    public void d(Long id) throws Exception {
+            usuarioRepository.deleteById(id);
+    }
 }
 

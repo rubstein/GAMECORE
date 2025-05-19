@@ -21,10 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import gamecore.com.gamecore.exception.DangerException;
 import gamecore.com.gamecore.helper.PRG;
-import gamecore.com.gamecore.service.GeneroService;
-import gamecore.com.gamecore.service.PlataformaService;
-import gamecore.com.gamecore.service.UsuarioService;
-import gamecore.com.gamecore.service.VideojuegoService;
+import gamecore.com.gamecore.service.*;
 
 @Controller
 @RequestMapping("/admin")
@@ -42,6 +39,13 @@ public class AdminController {
     @Autowired
     GeneroService generoService;
 
+    @Autowired
+    RolService rolService;
+
+    AdminController(RolService rolService) {
+        this.rolService = rolService;
+    }
+
     @GetMapping("juegos")
     public String juegosR(
             ModelMap m) {
@@ -51,7 +55,7 @@ public class AdminController {
     }
 
     @GetMapping("juegos-c")
-    public String c(
+    public String cJ(
             ModelMap m) {
         m.put("view", "/admin/juegos-c");
         m.put("generos", generoService.r());
@@ -60,7 +64,7 @@ public class AdminController {
     }
 
     @PostMapping("juegos-c")
-    public String cPost(
+    public String cPostJ(
             @RequestParam("nombre") String nombre,
             @RequestParam("descripcion") String descripcion,
             @RequestParam("puntuacionMedia") double puntuacionMedia,
@@ -81,18 +85,25 @@ public class AdminController {
             imagen.transferTo(rutaDestino);
         } catch (IOException e) {
             e.printStackTrace();
-            // manejar error o redirigir con mensaje
         }
 
         try {
-
-            this.videojuegoService.c(nombre, descripcion, "/img/" + nombreArchivo, fechaLanzamiento, puntuacionMedia,
+            videojuegoService.c(nombre, descripcion, "/img/" + nombreArchivo, fechaLanzamiento, puntuacionMedia,
                     creadores, precio,
                     generosIds, plataformasIds);
 
         } catch (Exception e) {
             PRG.error("Este nombre " + nombre + " ya en uso", "/persona/c");
         }
+        return "redirect:/admin/juegos";
+    }
+
+    @PostMapping("juegos-d")
+    public String dJ(
+            @RequestParam Long id) throws Exception {
+
+        videojuegoService.d(id);
+
         return "redirect:/admin/juegos";
     }
 
@@ -104,4 +115,38 @@ public class AdminController {
         return "_t/frame";
     }
 
+    @GetMapping("usuarios-c")
+    public String cU(
+            ModelMap m) {
+        m.put("view", "/admin/usuarios-c");
+        m.put("roles", rolService.r());
+        return "_t/frame";
+    }
+
+    
+    @PostMapping("usuarios-c")
+    public String cPostU(
+            @RequestParam("nombreUsuario") String nombreUsuario,
+            @RequestParam("contrasenya") String contrasenya,
+            @RequestParam("email") String email,
+            @RequestParam("rol") String rol) throws DangerException {
+
+        try {
+
+            usuarioService.validarUsuarioRegistro(nombreUsuario, contrasenya, email,rol);
+
+        } catch (Exception e) {
+            PRG.error("Este nombre " + nombreUsuario + " ya en uso", "/admin/usuarios");
+        }
+        return "redirect:/admin/usuarios";
+    }
+    
+    @PostMapping("usuarios-d")
+    public String dU(
+            @RequestParam Long id) throws Exception {
+
+        usuarioService.d(id);
+
+        return "redirect:/admin/usuarios";
+    }
 }
