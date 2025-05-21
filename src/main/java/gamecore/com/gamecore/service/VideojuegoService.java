@@ -57,11 +57,33 @@ public class VideojuegoService {
         videojuegoRepository.save(vd);
     }
 
+    public void d(Long id) throws Exception {
+            videojuegoRepository.deleteById(id);
+    }
+
     public Videojuego obtenerPorNombre(String nombre) {
         return videojuegoRepository.findByNombre(nombre);
     }
 
     public Videojuego obtenerPorSlug(String slug) {
         return videojuegoRepository.findBySlug(slug);
+    }
+
+    public List<Videojuego> obtenerCuatroVideojuegos() {
+        return videojuegoRepository.findTop4ByOrderByFechaLanzamientoDesc();
+    }
+
+    // Obtener un videojuego por ID
+    public Videojuego obtenerPorId(Long id) {
+        return videojuegoRepository.findById(id).orElse(null);
+    }
+
+    // Cambiar un videojuego por otro en una tarjeta
+    public void cambiarCard(Videojuego videojuegoActual, Videojuego nuevoVideojuego) {
+        // Reemplaza el videojuego actual con el nuevo en la base de datos
+        videojuegoActual.setImagenUrl(nuevoVideojuego.getImagenUrl());
+        videojuegoActual.setNombre(nuevoVideojuego.getNombre());
+        videojuegoActual.setPuntuacionMedia(nuevoVideojuego.getPuntuacionMedia());
+        videojuegoRepository.save(videojuegoActual);
     }
 }

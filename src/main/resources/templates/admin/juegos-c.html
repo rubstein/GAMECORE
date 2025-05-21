@@ -1,0 +1,71 @@
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<div class="back">
+    <div class="main">
+        <div class="info-juego">
+            <div class="separador">
+                <h1>Añadir Juego</h1>
+                <hr>
+            </div>
+            <div class="contenedor">
+                <form action="/admin/juegos-c" method="post" class="formulario" enctype="multipart/form-data">
+                    <div class="datos">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" name="nombre" id="nombre" class="input-txt" required>
+                    </div>
+                    <div class="datos">
+                        <label for="descripcion">Descripción</label>
+                        <textarea type="text" name="descripcion" id="descripcion" class="input-txt" required></textarea>
+                    </div>
+                    <div class="datos">
+                        <label for="puntuacionMedia">Puntuación Media</label>
+                        <input type="number" step="0.1" min="0.1" name="puntuacionMedia" id="puntuacionMedia" class="input-txt" required>
+                    </div>
+                    <div class="datos">
+                        <label for="fechaLanzamiento">Fecha de Lanzamiento</label>
+                        <input type="date" name="fechaLanzamiento" id="fechaLanzamiento" class="input-txt" required>
+                    </div>
+                    <div class="datos">
+                        <label for="creadores">Creadores</label>
+                        <input type="text" name="creadores" id="creadores" class="input-txt" required>
+                    </div>
+                    <div class="datos">
+                        <label for="precio">Precio</label>
+                        <input type="number" step="0.01" name="precio" id="precio" class="input-txt" min="0.01" required>
+                    </div>
+                    <div class="datos">
+                        <label for="imagen">Portada</label>
+                        <input type="file" name="imagen" accept="image/*" id="imagen" class="input-file" required>
+                    </div>
+                    <div class="datos">
+                        <label for="genero">Géneros</label>
+                        <div class="checkbox">
+                            <div th:each="genero : ${generos}">
+                                <label>
+                                    <input type="checkbox" name="generos" id="genero" th:value="${genero.id}">
+                                    <span th:text="${genero.nombre}"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="datos">
+                        <label for="plataforma">Plataformas</label>
+                        <div class="checkbox">
+                            <div th:each="plataforma : ${plataformas}">
+                                <label>
+                                    <input type="checkbox" name="plataformas" id="plataforma" th:value="${plataforma.id}">
+                                    <span th:text="${plataforma.nombre}"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-submit">
+                        <p class="btn-txt">Añadir Juego</p>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="/css/admin/juegos-c.css">

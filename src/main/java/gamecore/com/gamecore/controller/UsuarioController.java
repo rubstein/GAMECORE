@@ -1,5 +1,8 @@
 package gamecore.com.gamecore.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -7,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import gamecore.com.gamecore.entity.Usuario;
 import gamecore.com.gamecore.exception.DangerException;
@@ -17,7 +21,7 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/usuario")
 public class UsuarioController {
-    
+
     @Autowired
     private UsuarioService usuarioService;
 
@@ -37,53 +41,53 @@ public class UsuarioController {
     }
 
     @PostMapping("/registro")
-    public String registroPost(@RequestParam String nuevoUsuario, 
-                            @RequestParam String nuevaContrasenya,
-                            @RequestParam String nuevoEmail,
-                            HttpSession s) throws DangerException {
-                                System.out.println("Datos recibidos");
-                                try 
-                                {
-                                    Usuario u = this.usuarioService.validarUsuarioRegistro(nuevoUsuario, nuevaContrasenya, nuevoEmail, "user");
-                                    s.setAttribute("usuario", u);
-                                }
-                                catch (Exception e) 
-                                {
-                                    PRG.error("Error al registrar el usuario", "/usuario/registro");
-                                }
-                        
-                                return "redirect:/";
-}
+    public String registroPost(@RequestParam String nuevoUsuario,
+            @RequestParam String nuevaContrasenya,
+            @RequestParam String nuevoEmail,
+            HttpSession s) throws DangerException {
+        System.out.println("Datos recibidos");
+        try {
+            Usuario u = this.usuarioService.validarUsuarioRegistro(nuevoUsuario, nuevaContrasenya, nuevoEmail, "user");
+            s.setAttribute("usuario", u);
+        } catch (Exception e) {
+            PRG.error("Error al registrar el usuario", "/usuario/registro");
+        }
+
+        return "redirect:/";
+    }
 
     @GetMapping("/login")
-    public String login(ModelMap m, HttpSession hs) 
-    {
+    public String login(ModelMap m, HttpSession hs) {
         Usuario u = (Usuario) hs.getAttribute("usuario");
-        m.put ("usuario", u);
+        m.put("usuario", u);
         m.put("view", "usuario/login");
         return "_t/frame";
     }
 
     @PostMapping("/login")
-    public String loginPost(@RequestParam String usuario, 
-                            @RequestParam String contrasenya, 
-                            HttpSession s) throws DangerException {
-
-        try{
-            Usuario u = usuarioService.validarUsuarioLogin(usuario, contrasenya); 
+    @ResponseBody
+    public Map<String, Object> loginPost(@RequestParam String usuario,
+            @RequestParam String contrasenya,
+            HttpSession s) {
+        Map<String, Object> response = new HashMap<>();
+        try {
+            Usuario u = usuarioService.usuarioLogin(usuario, contrasenya);
             s.setAttribute("usuario", u);
-            
-        } catch (Exception e){
-            PRG.error("Usuario o contraseña incorrectos", "/usuario/login");
+            response.put("success", true);
+            response.put("message", "Login exitoso");
+        } catch (Exception e) {
+            response.put("success", false);
+            response.put("message", "Usuario o contraseña incorrectos");
         }
-            return "redirect:/";
+        return response;
     }
+
     @GetMapping("/logout")
     public String logout(HttpSession s) {
-    s.invalidate(); 
-    return "redirect:/";
+        s.invalidate();
+        return "redirect:/";
     }
-    
+
     @GetMapping("/perfil")
     public String perfil(ModelMap m, HttpSession hs) {
         Usuario u = (Usuario) hs.getAttribute("usuario");
@@ -91,11 +95,11 @@ public class UsuarioController {
         m.put("view", "usuario/perfil");
         return "_t/frame";
     }
-    
+
     @PostMapping("/perfil")
     public String perfilPost(@RequestParam String nuevoNombreUsuario,
-                             @RequestParam String nuevoEmail,
-                             HttpSession s) throws DangerException {
+            @RequestParam String nuevoEmail,
+            HttpSession s) throws DangerException {
         try {
             Usuario usuarioActual = (Usuario) s.getAttribute("usuario");
             if (usuarioActual == null) {
@@ -108,7 +112,7 @@ public class UsuarioController {
             return "redirect:/usuario/perfil";
         } catch (Exception e) {
             PRG.error("Error al actualizar el perfil: " + e.getMessage(), "/usuario/perfil");
-            return null; 
+            return null;
         }
     }
 }

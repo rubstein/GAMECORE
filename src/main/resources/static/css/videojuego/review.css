@@ -306,7 +306,7 @@ h1 {
     align-self: stretch;
 }
 
-.bi-heart{
+.bi-heart {
     margin-right: 15px;
 }
 
@@ -386,4 +386,13 @@ h1 {
 
 .color-rojo {
     background-color: #FF2727;
+}
+
+/*#boton-favoritos {
+    all: unset;
+    cursor: pointer;
+}*/
+
+.favorito {
+    fill: red !important;
 }
