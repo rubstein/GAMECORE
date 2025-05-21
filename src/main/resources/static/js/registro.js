@@ -33,7 +33,7 @@ function validarContrasenya() {
     AL MENOS UNA MAYUSCULA, UNA MINUSCULA, UN NUMERO, Y UN CARACTER ESPECIAL
     */
     var contrasenya = document.getElementById("idContrasenya").value.trim();
-    var miRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,20}$/;
+    var miRegex = /^(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*\d)(?=.*[$@._])[^\s]{8,20}$/;
     if (!miRegex.test(contrasenya)) {
         document.getElementById("idContrasenya").style.borderColor = "red";
         document.getElementById("infoContrasenya").innerHTML = "Contraseña incorrecta. Se permite entre 8 y 20 caracteres sin espacios con al menos una mayúscula, una minúscula, un número y un caracter especial";
