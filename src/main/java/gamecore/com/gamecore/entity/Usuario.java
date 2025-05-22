@@ -27,7 +27,7 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
+    @Column(unique = true, name ="nombre_usuario")
     private String nombreUsuario;
 
     @ManyToMany(fetch = FetchType.EAGER)

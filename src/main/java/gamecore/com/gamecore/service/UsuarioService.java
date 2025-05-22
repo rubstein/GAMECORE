@@ -55,5 +55,13 @@ public class UsuarioService {
     public List<Usuario> r() {
         return usuarioRepository.findAll();
     }
+
+    public boolean existsByName(String nombreUsuario) {
+        return usuarioRepository.existsByNombreUsuario(nombreUsuario);
+    }
+
+    public boolean existsByEmail(String nombreEmail) {
+        return usuarioRepository.existsByEmail(nombreEmail);
+    }
 }
 

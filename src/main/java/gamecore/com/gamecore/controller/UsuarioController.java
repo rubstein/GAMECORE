@@ -41,19 +41,40 @@ public class UsuarioController {
     }
 
     @PostMapping("/registro")
-    public String registroPost(@RequestParam String nuevoUsuario,
+    @ResponseBody
+    public Map<String, Object> registroPost(@RequestParam String nuevoUsuario,
             @RequestParam String nuevaContrasenya,
             @RequestParam String nuevoEmail,
             HttpSession s) throws DangerException {
+        Map<String, Object> response = new HashMap<>();
         System.out.println("Datos recibidos");
+
         try {
+
+            if (usuarioService.existsByName(nuevoUsuario)) {
+                response.put("success", false);
+                response.put("message", "El nombre de usuario ya está en uso");
+                return response;
+            }
+
+            if (usuarioService.existsByEmail(nuevoEmail)) {
+                response.put("success", false);
+                response.put("message", "El email introducido ya está en uso");
+                return response;
+            }
+
             Usuario u = this.usuarioService.validarUsuarioRegistro(nuevoUsuario, nuevaContrasenya, nuevoEmail, "user");
             s.setAttribute("usuario", u);
+
+            response.put("success", true);
+            response.put("message", "Registro correcto");
+
         } catch (Exception e) {
-            PRG.error("Error al registrar el usuario", "/usuario/registro");
+            response.put("success", false);
+            response.put("message", "Error al registrar el usuario: " + e.getMessage());
         }
 
-        return "redirect:/";
+        return response;
     }
 
     @GetMapping("/login")
