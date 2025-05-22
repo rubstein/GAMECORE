@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import gamecore.com.gamecore.entity.Usuario;
 import gamecore.com.gamecore.exception.DangerException;
 import gamecore.com.gamecore.helper.PRG;
+import gamecore.com.gamecore.service.EmailService;
 import gamecore.com.gamecore.service.UsuarioService;
 import jakarta.servlet.http.HttpSession;
 
@@ -24,6 +25,9 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
+
+    @Autowired
+    private EmailService emailService;
 
     @GetMapping("/registro")
     public String registro(ModelMap m, HttpSession hs) {
@@ -49,8 +53,10 @@ public class UsuarioController {
         try {
             Usuario u = this.usuarioService.validarUsuarioRegistro(nuevoUsuario, nuevaContrasenya, nuevoEmail, "user");
             s.setAttribute("usuario", u);
+            emailService.enviarEmailRegistro(nuevoEmail, nuevoUsuario);
         } catch (Exception e) {
-            PRG.error("Error al registrar el usuario", "/usuario/registro");
+            e.printStackTrace();
+            throw new DangerException("Error al enviar del correo: "+ e.getMessage());
         }
 
         return "redirect:/";

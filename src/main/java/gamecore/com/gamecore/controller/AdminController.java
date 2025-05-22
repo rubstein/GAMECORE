@@ -67,7 +67,6 @@ public class AdminController {
     public String cPostJ(
             @RequestParam("nombre") String nombre,
             @RequestParam("descripcion") String descripcion,
-            @RequestParam("puntuacionMedia") double puntuacionMedia,
             @RequestParam("fechaLanzamiento") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaLanzamiento,
             @RequestParam("creadores") String creadores,
             @RequestParam("precio") double precio,
@@ -88,7 +87,7 @@ public class AdminController {
         }
 
         try {
-            videojuegoService.c(nombre, descripcion, "/img/" + nombreArchivo, fechaLanzamiento, puntuacionMedia,
+            videojuegoService.c(nombre, descripcion, "/img/" + nombreArchivo, fechaLanzamiento, 0.0,
                     creadores, precio,
                     generosIds, plataformasIds);
 
