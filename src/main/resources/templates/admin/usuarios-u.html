@@ -9,37 +9,48 @@
                 <hr>
             </div>
             <div class="contenedor">
-                <form action="/admin/usuarios-c" method="post" class="formulario">
+                <form action="/admin/usuarios-u" method="post" class="formulario">
+                    <input type="hidden" name="id" th:value="${usuario.id}" />
+
                     <div class="datos">
                         <label for="nombreUsuario">Nombre Usuario</label>
-                        <input type="text" name="nombreUsuario" id="nombreUsuario" class="input-txt" required>
+                        <input type="text" name="nombreUsuario" id="nombreUsuario" class="input-txt"
+                            th:value="${usuario.nombreUsuario}" disabled>
                     </div>
+
                     <div class="datos">
                         <label for="email">Email</label>
-                        <input type="text" name="email" id="email" class="input-txt" required>
+                        <input type="text" name="email" id="email" class="input-txt" th:value="${usuario.email}"
+                            disabled>
                     </div>
+
                     <div class="datos">
                         <label for="contrasenya">Contraseña</label>
-                        <input type="password" name="contrasenya" id="contrasenya" class="input-txt" required>
+                        <input type="password" name="contrasenya" id="contrasenya" class="input-txt"
+                            placeholder="No disponible" disabled>
                     </div>
+
                     <div class="datos">
                         <label for="rol">Roles</label>
                         <div class="checkbox">
                             <div th:each="rol : ${roles}">
                                 <label>
-                                    <input type="radio" name="rol" th:value="${rol.nombre}">
+                                    <input type="radio" name="rol" th:value="${rol.id}"
+                                        th:checked="${#lists.contains(usuario.roles, rol)}">
                                     <span th:text="${rol.nombre}"></span>
                                 </label>
                             </div>
                         </div>
                     </div>
+
                     <button type="submit" class="btn-submit">
-                        <p class="btn-txt">Añadir Usuario</p>
+                        <p class="btn-txt">Actualizar Usuario</p>
                     </button>
                 </form>
+
             </div>
         </div>
     </div>
 </div>
 
-<link rel="stylesheet" href="/css/admin/usuarios-c.css">
+<link rel="stylesheet" href="/css/admin/usuarios-u.css">
