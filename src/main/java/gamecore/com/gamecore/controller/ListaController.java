@@ -43,9 +43,7 @@ public class ListaController {
     @GetMapping("/favorito")
     public String verFavoritos(HttpSession session, ModelMap model) {
         Usuario usuario = (Usuario) session.getAttribute("usuario");
-        if (usuario == null) {
-            return "redirect:/usuario/login"; 
-        }
+        usuario.getFavoritos().size();
         Collection<Videojuego> videojuegosFavoritos = usuario.getFavoritos();
         model.put("videojuegos", videojuegosFavoritos);
         model.put("view", "lista/favorito"); 

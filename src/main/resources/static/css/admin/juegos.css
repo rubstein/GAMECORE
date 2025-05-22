@@ -62,7 +62,7 @@ h1 {
     width: 1376px;
 }
 
-.card{
+.card {
     display: flex;
     flex-direction: column;
     width: 332px;
@@ -74,6 +74,7 @@ h1 {
     cursor: pointer;
     border-radius: 8px;
 }
+
 .card-img {
     background-size: cover;
     background-position: center;
@@ -170,4 +171,33 @@ a {
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+}
+
+.btn-eliminar {
+    display: flex;
+    width: 106px;
+    height: 27px;
+    padding: 0px 8px;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    border-radius: 8px;
+    background: #000;
+}
+
+.eliminar-txt {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.svg-j {
+    width: 18px;
+    height: 15px;
+    text-decoration: none;
+    color: white;
 }

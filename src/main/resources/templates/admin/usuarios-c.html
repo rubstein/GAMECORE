@@ -1,0 +1,45 @@
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<div class="back">
+    <div class="main">
+        <div class="usuarios-info">
+            <div class="separador">
+                <h1>Usuarios</h1>
+                <hr>
+            </div>
+            <div class="contenedor">
+                <form action="/admin/usuarios-c" method="post" class="formulario">
+                    <div class="datos">
+                        <label for="nombreUsuario">Nombre Usuario</label>
+                        <input type="text" name="nombreUsuario" id="nombreUsuario" class="input-txt" required>
+                    </div>
+                    <div class="datos">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="email" class="input-txt" required>
+                    </div>
+                    <div class="datos">
+                        <label for="contrasenya">Contraseña</label>
+                        <input type="password" name="contrasenya" id="contrasenya" class="input-txt" required>
+                    </div>
+                    <div class="datos">
+                        <label for="rol">Roles</label>
+                        <div class="checkbox">
+                            <div th:each="rol : ${roles}">
+                                <label>
+                                    <input type="radio" name="rol" th:value="${rol.nombre}">
+                                    <span th:text="${rol.nombre}"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-submit">
+                        <p class="button-txt">Añadir Usuario</p>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="/css/admin/usuarios-c.css">

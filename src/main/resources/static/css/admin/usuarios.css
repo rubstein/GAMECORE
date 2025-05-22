@@ -9,13 +9,13 @@
     display: flex;
     min-height: 100%;
     justify-content: center;
+    min-height: 100vh;
 }
 
 html,
 body {
     min-height: 100%;
     overflow-x: hidden;
-    min-height: 100vh;
 }
 
 .main {
@@ -49,80 +49,79 @@ h1 {
     line-height: normal;
 }
 
-.info-juego {
+.usuarios-info {
     display: flex;
-    width: 1376px;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: start;
     gap: 32px;
 }
 
-.contenedor {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: start;
-    gap: 22px;
-    align-self: stretch;
-}
 
-.formulario {
+.button-submit {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 18px;
-}
-
-.datos {
-    display: flex;
-    width: 1440px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-}
-
-label {
-    color: #000;
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-}
-
-.input-txt {
-    display: flex;
-    width: 320px;
-    height: 40px;
-    padding: 10px;
-    align-items: flex-start;
-    gap: 10px;
-    border-radius: 8px;
-    border: 1px solid #000;
-    background: #FFF;
-}
-
-.checkbox {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.btn-submit {
-    display: flex;
-    width: 324px;
-    height: 40px;
+    width: 344px;
+    height: 48px;
+    padding: 12px 50px;
     justify-content: center;
     align-items: center;
+    gap: 10px;
     border-radius: 8px;
     background: #FF8E0C;
 }
 
-.btn-txt {
+.button-txt {
     color: #000;
     font-family: Inter;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+table,
+th,
+td {
+    border: 1px solid;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+th {
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    width: 229.33px;
+    height: 76px;
+}
+
+td {
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 229.33px;
+    height: 76px;
+}
+
+.btn-tabla{
+    all: unset;
+    cursor: pointer;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.acciones{
+    display: flex;
+    justify-content: center;
 }

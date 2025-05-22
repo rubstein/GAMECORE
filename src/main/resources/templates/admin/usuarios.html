@@ -1,1 +1,58 @@
-<div>HOla User</div>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<div class="back">
+    <div class="main">
+        <div class="usuarios-info">
+            <div class="separador">
+                <h1>Usuarios</h1>
+                <hr>
+            </div>
+            <a href="/admin/usuarios-c"><button class="button-submit">
+                    <p class="button-txt">Añadir Usuario</p>
+                </button>
+            </a>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre Usuario</th>
+                        <th>Correo electrónico</th>
+                        <th>Rol</th>
+                        <th>Fecha Registro</th>
+                        <th>Acciones</th>
+                    </tr>
+                    <tr th:each="usuario : ${usuarios}">
+                        <td th:text="${usuario.id}"></td>
+                        <td th:text="${usuario.nombreUsuario}"></td>
+                        <td th:text="${usuario.email}"></td>
+                        <td th:each="rol : ${usuario.roles}" th:text="${rol.nombre}"></td>
+                        <td th:text="${usuario.fechaRegistro}"></td>
+                        <td th:if="${usuario.isUser}">
+                            <div class="acciones">
+                                <form action="/admin/usuarios-d" method="post">
+                                    <input type="hidden" name="id" th:value="${usuario.id}" />
+                                    <button class="btn-tabla" type="submit">Borrar</button>
+                                </form>
+                                <p>&nbsp;/&nbsp;</p>
+                                <form action="/admin/usuarios-d" method="post">
+                                    <input type="hidden" name="id" th:value="${usuario.id}" />
+                                    <button class="btn-tabla" type="submit">Editar</button>
+                                </form>
+                            </div>
+                        </td>
+                        <td th:if="${usuario.id == 1}">
+                        </td>
+                        <td th:if="${usuario.isAdmin and usuario.id != 1}">
+                            <form action="/admin/usuarios-d" method="post">
+                                <input type="hidden" name="id" th:value="${usuario.id}" />
+                                <button class="btn-tabla" type="submit">Editar</button>
+                            </form>
+                        </td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="/css/admin/usuarios.css">
