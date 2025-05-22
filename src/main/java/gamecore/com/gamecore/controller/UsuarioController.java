@@ -73,6 +73,8 @@ public class UsuarioController {
             response.put("success", true);
             response.put("message", "Registro correcto");
 
+            emailService.enviarEmailRegistro(nuevoEmail, nuevoUsuario);
+
         } catch (Exception e) {
             response.put("success", false);
             response.put("message", "Error al registrar el usuario: " + e.getMessage());
