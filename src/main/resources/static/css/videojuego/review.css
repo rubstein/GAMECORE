@@ -393,6 +393,60 @@ h1 {
     cursor: pointer;
 }*/
 
-.favorito {
-    fill: red !important;
+.corazonButton {
+    all: unset;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.heartVacio {
+    width: 24px;
+    height: 24px;
+    transform: rotate(45deg);
+    background-color: rgb(216, 216, 216);
+    position: relative;
+}
+
+.heartVacio:before,
+.heartVacio:after {
+    content: "";
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgb(216, 216, 216);
+    position: absolute;
+}
+
+.heartVacio:before {
+    left: -12px;
+}
+
+.heartVacio:after {
+    top: -12px;
+}
+
+.heartRelleno {
+    width: 24px;
+    height: 24px;
+    transform: rotate(45deg);
+    background-color: red;
+    position: relative;
+}
+
+.heartRelleno:before,
+.heartRelleno:after {
+    content: "";
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: red;
+    position: absolute;
+}
+
+.heartRelleno:before {
+    left: -12px;
+}
+
+.heartRelleno:after {
+    top: -12px;
 }

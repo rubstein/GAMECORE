@@ -1,14 +1,18 @@
 package gamecore.com.gamecore.service;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import gamecore.com.gamecore.entity.Rol;
 import gamecore.com.gamecore.entity.Usuario;
+import gamecore.com.gamecore.entity.Videojuego;
 import gamecore.com.gamecore.repository.RolRepository;
 import gamecore.com.gamecore.repository.UsuarioRepository;
+
 
 @Service
 public class UsuarioService {
@@ -49,6 +53,17 @@ public class UsuarioService {
         return null;
     }
 
+    public void actualizarRolesUsuario(Long usuarioId, List<Long> nuevosRolesIds) {
+        Usuario usuario = usuarioRepository.findById(usuarioId)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+        Collection<Rol> nuevosRoles = rolRepository.findAllById(nuevosRolesIds);
+
+        usuario.setRoles(nuevosRoles);
+
+        usuarioRepository.save(usuario);
+    }
+
     public List<Usuario> r() {
         return usuarioRepository.findAll();
     }
@@ -56,12 +71,5 @@ public class UsuarioService {
     public void d(Long id) throws Exception {
         usuarioRepository.deleteById(id);
     }
-
-    public boolean existsByName(String nombreUsuario) {
-        return usuarioRepository.existsByNombreUsuario(nombreUsuario);
-    }
-
-    public boolean existsByEmail(String nombreEmail) {
-        return usuarioRepository.existsByEmail(nombreEmail);
-    }
 }
+

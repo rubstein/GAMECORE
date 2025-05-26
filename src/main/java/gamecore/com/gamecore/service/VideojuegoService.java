@@ -40,9 +40,9 @@ public class VideojuegoService {
                 precio);
 
         String slug = nombre.toLowerCase()
-                .replaceAll("[^a-z0-9\\s]", "")
+                .replaceAll("[^a-z0-9\s]", "")
                 .replaceAll("-", " ")
-                .replaceAll("\\s+", "-");
+                .replaceAll("\s+", "-");
 
         vd.setSlug(slug);
 
@@ -85,5 +85,9 @@ public class VideojuegoService {
         videojuegoActual.setNombre(nuevoVideojuego.getNombre());
         videojuegoActual.setPuntuacionMedia(nuevoVideojuego.getPuntuacionMedia());
         videojuegoRepository.save(videojuegoActual);
+    }
+
+    public Videojuego findById(Long juegoId) {
+        return videojuegoRepository.findById(juegoId).orElseThrow(() -> new RuntimeException("Juego no encontrado con ID: " + juegoId));
     }
 }

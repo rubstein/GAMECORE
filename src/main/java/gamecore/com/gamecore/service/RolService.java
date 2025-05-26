@@ -26,4 +26,9 @@ public class RolService {
     public Rol findRolByName(String nombre) {
         return rolRepository.findRolByNombre(nombre);
     }
+
+    public Rol findById(Long id) throws Exception {
+        return rolRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Rol no encontrado con ID: " + id));
+    }
 }
