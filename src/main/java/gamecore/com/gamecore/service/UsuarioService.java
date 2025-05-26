@@ -1,6 +1,5 @@
 package gamecore.com.gamecore.service;
 
-
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -16,7 +15,6 @@ import gamecore.com.gamecore.entity.Videojuego;
 import gamecore.com.gamecore.repository.RolRepository;
 import gamecore.com.gamecore.repository.UsuarioRepository;
 import jakarta.transaction.Transactional;
-
 
 @Service
 public class UsuarioService {
@@ -75,11 +73,47 @@ public class UsuarioService {
     public void d(Long id) throws Exception {
         usuarioRepository.deleteById(id);
     }
+
     public boolean existsByName(String nombreUsuario) {
         return usuarioRepository.existsByNombreUsuario(nombreUsuario);
     }
 
     public boolean existsByEmail(String nombreEmail) {
         return usuarioRepository.existsByEmail(nombreEmail);
-    }  
+    }
+
+    public Usuario findById(Long id) throws Exception {
+        return usuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado con ID: " + id));
+    }
+
+    public Usuario save(Usuario usuario) {
+
+        return usuarioRepository.save(usuario);
+    }
+
+    public void agregarAFavoritos(Usuario usuario, Videojuego juego) {
+        if (usuario.getFavoritos() == null) {
+            usuario.setFavoritos(new ArrayList<>());
+        }
+
+        if (!usuario.getFavoritos().contains(juego)) {
+            usuario.getFavoritos().add(juego);
+            usuarioRepository.save(usuario);
+        }
+    }
+
+    @Transactional
+    public Usuario findByIdConFavoritos(Long id) {
+        Usuario usuario = usuarioRepository.findById(id).orElseThrow();
+
+        usuario.getFavoritos().size();
+
+        return usuario;
+    }
+
+    public void eliminarDeFavoritos(Usuario usuario, Videojuego juego) {
+        usuario.getFavoritos().remove(juego);
+        usuarioRepository.save(usuario);
+    }
 }
