@@ -1,6 +1,9 @@
 package gamecore.com.gamecore.service;
 
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,7 @@ import gamecore.com.gamecore.entity.Usuario;
 import gamecore.com.gamecore.entity.Videojuego;
 import gamecore.com.gamecore.repository.RolRepository;
 import gamecore.com.gamecore.repository.UsuarioRepository;
+import jakarta.transaction.Transactional;
 
 
 @Service
@@ -71,5 +75,11 @@ public class UsuarioService {
     public void d(Long id) throws Exception {
         usuarioRepository.deleteById(id);
     }
-}
+    public boolean existsByName(String nombreUsuario) {
+        return usuarioRepository.existsByNombreUsuario(nombreUsuario);
+    }
 
+    public boolean existsByEmail(String nombreEmail) {
+        return usuarioRepository.existsByEmail(nombreEmail);
+    }  
+}
