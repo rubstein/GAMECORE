@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Videojuego {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -45,8 +45,8 @@ public class Videojuego {
     @ManyToMany
     private Collection<Plataforma> plataformas;
 
-    public Videojuego(String nombre, String descripcion, String imagenUrl, LocalDate fechaLanzamiento, 
-                      Double puntuacionMedia, String creadores, Double precio) {
+    public Videojuego(String nombre, String descripcion, String imagenUrl, LocalDate fechaLanzamiento,
+            Double puntuacionMedia, String creadores, Double precio) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.imagenUrl = imagenUrl;
@@ -66,5 +66,20 @@ public class Videojuego {
         } else {
             return "color-rojo";
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Videojuego juego = (Videojuego) o;
+        return id != null && id.equals(juego.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

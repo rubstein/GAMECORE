@@ -9,7 +9,7 @@
                 <hr>
             </div>
             <div class="contenedor">
-                <form action="/admin/usuarios-u" method="post" class="formulario">
+                <form th:action="@{/admin/usuarios-u}" method="post" class="formulario">
                     <input type="hidden" name="id" th:value="${usuario.id}" />
 
                     <div class="datos">

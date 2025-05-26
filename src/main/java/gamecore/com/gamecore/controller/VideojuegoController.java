@@ -14,10 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import gamecore.com.gamecore.entity.Usuario;
 import gamecore.com.gamecore.entity.Videojuego;
 import gamecore.com.gamecore.exception.DangerException;
 import gamecore.com.gamecore.helper.PRG;
+import gamecore.com.gamecore.service.UsuarioService;
 import gamecore.com.gamecore.service.VideojuegoService;
+import jakarta.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
 
@@ -27,6 +30,9 @@ public class VideojuegoController {
 
     @Autowired
     private VideojuegoService videojuegoService;
+
+    @Autowired
+    private UsuarioService usuarioService;
 
     @GetMapping("/r")
     public String r(
@@ -67,15 +73,27 @@ public class VideojuegoController {
         }
         return "redirect:/videojuego/r";
     }
+
     @GetMapping("/{slug}")
-    public String obtenerVideojuegoPorSlug(@PathVariable String slug, Model m) {
+    public String obtenerVideojuegoPorSlug(@PathVariable String slug, Model m, HttpSession session) {
         Videojuego videojuego = videojuegoService.obtenerPorSlug(slug);
         if (videojuego != null) {
             m.addAttribute("videojuego", videojuego);
+
+            // NUEVO: Comprobar si usuario está logueado y si el juego está en favoritos
+            Usuario usuarioSesion = (Usuario) session.getAttribute("usuario");
+            boolean enFavoritos = false;
+            if (usuarioSesion != null) {
+                Usuario usuario = usuarioService.findByIdConFavoritos(usuarioSesion.getId());
+                enFavoritos = usuario.getFavoritos().contains(videojuego);
+            }
+            m.addAttribute("enFavoritos", enFavoritos);
+
             m.addAttribute("view", "videojuego/review");
             return "_t/frame";
         } else {
             return "error/404";
         }
     }
+
 }
