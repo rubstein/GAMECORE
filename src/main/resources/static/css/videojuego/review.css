@@ -287,6 +287,13 @@ h1 {
     background-color: #D9FBDB;
 }
 
+.cuadrado:focus,
+.cuadrado:hover {
+    border-color: #FF8E0C;
+    filter: brightness(1.1);
+    outline: none;
+}
+
 #ratingValue {
     color: #000;
     text-align: center;
