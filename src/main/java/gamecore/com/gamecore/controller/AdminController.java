@@ -6,7 +6,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import gamecore.com.gamecore.entity.Rol;
+import gamecore.com.gamecore.entity.Usuario;
 import gamecore.com.gamecore.exception.DangerException;
 import gamecore.com.gamecore.helper.PRG;
 import gamecore.com.gamecore.service.*;
@@ -67,7 +71,6 @@ public class AdminController {
     public String cPostJ(
             @RequestParam("nombre") String nombre,
             @RequestParam("descripcion") String descripcion,
-            @RequestParam("puntuacionMedia") double puntuacionMedia,
             @RequestParam("fechaLanzamiento") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaLanzamiento,
             @RequestParam("creadores") String creadores,
             @RequestParam("precio") double precio,
@@ -88,7 +91,7 @@ public class AdminController {
         }
 
         try {
-            videojuegoService.c(nombre, descripcion, "/img/" + nombreArchivo, fechaLanzamiento, puntuacionMedia,
+            videojuegoService.c(nombre, descripcion, "/img/" + nombreArchivo, fechaLanzamiento, 0.0,
                     creadores, precio,
                     generosIds, plataformasIds);
 
@@ -123,7 +126,6 @@ public class AdminController {
         return "_t/frame";
     }
 
-    
     @PostMapping("usuarios-c")
     public String cPostU(
             @RequestParam("nombreUsuario") String nombreUsuario,
@@ -133,14 +135,14 @@ public class AdminController {
 
         try {
 
-            usuarioService.validarUsuarioRegistro(nombreUsuario, contrasenya, email,rol);
+            usuarioService.validarUsuarioRegistro(nombreUsuario, contrasenya, email, rol);
 
         } catch (Exception e) {
             PRG.error("Este nombre " + nombreUsuario + " ya en uso", "/admin/usuarios");
         }
         return "redirect:/admin/usuarios";
     }
-    
+
     @PostMapping("usuarios-d")
     public String dU(
             @RequestParam Long id) throws Exception {
@@ -149,4 +151,32 @@ public class AdminController {
 
         return "redirect:/admin/usuarios";
     }
+
+    @GetMapping("usuarios-u")
+    public String mostrarFormularioEditarRoles(@RequestParam("id") Long id, ModelMap m) throws Exception {
+        Usuario usuario = usuarioService.findById(id);
+        List<Rol> roles = rolService.r();
+
+        m.addAttribute("usuario", usuario);
+        m.addAttribute("roles", roles);
+        m.addAttribute("view", "/admin/usuarios-u");
+
+        return "_t/frame";
+    }
+
+    @PostMapping("usuarios-u")
+    public String actualizarUsuario(
+            @RequestParam Long id,
+            @RequestParam String rol) throws Exception {
+
+        Usuario usuario = usuarioService.findById(id);
+        Rol nuevoRol = rolService.findById(Long.parseLong(rol));
+        Set<Rol> nuevosRoles = new HashSet<>();
+        nuevosRoles.add(nuevoRol);
+        usuario.setRoles(nuevosRoles);
+        usuarioService.save(usuario);
+
+        return "redirect:/admin/usuarios";
+    }
+
 }

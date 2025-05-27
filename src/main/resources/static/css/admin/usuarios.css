@@ -111,7 +111,7 @@ td {
     height: 76px;
 }
 
-.btn-eliminar{
+.btn-tabla{
     all: unset;
     cursor: pointer;
     font-family: Inter;
@@ -119,4 +119,9 @@ td {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+}
+
+.acciones{
+    display: flex;
+    justify-content: center;
 }

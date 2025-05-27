@@ -1,4 +1,4 @@
-document.getElementById("redireccionar").onclick = function(event) {
+/*document.getElementById("redireccionar").onclick = function (event) {
     if (!document.getElementById("id-terminos").checked) {
         alert("Debes aceptar los términos y las condiciones");
         event.preventDefault();
@@ -7,7 +7,7 @@ document.getElementById("redireccionar").onclick = function(event) {
     } else {
         alert("Registro correcto");
     }
-}
+}*/
 
 function validarUsuario() {
     /*
@@ -75,41 +75,6 @@ function validarEmail() {
     }
 }
 
-function validarFecha() {
-    var fecha = document.getElementById("idFecha").value.trim();
-    var miRegex = /^(([0-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4}))$/;
-
-    if (!miRegex.test(fecha)) {
-        document.getElementById("idFecha").style.borderColor = "red";
-        document.getElementById("infoFecha").innerHTML = "Formato de fecha incorrecto. Use dd-MM-yyyy.";
-        return false;
-    }
-
-    var partesFecha = fecha.split("-");
-    var dia = parseInt(partesFecha[0], 10);
-    var mes = parseInt(partesFecha[1], 10) - 1; 
-    var anio = parseInt(partesFecha[2], 10);
-
-    var fechaNacimiento = new Date(anio, mes, dia);
-    var fechaActual = new Date();
-
-    var edad = fechaActual.getFullYear() - fechaNacimiento.getFullYear();
-    if (fechaActual.getMonth() < fechaNacimiento.getMonth() || (fechaActual.getMonth() === fechaNacimiento.getMonth() && fechaActual.getDate() < fechaNacimiento.getDate())) {
-        edad--;
-    }
-    if (edad < 12) {
-        document.getElementById("idFecha").style.borderColor = "red";
-        document.getElementById("infoFecha").innerHTML = "Debes tener al menos 12 años.";
-        return false;
-    }
-    document.getElementById("idFecha").style.borderColor = "black";
-    document.getElementById("infoFecha").innerHTML = "";
-    return true;
-}
 function todoCorrecto() {
-    if (validarUsuario() && validarContrasenya() && comprobarContrasenya2() && validarEmail() && validarFecha()) {
-        return true;
-    } else {
-        return false;
-    }
+    return validarUsuario() && validarContrasenya() && comprobarContrasenya2() && validarEmail();
 }

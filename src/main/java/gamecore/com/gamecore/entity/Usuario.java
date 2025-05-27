@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -27,7 +28,7 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
+    @Column(unique = true, name ="nombre_usuario")
     private String nombreUsuario;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -41,7 +42,7 @@ public class Usuario {
     private LocalDate fechaRegistro;
 
     @ManyToMany
-    private Set<Videojuego> favoritos;
+    private List<Videojuego> favoritos;
 
     @ManyToMany
     private Set<Videojuego> carrito;
@@ -51,7 +52,7 @@ public class Usuario {
         this.contrasenya = contrasenya;
         this.email = email;
         this.roles = new ArrayList<>();
-        this.favoritos = new HashSet<Videojuego>();
+        this.favoritos = new ArrayList<Videojuego>();
         this.carrito = new HashSet<Videojuego>();
         this.fechaRegistro = LocalDate.now();
     }

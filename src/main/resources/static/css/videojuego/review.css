@@ -249,7 +249,6 @@ h1 {
     align-items: center;
     gap: 10px;
     border-radius: 8px;
-    border: 1px solid black;
 }
 
 .puntuacion-container {
@@ -285,6 +284,13 @@ h1 {
 .cuadrado[data-value="9"],
 .cuadrado[data-value="10"] {
     background-color: #D9FBDB;
+}
+
+.cuadrado:focus,
+.cuadrado:hover {
+    border-color: #FF8E0C;
+    filter: brightness(1.1);
+    outline: none;
 }
 
 #ratingValue {
@@ -393,6 +399,64 @@ h1 {
     cursor: pointer;
 }*/
 
-.favorito {
-    fill: red !important;
+.corazonButton {
+    all: unset;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.heartVacio {
+    width: 24px;
+    height: 24px;
+    transform: rotate(45deg);
+    background-color: rgb(216, 216, 216);
+    position: relative;
+}
+
+.heartVacio:before,
+.heartVacio:after {
+    content: "";
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgb(216, 216, 216);
+    position: absolute;
+}
+
+.heartVacio:before {
+    left: -12px;
+}
+
+.heartVacio:after {
+    top: -12px;
+}
+
+.heartRelleno {
+    width: 24px;
+    height: 24px;
+    transform: rotate(45deg);
+    background-color: red;
+    position: relative;
+}
+
+.heartRelleno:before,
+.heartRelleno:after {
+    content: "";
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: red;
+    position: absolute;
+}
+
+.heartRelleno:before {
+    left: -12px;
+}
+
+.heartRelleno:after {
+    top: -12px;
+}
+
+a {
+    text-decoration: none;
 }

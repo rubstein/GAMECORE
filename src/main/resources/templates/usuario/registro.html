@@ -1,9 +1,14 @@
 <div class="back">
     <div class="main">
         <div class="container">
-            <form action="/usuario/registro" method="post" name="miFormulario">
+            <form name="miFormulario">
                 <p class="title-register">Registro</p>
                 <p class="subtitle-register">Únete a GAMECORE</p>
+
+                <div id="error-message" class="error-message" style="display: none;">
+                    <p></p>
+                </div>
+
                 <div class="info-usuario-register">
                     <div class="data-register">
                         <label for="idUsuario" class="txt-form-register">Nombre de usuario:</label>
@@ -13,9 +18,10 @@
                     <div class="data-register">
                         <label for="idContrasenya" class="txt-form-register">Contraseña: </label>
                         <div class="password-container" style="position: relative; display: flex; align-items: center">
-                            <input type="password" name="nuevaContrasenya" id="idContrasenya" required class="input-form-register">
+                            <input type="password" name="nuevaContrasenya" id="idContrasenya" required
+                                class="input-form-register">
                             <span id="togglePassword" class="toggle-password">
-                                    👁️
+                                👁️
                             </span>
                         </div>
                         <label class="incorrecto" id="infoContrasenya"></label>
@@ -31,11 +37,6 @@
                         <input type="email" name="nuevoEmail" id="idEmail" required class="input-form-register">
                         <label class="incorrecto" id="infoEmail"></label>
                     </div>
-                    <div class="data-register">
-                        <label for="idFecha" class="txt-form-register">Fecha de nacimiento: </label>
-                        <input type="text" name="nuevaEdad" id="idFecha" placeholder="dd-MM-yyyy" required class="input-form-register">
-                        <label class="incorrecto" id="infoFecha"></label>
-                    </div>
                     <div class="terminos">
                         <input type="checkbox" id="id-terminos">
                         <label class="enlaceTerminos" for="id-terminos">Acepto los <a href="/usuario/terminos"><b>
@@ -43,7 +44,7 @@
                                     y
                                     las condiciones</b></a></label>
                     </div>
-                    <button class="button-register" id ="redireccionar" type="submit">
+                    <button class="button-register" id="redireccionar" type="button">
                         <p class="button-text">Registrarse</p>
                     </button>
                 </div>
@@ -53,9 +54,9 @@
 </div>
 
 
-<script src ="/lib/jquery-3.7.1.min.js"></script>
+<script src="/lib/jquery-3.7.1.min.js"></script>
 <script src="/lib/jquery-ui.js"></script>
 <link rel="stylesheet" href="/lib/jquery-ui.css">
 <link rel="stylesheet" href="/css/registro.css">
 <script src="/js/registro.js"></script>
-<script src ="/jquery/registro.js"></script>
+<script src="/jquery/registro.js"></script>

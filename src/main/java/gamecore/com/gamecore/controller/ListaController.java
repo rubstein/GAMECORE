@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import gamecore.com.gamecore.entity.Usuario;
 import gamecore.com.gamecore.entity.Videojuego;
 import gamecore.com.gamecore.repository.VideoJuegoRepository;
+import gamecore.com.gamecore.service.UsuarioService;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -21,6 +22,9 @@ public class ListaController {
 
     @Autowired
     private VideoJuegoRepository videojuegoRepository;
+
+    @Autowired
+    private UsuarioService usuarioService;
 
     @PostMapping("/toggle")
     public String toggleFavorito(@RequestParam Long juegoId,
@@ -42,26 +46,31 @@ public class ListaController {
 
     @GetMapping("/favorito")
     public String verFavoritos(HttpSession session, ModelMap model) {
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
-        if (usuario == null) {
-            return "redirect:/usuario/login"; 
+        Usuario usuarioSesion = (Usuario) session.getAttribute("usuario");
+
+        if (usuarioSesion == null) {
+            return "redirect:/usuario/login";
         }
+
+        // Recuperar el usuario con favoritos cargados desde BD
+        Usuario usuario = usuarioService.findByIdConFavoritos(usuarioSesion.getId());
+
         Collection<Videojuego> videojuegosFavoritos = usuario.getFavoritos();
         model.put("videojuegos", videojuegosFavoritos);
-        model.put("view", "lista/favorito"); 
-        return "_t/frame"; 
+        model.put("view", "lista/favorito");
+        return "_t/frame";
     }
 
     @GetMapping("/carrito")
     public String carrito(HttpSession session, ModelMap model) {
         Usuario usuario = (Usuario) session.getAttribute("usuario");
         if (usuario == null) {
-            return "redirect:/usuario/login"; 
+            return "redirect:/usuario/login";
         }
         Collection<Videojuego> videojuegosCarrito = usuario.getCarrito();
         model.put("videojuegos", videojuegosCarrito);
-        model.put("view", "lista/carrito"); 
-        return "_t/frame"; 
+        model.put("view", "lista/carrito");
+        return "_t/frame";
     }
 
 }

@@ -29,16 +29,25 @@
                         <td th:each="rol : ${usuario.roles}" th:text="${rol.nombre}"></td>
                         <td th:text="${usuario.fechaRegistro}"></td>
                         <td th:if="${usuario.isUser}">
+                            <div class="acciones">
                                 <form action="/admin/usuarios-d" method="post">
                                     <input type="hidden" name="id" th:value="${usuario.id}" />
-                                    <button class="btn-eliminar" type="submit">Borrar</button>
+                                    <button class="btn-tabla" type="submit">Borrar</button>
                                 </form>
+                                <p>&nbsp;/&nbsp;</p>
+                                <form action="/admin/usuarios-u" method="get">
+                                    <input type="hidden" name="id" th:value="${usuario.id}" />
+                                    <button class="btn-tabla" type="submit">Editar</button>
+                                </form>
+                            </div>
                         </td>
-                        <td th:if="${usuario.isAdmin}">
-                                <form action="/admin/usuarios-d" method="post">
-                                    <input type="hidden" name="id" th:value="${usuario.id}" />
-                                    <button class="btn-eliminar" type="submit">Borrar</button>
-                                </form>
+                        <td th:if="${usuario.id == 1}">
+                        </td>
+                        <td th:if="${usuario.isAdmin and usuario.id != 1}">
+                            <form action="/admin/usuarios-u" method="post">
+                                <input type="hidden" name="id" th:value="${usuario.id}" />
+                                <button class="btn-tabla" type="submit">Editar</button>
+                            </form>
                         </td>
                     </tr>
                 </thead>
