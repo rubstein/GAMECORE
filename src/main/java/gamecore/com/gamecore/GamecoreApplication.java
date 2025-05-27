@@ -10,5 +10,4 @@ public class GamecoreApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GamecoreApplication.class, args);
 	}
-
 }

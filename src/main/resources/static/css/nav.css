@@ -41,9 +41,8 @@ body {
 }
 
 .navcontainer {
-    background-color: black;
     display: flex;
-    width: 1440px;
+    width: 1520px;
     height: 72px;
     padding: 4px 28px;
     justify-content: space-between;
@@ -266,15 +265,15 @@ li {
     z-index: 10;
     background: #000;
     border-radius: 8px;
-    right: -155px;
-    top: 45px;
+    left: 0;
+    top: 100%; /* Justo debajo del enlace */
 }
 
 .dropdown:hover .dropdown-content,
 .dropdown-content:hover {
-    display: block;
+    display: flex;
 }
-
+  
 .dropdown-content ul {
     list-style: none;
     padding: 0;
@@ -325,4 +324,16 @@ li {
     background-color: black;
     display: flex;
     justify-content: center;
+}
+
+.navcontainer.admin {
+    background-color: #000000; /* negro para admin */
+}
+
+.navcontainer.anon {
+    background-color: #007BFF; /* azul para anónimo */
+}
+
+.navcontainer.user {
+    background-color: orange;  /* naranja para usuario normal */
 }

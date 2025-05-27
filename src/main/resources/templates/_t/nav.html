@@ -4,8 +4,8 @@
 	<link rel="stylesheet" href="/css/nav.css">
 </head>
 <div id="navigationBarNoLogin" th:if="${session.usuario == null}">
-	<div class="nav-bg">
-		<div class="navcontainer">
+	<div class="nav-bg-anon">
+		<div class="navcontainer anon">
 			<a href="/">
 				<img src="/img/Logo.png" alt="logo_gamecore" id="logo">
 			</a>
@@ -13,8 +13,9 @@
 			<nav class="nav-links">
 				<a href="/">Menu</a>
 				<a href="/videojuego/r">Juegos</a>
+				<a href="/usuario/login">Tú Lista</a>
+
 				<div class="dropdown">
-					<a href="/usuario/login">Tú Lista</a>
 					<a href="#">Géneros</a>
 					<div class="dropdown-content">
 						<ul>
@@ -53,8 +54,8 @@
 </div>
 
 <div id="navigationBarLogin" th:if="${session.usuario != null and session.usuario.isUser}">
-	<div class="nav-bg">
-		<div class="navcontainer">
+	<div class="nav-bg-user">
+		<div class="navcontainer user">
 			<a href="/">
 				<img src="/img/Logo.png" alt="logo_gamecore" id="logo">
 			</a>
@@ -114,9 +115,9 @@
 			<p class="admin-txt">Admin</p>
 		</div>
 	</div>
-	<div id="navigationBarLogin" th:if="${session.usuario != null}">
+	<div id="navigationBarLogin" th:if="${session.usuario != null}" class="nav-bg-admin">
 		<div class="nav-bg-admin">
-			<div class="navcontainer">
+			<div class="navcontainer admin">
 				<a href="/">
 					<img src="/img/Logo.png" alt="logo_gamecore" id="logo">
 				</a>
