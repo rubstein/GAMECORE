@@ -117,46 +117,43 @@
                                         <input type="hidden" name="slug" th:value="${videojuego.slug}" />
 
                                         <div class="puntuacion-container" id="myRating">
-                                            <div class="puntuacion-container">
-                                                <label><input type="radio" class="cuadrado" name="valor" value="1"
-                                                        th:checked="${puntuacionUsuario == 1}" /> </label>
-                                                <label><input type="radio" class="cuadrado" name="valor" value="2"
-                                                        th:checked="${puntuacionUsuario == 2}" /> </label>
-                                                <label><input type="radio" class="cuadrado" name="valor" value="3"
-                                                        th:checked="${puntuacionUsuario == 3}" /> </label>
-                                                <label><input type="radio" class="cuadrado" name="valor" value="4"
-                                                        th:checked="${puntuacionUsuario == 4}" /> </label>
-                                                <label><input type="radio" class="cuadrado" name="valor" value="5"
-                                                        th:checked="${puntuacionUsuario == 5}" /> </label>
-                                                <label><input type="radio" class="cuadrado" name="valor" value="6"
-                                                        th:checked="${puntuacionUsuario == 6}" /> </label>
-                                                <label><input type="radio" class="cuadrado" name="valor" value="7"
-                                                        th:checked="${puntuacionUsuario == 7}" /> </label>
-                                                <label><input type="radio" class="cuadrado" name="valor" value="8"
-                                                        th:checked="${puntuacionUsuario == 8}" /> </label>
-                                                <label><input type="radio" class="cuadrado" name="valor" value="9"
-                                                        th:checked="${puntuacionUsuario == 9}" /> </label>
-                                                <label><input type="radio" class="cuadrado" name="valor" value="10"
-                                                        th:checked="${puntuacionUsuario == 10}" /> </label>
-                                            </div>
+                                            <button type="submit" class="cuadrado" name="valor" value="1"
+                                                data-value="1"></button>
+                                            <button type="submit" class="cuadrado" name="valor" value="2"
+                                                data-value="2"></button>
+                                            <button type="submit" class="cuadrado" name="valor" value="3"
+                                                data-value="3"></button>
+                                            <button type="submit" class="cuadrado" name="valor" value="4"
+                                                data-value="4"></button>
+                                            <button type="submit" class="cuadrado" name="valor" value="5"
+                                                data-value="5"></button>
+                                            <button type="submit" class="cuadrado" name="valor" value="6"
+                                                data-value="6"></button>
+                                            <button type="submit" class="cuadrado" name="valor" value="7"
+                                                data-value="7"></button>
+                                            <button type="submit" class="cuadrado" name="valor" value="8"
+                                                data-value="8"></button>
+                                            <button type="submit" class="cuadrado" name="valor" value="9"
+                                                data-value="9"></button>
+                                            <button type="submit" class="cuadrado" name="valor" value="10"
+                                                data-value="10"></button>
+                                        </div>
                                     </form>
                                 </div>
                                 <div class="modal-review-container">
                                     <div>
                                         <p class="modal-txt-review" style="display: inline;">Escribe sobre
                                         </p>
-                                        <p class="modal-txt-review" th:text="${videojuego.nombre}"
-                                            style="display: inline;"></p>
+                                        <p class="modal-txt-review" th:text="${videojuego.nombre}" style="display: inline;"></p>
                                     </div>
 
-                                    <textarea name="review" class="modal-textarea"
-                                        placeholder="Escribe aquí tu opinión" th:text="${reviewUsuario != null ? reviewUsuario.texto : ''}"></textarea>
+                                    <textarea name="review" class="modal-textarea" placeholder="Escribe aquí tu opinión"></textarea>
                                 </div>
 
-                                <div class="modal-botones-container">
-                                    <button type="button" id="cancelModal" class="modal-boton">Cancelar</button>
-                                    <button type="submit" class="modal-boton">Guardar</button>
-                                </div>
+                                <form method="dialog" class="modal-botones-container">
+                                    <button class="modal-boton">Cancelar</button>
+                                    <button class="modal-boton">Guardar</button>
+                                </form>
                             </div>
                         </dialog>
                         <!--Modal-->
@@ -212,7 +209,6 @@
 
     const dialog = document.getElementById("myDialog");
     const botonResenyas = document.getElementById("boton-resenyas");
-    const cancelModal = document.getElementById('cancelModal');
 
     if (botonResenyas) {
         botonResenyas.addEventListener("click", () => {
@@ -220,9 +216,4 @@
             document.body.style.overflow = 'hidden';
         });
     }
-
-    cancelModal.addEventListener('click', () => {
-        dialog.close();
-        document.body.style.overflow = '';
-    });
 </script>
