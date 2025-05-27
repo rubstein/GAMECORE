@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import gamecore.com.gamecore.entity.Puntuacion;
 import gamecore.com.gamecore.entity.Usuario;
 import gamecore.com.gamecore.entity.Videojuego;
 import gamecore.com.gamecore.exception.DangerException;
 import gamecore.com.gamecore.helper.PRG;
+import gamecore.com.gamecore.service.PuntuacionService;
 import gamecore.com.gamecore.service.UsuarioService;
 import gamecore.com.gamecore.service.VideojuegoService;
 import jakarta.servlet.http.HttpSession;
@@ -33,6 +35,9 @@ public class VideojuegoController {
 
     @Autowired
     private UsuarioService usuarioService;
+
+    @Autowired
+    private PuntuacionService puntuacionService;
 
     @GetMapping("/r")
     public String r(
@@ -80,14 +85,25 @@ public class VideojuegoController {
         if (videojuego != null) {
             m.addAttribute("videojuego", videojuego);
 
-            // NUEVO: Comprobar si usuario está logueado y si el juego está en favoritos
+            // Comprobar si usuario está logueado y si el juego está en favoritos
             Usuario usuarioSesion = (Usuario) session.getAttribute("usuario");
             boolean enFavoritos = false;
+            int puntuacionUsuario = 0; // Valor por defecto si no ha puntuado
+
             if (usuarioSesion != null) {
                 Usuario usuario = usuarioService.findByIdConFavoritos(usuarioSesion.getId());
                 enFavoritos = usuario.getFavoritos().contains(videojuego);
+
+                // Buscar la puntuación del usuario para este videojuego
+                Puntuacion puntuacion = puntuacionService.buscarPorUsuarioYVideojuego(usuario, videojuego);
+                if (puntuacion != null) {
+                    puntuacionUsuario = puntuacion.getValor();
+                }
+
+                session.setAttribute("usuario", usuario);
             }
             m.addAttribute("enFavoritos", enFavoritos);
+            m.addAttribute("puntuacionUsuario", puntuacionUsuario);
 
             m.addAttribute("view", "videojuego/review");
             return "_t/frame";
