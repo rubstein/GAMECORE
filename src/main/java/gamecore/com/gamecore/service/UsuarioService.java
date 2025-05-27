@@ -78,6 +78,10 @@ public class UsuarioService {
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado con ID: " + id));
     }
 
+    public Usuario findByNombreUsuario(String nombreUsuario) throws Exception {
+        return usuarioRepository.findByNombreUsuario(nombreUsuario);
+    }
+
     public Usuario save(Usuario usuario) {
 
         return usuarioRepository.save(usuario);

@@ -88,7 +88,7 @@ public class VideojuegoController {
             // Comprobar si usuario está logueado y si el juego está en favoritos
             Usuario usuarioSesion = (Usuario) session.getAttribute("usuario");
             boolean enFavoritos = false;
-            int puntuacionUsuario = 0; // Valor por defecto si no ha puntuado
+            double puntuacionUsuario = 0; // Valor por defecto si no ha puntuado
 
             if (usuarioSesion != null) {
                 Usuario usuario = usuarioService.findByIdConFavoritos(usuarioSesion.getId());

@@ -20,7 +20,7 @@ public class PuntuacionService {
     @Autowired
     VideoJuegoRepository videoJuegoRepository;
 
-    public void guardarOActualizarPuntuacion(Usuario usuario, Videojuego juego, int valor) {
+    public void guardarOActualizarPuntuacion(Usuario usuario, Videojuego juego, double valor) {
 
         Puntuacion puntuacion = puntuacionRepository.findByUsuarioAndVideojuego(usuario, juego);
 
@@ -36,16 +36,22 @@ public class PuntuacionService {
         // Recalcular la puntuación media
         List<Puntuacion> puntuaciones = puntuacionRepository.findByVideojuego(juego);
         double media = puntuaciones.stream()
-                .mapToInt(Puntuacion::getValor)
+                .mapToDouble(Puntuacion::getValor)
                 .average()
                 .orElse(0.0);
 
+        media = Math.round(media * 10.0) / 10.0;
         juego.setPuntuacionMedia(media);
         videoJuegoRepository.save(juego);
     }
 
     public Puntuacion buscarPorUsuarioYVideojuego(Usuario usuario, Videojuego videojuego) {
         return puntuacionRepository.findByUsuarioAndVideojuego(usuario, videojuego);
+    }
+
+    public Puntuacion save(Puntuacion puntuacion) {
+
+        return puntuacionRepository.save(puntuacion);
     }
 
 }

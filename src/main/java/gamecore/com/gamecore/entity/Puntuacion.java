@@ -25,5 +25,5 @@ public class Puntuacion {
     private Videojuego videojuego;
 
     @Column(nullable = false)
-    private int valor;
+    private double valor;
 }

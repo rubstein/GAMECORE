@@ -51,7 +51,8 @@
                     <div class="puntuacion-usuario">
                         <div class="puntuacion-info">
                             <p class="puntuacion-text">Mi Puntuación</p>
-                            <div class="puntuacion-usuario-container" th:classappend="${puntuacionUsuario >= 7} ? ' color-verde' : (${puntuacionUsuario >= 5} ? ' color-naranja' : ' color-rojo')">
+                            <div class="puntuacion-usuario-container"
+                                th:classappend="${puntuacionUsuario >= 7} ? ' color-verde' : (${puntuacionUsuario >= 5} ? ' color-naranja' : ' color-rojo')">
                                 <p id="ratingValue" th:text="${puntuacionUsuario != null ? puntuacionUsuario : 0}">0</p>
                             </div>
                         </div>
@@ -91,13 +92,22 @@
                         </form>
                     </div>
 
-                    <div class="botones">
+                    <div class="botones" th:if="${session.usuario != null}">
                         <button class="button-review" type="button">
                             <p class="button-text-review">Añadir Review</p>
                         </button>
                         <button class="button-carrito" type="button">
                             <p class="button-text-carrito">Añadir al Carrito</p>
                         </button>
+                    </div>
+
+                    <div class="botones" th:if="${session.usuario == null}">
+                        <a href="/usuario/login" class="button-review" type="button">
+                                <p class="button-text-review">Añadir Review</p>
+                        </a>
+                        <a href="/usuario/login" class="button-carrito" type="button">
+                                <p class="button-text-carrito">Añadir al Carrito</p>
+                        </a>
                     </div>
                 </div>
             </div>

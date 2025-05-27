@@ -249,7 +249,6 @@ h1 {
     align-items: center;
     gap: 10px;
     border-radius: 8px;
-    border: 1px solid black;
 }
 
 .puntuacion-container {
@@ -456,4 +455,8 @@ h1 {
 
 .heartRelleno:after {
     top: -12px;
+}
+
+a {
+    text-decoration: none;
 }
