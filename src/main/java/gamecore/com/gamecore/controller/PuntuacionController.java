@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import gamecore.com.gamecore.entity.Usuario;
 import gamecore.com.gamecore.entity.Videojuego;
@@ -45,5 +46,26 @@ public class PuntuacionController {
         session.setAttribute("usuario", usuario);
 
         return "redirect:/videojuego/" + slug;
+    }
+
+    @PostMapping("/ajax/agregar")
+    @ResponseBody
+    public String agregarPuntuacionAjax(
+            @RequestParam("slug") String slug,
+            @RequestParam("valor") int valor,
+            HttpSession session) {
+
+        Usuario usuario = (Usuario) session.getAttribute("usuario");
+        if (usuario == null) {
+            return "ERROR: Usuario no logueado";
+        }
+
+        Videojuego videojuego = videojuegoService.obtenerPorSlug(slug);
+        if (videojuego == null) {
+            return "ERROR: Videojuego no encontrado";
+        }
+
+        puntuacionService.guardarOActualizarPuntuacion(usuario, videojuego, valor);
+        return "OK: Puntuación guardada";
     }
 }

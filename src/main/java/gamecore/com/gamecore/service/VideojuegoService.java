@@ -58,7 +58,7 @@ public class VideojuegoService {
     }
 
     public void d(Long id) throws Exception {
-            videojuegoRepository.deleteById(id);
+        videojuegoRepository.deleteById(id);
     }
 
     public Videojuego obtenerPorNombre(String nombre) {
@@ -88,6 +88,11 @@ public class VideojuegoService {
     }
 
     public Videojuego findById(Long juegoId) {
-        return videojuegoRepository.findById(juegoId).orElseThrow(() -> new RuntimeException("Juego no encontrado con ID: " + juegoId));
+        return videojuegoRepository.findById(juegoId)
+                .orElseThrow(() -> new RuntimeException("Juego no encontrado con ID: " + juegoId));
+    }
+
+    public List<Videojuego> obtenerPorGenero(String nombreGenero) {
+        return videojuegoRepository.findByGeneroNombre(nombreGenero);
     }
 }

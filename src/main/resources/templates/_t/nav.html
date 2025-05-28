@@ -4,30 +4,26 @@
 	<link rel="stylesheet" href="/css/nav.css">
 </head>
 <div id="navigationBarNoLogin" th:if="${session.usuario == null}">
-	<div class="nav-bg-anon">
-		<div class="navcontainer anon">
+	<div class="nav-bg">
+		<div class="navcontainer">
 			<a href="/">
 				<img src="/img/Logo.png" alt="logo_gamecore" id="logo">
 			</a>
 
-			<nav class="nav-links">
-				<a href="/">Menu</a>
-				<a href="/videojuego/r">Juegos</a>
-				<a href="/usuario/login">Tú Lista</a>
-
-				<div class="dropdown">
-					<a href="#">Géneros</a>
-					<div class="dropdown-content">
-						<ul>
-							<li th:each="genero : ${generos}">
-								<a class="txt-deplegable-genero" th:href="@{'/genero/' + ${genero.id}}"
-									th:text="${genero.nombre}">Nombre del Género</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-
+			<ul class="nav-links">
+				<li><a href="/" class="txt-nav-links">Menu</a></li>
+				<li><a href="/videojuego/r" class="txt-nav-links">Juegos</a></li>
+				<li>
+					<p class="txt-nav-links">Géneros</p>
+					<ul class="genero-radius">
+						<li th:each="genero : ${generos}">
+							<a class="txt-deplegable-genero" th:href="@{'/videojuego/genero/' + ${genero.nombre}}"
+								th:text="${genero.nombre}">Nombre del Género</a>
+						</li>
+					</ul>
+				</li>
+				<li><a href="/usuario/login" class="txt-nav-links">Tú Lista</a></li>
+			</ul>
 			<div class="busqueda">
 				<input type="text" name="busqueda" id="id-busqueda" placeholder="Buscar" />
 				<button id="img-lupa">
@@ -54,18 +50,25 @@
 </div>
 
 <div id="navigationBarLogin" th:if="${session.usuario != null and session.usuario.isUser}">
-	<div class="nav-bg-user">
-		<div class="navcontainer user">
+	<div class="nav-bg">
+		<div class="navcontainer">
 			<a href="/">
 				<img src="/img/Logo.png" alt="logo_gamecore" id="logo">
 			</a>
-
-			<nav class="nav-links">
-				<a href="/">Menu</a>
-				<a href="/videojuego/r">Juegos</a>
-				<a href="/lista/favorito">Tú lista</a>
-				<a href="#">Géneros</a>
-			</nav>
+			<ul class="nav-links">
+				<li><a href="/" class="txt-nav-links">Menu</a></li>
+				<li><a href="/videojuego/r" class="txt-nav-links">Juegos</a></li>
+				<li>
+					<p class="txt-nav-links">Géneros</p>
+					<ul class="genero-radius">
+						<li th:each="genero : ${generos}">
+							<a class="txt-deplegable-genero" th:href="@{'/videojuego/genero/' + ${genero.nombre}}"
+								th:text="${genero.nombre}">Nombre del Género</a>
+						</li>
+					</ul>
+				</li>
+				<li><a href="/lista/favorito" class="txt-nav-links">Tú Lista</a></li>
+			</ul>
 
 			<div class="busqueda">
 				<input type="text" name="busqueda" id="id-busqueda" placeholder="Buscar" />
@@ -83,28 +86,28 @@
 					</svg>
 				</a>
 			</div>
-			<div id="perfilLogin">
-				<div class="iconbg">
-					<div id="iconUser">
-						<svg xmlns="http://www.w3.org/2000/svg" width="39" height="40" viewBox="0 0 39 40" fill="none">
-							<path
-								d="M32.5 34.625V31.375C32.5 29.6511 31.8152 27.9978 30.5962 26.7788C29.3772 25.5598 27.7239 24.875 26 24.875H13C11.2761 24.875 9.62279 25.5598 8.40381 26.7788C7.18482 27.9978 6.5 29.6511 6.5 31.375V34.625"
-								stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-							<path
-								d="M19.5 18.375C23.0899 18.375 26 15.4649 26 11.875C26 8.28515 23.0899 5.375 19.5 5.375C15.9101 5.375 13 8.28515 13 11.875C13 15.4649 15.9101 18.375 19.5 18.375Z"
-								stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-						</svg>
+			<ul class="perfilLogin">
+				<li>
+					<div class="iconbg">
+						<div class="iconUser">
+							<svg xmlns="http://www.w3.org/2000/svg" width="39" height="40" viewBox="0 0 39 40"
+								fill="none">
+								<path
+									d="M32.5 34.625V31.375C32.5 29.6511 31.8152 27.9978 30.5962 26.7788C29.3772 25.5598 27.7239 24.875 26 24.875H13C11.2761 24.875 9.62279 25.5598 8.40381 26.7788C7.18482 27.9978 6.5 29.6511 6.5 31.375V34.625"
+									stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+								<path
+									d="M19.5 18.375C23.0899 18.375 26 15.4649 26 11.875C26 8.28515 23.0899 5.375 19.5 5.375C15.9101 5.375 13 8.28515 13 11.875C13 15.4649 15.9101 18.375 19.5 18.375Z"
+									stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+							</svg>
+						</div>
 					</div>
-				</div>
-				<span id="usuario" th:text="${session.usuario.nombreUsuario}"></span>
-				<div id="desplegable">
-					<ul>
-						<li><span class="user-name" id="usuario" th:text="${session.usuario.nombreUsuario}"></span></li>
-						<li><a class="elementos-desplegable" href="/usuario/perfil">Perfil</a></li>
-						<li><a class="elementos-desplegable" href="/usuario/logout">Cerrar sesión</a></li>
+					<ul class="desplegable2">
+						<li><p class="txt-nav-nombre-usuario" th:text="${session.usuario.nombreUsuario}"></p></li>
+						<li><a class="txt-nav-perfil" href="/usuario/perfil">Perfil</a></li>
+						<li><a class="txt-nav-perfil" href="/usuario/logout">Cerrar sesión</a></li>
 					</ul>
-				</div>
-			</div>
+				</li>
+			</ul>
 		</div>
 	</div>
 </div>
@@ -115,19 +118,27 @@
 			<p class="admin-txt">Admin</p>
 		</div>
 	</div>
-	<div id="navigationBarLogin" th:if="${session.usuario != null}" class="nav-bg-admin">
+	<div id="navigationBarLogin" th:if="${session.usuario != null}">
 		<div class="nav-bg-admin">
-			<div class="navcontainer admin">
+			<div class="navcontainer">
 				<a href="/">
 					<img src="/img/Logo.png" alt="logo_gamecore" id="logo">
 				</a>
 
-				<nav class="nav-links">
-					<a href="/">Menu</a>
-					<a href="/admin/juegos">Juegos</a>
-					<a href="/admin/usuarios">Usuarios</a>
-					<a href="#">Géneros</a>
-				</nav>
+				<ul class="nav-links">
+					<li><a href="/" class="txt-nav-links">Menu</a></li>
+					<li><a href="/admin/juegos" class="txt-nav-links">Juegos</a></li>
+					<li>
+						<p class="txt-nav-links">Géneros</p>
+						<ul class="genero-radius">
+							<li th:each="genero : ${generos}">
+								<a class="txt-deplegable-genero" th:href="@{'/videojuego/genero/' + ${genero.nombre}}"
+									th:text="${genero.nombre}">Nombre del Género</a>
+							</li>
+						</ul>
+					</li>
+					<li><a href="/admin/usuarios" class="txt-nav-links">Usuarios</a></li>
+				</ul>
 
 				<div class="busqueda">
 					<input type="text" name="busqueda" id="id-busqueda" placeholder="Buscar" />
@@ -145,30 +156,30 @@
 						</svg>
 					</a>
 				</div>
-				<div id="perfilLogin">
-					<div class="iconbg">
-						<div id="iconUser">
-							<svg xmlns="http://www.w3.org/2000/svg" width="39" height="40" viewBox="0 0 39 40"
-								fill="none">
-								<path
-									d="M32.5 34.625V31.375C32.5 29.6511 31.8152 27.9978 30.5962 26.7788C29.3772 25.5598 27.7239 24.875 26 24.875H13C11.2761 24.875 9.62279 25.5598 8.40381 26.7788C7.18482 27.9978 6.5 29.6511 6.5 31.375V34.625"
-									stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-								<path
-									d="M19.5 18.375C23.0899 18.375 26 15.4649 26 11.875C26 8.28515 23.0899 5.375 19.5 5.375C15.9101 5.375 13 8.28515 13 11.875C13 15.4649 15.9101 18.375 19.5 18.375Z"
-									stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-							</svg>
+				<ul class="perfilLogin">
+					<li>
+						<div class="iconbg">
+							<div class="iconUser">
+								<svg xmlns="http://www.w3.org/2000/svg" width="39" height="40" viewBox="0 0 39 40"
+									fill="none">
+									<path
+										d="M32.5 34.625V31.375C32.5 29.6511 31.8152 27.9978 30.5962 26.7788C29.3772 25.5598 27.7239 24.875 26 24.875H13C11.2761 24.875 9.62279 25.5598 8.40381 26.7788C7.18482 27.9978 6.5 29.6511 6.5 31.375V34.625"
+										stroke="black" stroke-width="2" stroke-linecap="round"
+										stroke-linejoin="round" />
+									<path
+										d="M19.5 18.375C23.0899 18.375 26 15.4649 26 11.875C26 8.28515 23.0899 5.375 19.5 5.375C15.9101 5.375 13 8.28515 13 11.875C13 15.4649 15.9101 18.375 19.5 18.375Z"
+										stroke="black" stroke-width="2" stroke-linecap="round"
+										stroke-linejoin="round" />
+								</svg>
+							</div>
 						</div>
-					</div>
-					<span id="usuario" th:text="${session.usuario.nombreUsuario}"></span>
-					<div id="desplegable">
-						<ul>
-							<li><span class="user-name" id="usuario" th:text="${session.usuario.nombreUsuario}"></span>
-							</li>
-							<li><a class="elementos-desplegable" href="/usuario/perfil">Perfil</a></li>
-							<li><a class="elementos-desplegable" href="/usuario/logout">Cerrar sesión</a></li>
+						<ul class="desplegable2">
+							<li><a class="txt-nav-nombre-usuario" th:text="${session.usuario.nombreUsuario}"></a></li>
+							<li><a class="txt-nav-perfil" href="/usuario/perfil">Perfil</a></li>
+							<li><a class="txt-nav-perfil" href="/usuario/logout">Cerrar sesión</a></li>
 						</ul>
-					</div>
-				</div>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>

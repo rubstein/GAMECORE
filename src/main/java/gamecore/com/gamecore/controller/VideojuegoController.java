@@ -15,11 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import gamecore.com.gamecore.entity.Puntuacion;
+import gamecore.com.gamecore.entity.Resenya;
 import gamecore.com.gamecore.entity.Usuario;
 import gamecore.com.gamecore.entity.Videojuego;
 import gamecore.com.gamecore.exception.DangerException;
 import gamecore.com.gamecore.helper.PRG;
 import gamecore.com.gamecore.service.PuntuacionService;
+import gamecore.com.gamecore.service.ResenyaService;
 import gamecore.com.gamecore.service.UsuarioService;
 import gamecore.com.gamecore.service.VideojuegoService;
 import jakarta.servlet.http.HttpSession;
@@ -38,6 +40,9 @@ public class VideojuegoController {
 
     @Autowired
     private PuntuacionService puntuacionService;
+
+    @Autowired
+    private ResenyaService resenyaService;
 
     @GetMapping("/r")
     public String r(
@@ -102,6 +107,8 @@ public class VideojuegoController {
 
                 session.setAttribute("usuario", usuario);
             }
+            List<Resenya> resenyas = resenyaService.obtenerPorVideojuego(videojuego);
+            m.addAttribute("resenyas", resenyas);
             m.addAttribute("enFavoritos", enFavoritos);
             m.addAttribute("puntuacionUsuario", puntuacionUsuario);
 
@@ -110,6 +117,15 @@ public class VideojuegoController {
         } else {
             return "error/404";
         }
+    }
+
+    @GetMapping("/genero/{nombre}")
+    public String juegosPorGenero(@PathVariable String nombre, Model m) {
+        List<Videojuego> juegos = videojuegoService.obtenerPorGenero(nombre);
+        m.addAttribute("videojuegos", juegos);
+        m.addAttribute("generoSeleccionado", nombre);
+        m.addAttribute("view", "videojuego/porGenero");
+        return "_t/frame";
     }
 
 }

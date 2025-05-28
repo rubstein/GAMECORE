@@ -117,25 +117,25 @@
                                         <input type="hidden" name="slug" th:value="${videojuego.slug}" />
 
                                         <div class="puntuacion-container" id="myRating">
-                                            <button type="submit" class="cuadrado" name="valor" value="1"
+                                            <button type="button" class="cuadrado" name="valor" value="1"
                                                 data-value="1"></button>
-                                            <button type="submit" class="cuadrado" name="valor" value="2"
+                                            <button type="button" class="cuadrado" name="valor" value="2"
                                                 data-value="2"></button>
-                                            <button type="submit" class="cuadrado" name="valor" value="3"
+                                            <button type="button" class="cuadrado" name="valor" value="3"
                                                 data-value="3"></button>
-                                            <button type="submit" class="cuadrado" name="valor" value="4"
+                                            <button type="button" class="cuadrado" name="valor" value="4"
                                                 data-value="4"></button>
-                                            <button type="submit" class="cuadrado" name="valor" value="5"
+                                            <button type="button" class="cuadrado" name="valor" value="5"
                                                 data-value="5"></button>
-                                            <button type="submit" class="cuadrado" name="valor" value="6"
+                                            <button type="button" class="cuadrado" name="valor" value="6"
                                                 data-value="6"></button>
-                                            <button type="submit" class="cuadrado" name="valor" value="7"
+                                            <button type="button" class="cuadrado" name="valor" value="7"
                                                 data-value="7"></button>
-                                            <button type="submit" class="cuadrado" name="valor" value="8"
+                                            <button type="button" class="cuadrado" name="valor" value="8"
                                                 data-value="8"></button>
-                                            <button type="submit" class="cuadrado" name="valor" value="9"
+                                            <button type="button" class="cuadrado" name="valor" value="9"
                                                 data-value="9"></button>
-                                            <button type="submit" class="cuadrado" name="valor" value="10"
+                                            <button type="button" class="cuadrado" name="valor" value="10"
                                                 data-value="10"></button>
                                         </div>
                                     </form>
@@ -144,15 +144,19 @@
                                     <div>
                                         <p class="modal-txt-review" style="display: inline;">Escribe sobre
                                         </p>
-                                        <p class="modal-txt-review" th:text="${videojuego.nombre}" style="display: inline;"></p>
+                                        <p class="modal-txt-review" th:text="${videojuego.nombre}"
+                                            style="display: inline;"></p>
                                     </div>
-
-                                    <textarea name="review" class="modal-textarea" placeholder="Escribe aquí tu opinión"></textarea>
                                 </div>
-
-                                <form method="dialog" class="modal-botones-container">
-                                    <button class="modal-boton">Cancelar</button>
-                                    <button class="modal-boton">Guardar</button>
+                                <form action="/resenyas/guardar" method="post" id="formResenya">
+                                    <input type="hidden" name="slug" th:value="${videojuego.slug}" />
+                                    <textarea name="contenido" class="modal-textarea"
+                                        placeholder="Escribe aquí tu opinión"></textarea>
+                                    <div class="modal-botones-container">
+                                        <button type="button" class="modal-boton"
+                                            onclick="cerrarModal()">Cancelar</button>
+                                        <button type="submit" class="modal-boton">Guardar</button>
+                                    </div>
                                 </form>
                             </div>
                         </dialog>
@@ -184,13 +188,20 @@
                     <h1>Todas las reseñas</h1>
                     <hr>
                     <div class="reviews">
-
+                        <div th:if="${#lists.isEmpty(resenyas)}">
+                            <p>No hay reseñas aún. ¡Sé el primero en opinar!</p>
+                        </div>
+                        <div th:each="resenya : ${resenyas}" class="review">
+                            <p class="autor-review" th:text="${resenya.usuario.nombreUsuario}"></p>
+                            <p class="contenido-review" th:text="${resenya.contenido}"></p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 <link rel="stylesheet" href="/css/videojuego/review.css">
 <script>
@@ -216,4 +227,16 @@
             document.body.style.overflow = 'hidden';
         });
     }
+
+    $(document).ready(function () {
+        $('#myRatingModal .cuadrado').on('click', function () {
+            const valor = $(this).data('value');
+            const slug = $('input[name="slug"]').val();
+
+            $.post('/puntuaciones/agregar', { slug: slug, valor: valor }, function () {
+                $('#ratingValue').text(valor); // actualiza visualmente
+            });
+        });
+    });
+
 </script>

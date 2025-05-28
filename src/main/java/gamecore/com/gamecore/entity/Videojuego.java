@@ -3,13 +3,16 @@ package gamecore.com.gamecore.entity;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -44,6 +47,9 @@ public class Videojuego {
 
     @ManyToMany
     private Collection<Plataforma> plataformas;
+
+    @OneToMany(mappedBy = "videojuego", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Resenya> resenyas = new ArrayList<>();
 
     public Videojuego(String nombre, String descripcion, String imagenUrl, LocalDate fechaLanzamiento,
             Double puntuacionMedia, String creadores, Double precio) {
