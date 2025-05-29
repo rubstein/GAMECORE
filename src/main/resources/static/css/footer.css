@@ -28,7 +28,7 @@ body {
 
 .text-footer {
     color: #FFF;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -62,7 +62,7 @@ body {
 
 .textoCopy {
     color: #FFB056;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
@@ -79,7 +79,7 @@ body {
 
 .textoSM {
     color: #FF8E0C;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;

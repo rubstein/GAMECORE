@@ -2,8 +2,9 @@ package gamecore.com.gamecore.controller;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -108,9 +109,19 @@ public class VideojuegoController {
                 session.setAttribute("usuario", usuario);
             }
             List<Resenya> resenyas = resenyaService.obtenerPorVideojuego(videojuego);
+
+            Map<Long, Double> puntuacionesResenyas = new HashMap<>();
+            for (Resenya resenya : resenyas) {
+                Puntuacion p = puntuacionService.buscarPorUsuarioYVideojuego(resenya.getUsuario(), videojuego);
+                if (p != null) {
+                    puntuacionesResenyas.put(resenya.getId(), p.getValor());
+                }
+            }
+
             m.addAttribute("resenyas", resenyas);
             m.addAttribute("enFavoritos", enFavoritos);
             m.addAttribute("puntuacionUsuario", puntuacionUsuario);
+            m.addAttribute("puntuacionesResenyas", puntuacionesResenyas);
 
             m.addAttribute("view", "videojuego/review");
             return "_t/frame";

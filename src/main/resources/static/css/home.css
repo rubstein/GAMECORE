@@ -44,7 +44,7 @@ hr {
 }
 
 h1 {
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 32px;
     font-style: normal;
     font-weight: 700;
@@ -106,7 +106,7 @@ h1 {
 .titulo-juego {
     align-self: stretch;
     color: #000;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
@@ -148,7 +148,7 @@ h1 {
 
 .average1-text {
     text-align: center;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
@@ -169,7 +169,7 @@ h1 {
 
 .average1 p {
     text-align: center;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
@@ -236,7 +236,7 @@ h1 {
     top: 5px;
     left: 5px;*/
     color: #000;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
@@ -246,7 +246,7 @@ h1 {
 .average2-title {
     align-self: stretch;
     color: #FFF;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
@@ -277,7 +277,7 @@ h1 {
 
 .plataform-txt {
     color: #000;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
@@ -364,7 +364,7 @@ p {
 
 .editar-txt {
     color: #FFFEFE;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 700;

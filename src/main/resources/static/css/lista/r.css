@@ -39,7 +39,7 @@ hr {
 }
 
 h1 {
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 32px;
     font-style: normal;
     font-weight: 700;

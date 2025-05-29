@@ -48,7 +48,7 @@ hr {
 }
 
 h1 {
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 32px;
     font-style: normal;
     font-weight: 700;
@@ -91,7 +91,7 @@ h1 {
 
 .titulo-juego {
     color: #000;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 32px;
     font-style: normal;
     font-weight: 700;
@@ -101,7 +101,7 @@ h1 {
 .descripcion-juego {
     align-self: stretch;
     color: #000;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 400;
@@ -120,7 +120,7 @@ h1 {
 .titulo {
     width: 137px;
     color: #000;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
@@ -130,7 +130,7 @@ h1 {
 .plataformas {
     display: inline;
     color: #000;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 400;
@@ -141,7 +141,7 @@ h1 {
 .plataforma-generos-inline {
     display: inline;
     color: #000;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 400;
@@ -157,7 +157,7 @@ h1 {
 
 .titulo-fecha {
     color: #000;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
@@ -165,7 +165,7 @@ h1 {
 }
 
 .fecha-juego {
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 400;
@@ -173,7 +173,7 @@ h1 {
 }
 
 .creadores-juego {
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 400;
@@ -197,7 +197,7 @@ h1 {
 }
 
 .puntuacion-text {
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
@@ -218,7 +218,7 @@ h1 {
 .puntuacionMedia {
     color: #000;
     text-align: center;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
@@ -296,7 +296,7 @@ h1 {
 #ratingValue {
     color: #000;
     text-align: center;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
@@ -338,7 +338,7 @@ h1 {
 
 .button-text-review {
     color: #FF8E0C;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
@@ -358,7 +358,7 @@ h1 {
 
 .button-text-carrito {
     color: #000;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
@@ -473,7 +473,8 @@ dialog {
 }
 
 dialog::backdrop {
-  background-color: rgba(0, 0, 0, 0.5); /* negro semi-transparente */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* negro semi-transparente */
 }
 
 .modal {
@@ -489,7 +490,7 @@ dialog::backdrop {
 
 .modal-nombre-juego {
     align-self: stretch;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 32px;
     font-style: normal;
     font-weight: 700;
@@ -523,7 +524,7 @@ dialog::backdrop {
 }
 
 .modal-txt-review {
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
@@ -557,9 +558,81 @@ dialog::backdrop {
     border-radius: 8px;
     background: #FF8E0C;
     color: #000;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
+    line-height: normal;
+}
+
+.reviews {
+    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    align-self: stretch;
+    margin-top: 16px;
+}
+
+.resenya_container {
+    display: flex;
+    width: 680px;
+    height: 232px;
+    padding: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: #F5F5F5;
+}
+
+.user-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.puntuacion-usuario-resenya {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    padding: 8px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: #00E60F;
+}
+
+.autor-review {
+    color: #000;
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.puntuacion-usuario-resenya-txt {
+    color: #000;
+    align-self: stretch;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.contenido-review {
+    color: #000;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
     line-height: normal;
 }

@@ -19,7 +19,7 @@ body {
 
 .admin-text {
     color: #FFF;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
@@ -76,7 +76,7 @@ li {
 
 .txt-nav-links {
     color: white;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
@@ -91,7 +91,7 @@ ul, li {
 
 /*.nav-links a {
     color: white;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
@@ -102,7 +102,7 @@ ul, li {
 
 .txt-deplegable-genero {
     color: white;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
@@ -207,7 +207,7 @@ svg {
     background: #000;
     transition: transform 0.3s ease-in-out;
     color: #FF8E0C;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
@@ -226,7 +226,7 @@ svg {
     background: #FF8E0C;
     transition: transform 0.3s ease-in-out;
     color: #000;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
@@ -275,7 +275,7 @@ svg {
 
 .admin-txt {
     color: #FFF;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
@@ -335,7 +335,7 @@ svg {
 
 .txt-nav-perfil {
     color: white;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
@@ -346,7 +346,7 @@ svg {
 
 .txt-nav-nombre-usuario {
     color: #FF8E0C;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 20px;
     font-style: normal;
     font-weight: 700;

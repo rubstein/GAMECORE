@@ -191,8 +191,12 @@
                         <div th:if="${#lists.isEmpty(resenyas)}">
                             <p>No hay reseñas aún. ¡Sé el primero en opinar!</p>
                         </div>
-                        <div th:each="resenya : ${resenyas}" class="review">
-                            <p class="autor-review" th:text="${resenya.usuario.nombreUsuario}"></p>
+                        <div th:each="resenya : ${resenyas}" class="resenya_container">
+                            <div class="user-info">
+                                <div class="puntuacion-usuario-resenya"><p class="puntuacion-usuario-resenya-txt" th:text="${puntuacionesResenyas[resenya.id]}"></p></div>
+                                <p class="autor-review" th:text="${resenya.usuario.nombreUsuario}"></p>
+                            </div>
+                            
                             <p class="contenido-review" th:text="${resenya.contenido}"></p>
                         </div>
                     </div>

@@ -42,7 +42,7 @@ hr {
 }
 
 h1 {
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 32px;
     font-style: normal;
     font-weight: 700;
@@ -71,7 +71,7 @@ h1 {
 
 .button-txt {
     color: #000;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -92,7 +92,7 @@ td {
 }
 
 th {
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
@@ -102,7 +102,7 @@ th {
 }
 
 td {
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -114,7 +114,7 @@ td {
 .btn-tabla{
     all: unset;
     cursor: pointer;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;

@@ -26,7 +26,7 @@ body {
 }
 
 .title-login {
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 32px;
     font-style: normal;
     font-weight: 700;
@@ -34,7 +34,7 @@ body {
 }
 
 .subtitle-login {
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -67,7 +67,7 @@ body {
 }
 
 .txt-email-password {
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
@@ -85,7 +85,7 @@ body {
 }
 
 .link-register {
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -107,7 +107,7 @@ body {
 }
 
 .button-text{
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
