@@ -124,22 +124,52 @@ public class UsuarioController {
     }
 
     @PostMapping("/perfil")
-    public String perfilPost(@RequestParam String nuevoNombreUsuario,
+    @ResponseBody
+    public Map<String, Object> perfilPost(@RequestParam String nuevoNombreUsuario,
             @RequestParam String nuevoEmail,
-            HttpSession s) throws DangerException {
+            HttpSession s) {
+        Map<String, Object> response = new HashMap<>();
         try {
-            Usuario usuarioActual = (Usuario) s.getAttribute("usuario");
-            if (usuarioActual == null) {
-                throw new DangerException("No hay un usuario autenticado.");
+            Usuario u = (Usuario) s.getAttribute("usuario");
+            Usuario usuarioPorNombre = usuarioService.findByNombreUsuario(nuevoNombreUsuario);
+            if (usuarioPorNombre != null && !usuarioPorNombre.getId().equals(u.getId())) {
+                response.put("success", false);
+                response.put("message", "El nombre de usuario ya está en uso.");
+                return response;
             }
-            Usuario usuarioActualizado = usuarioService.u(usuarioActual.getId(), nuevoNombreUsuario, nuevoEmail);
 
+            Usuario usuarioPorEmail = usuarioService.findByEmail(nuevoEmail);
+            if (usuarioPorEmail != null && !usuarioPorEmail.getId().equals(u.getId())) {
+                response.put("success", false);
+                response.put("message", "El correo electrónico ya está en uso.");
+                return response;
+            }
+
+            usuarioService.u(u.getId(), nuevoNombreUsuario, nuevoEmail);
+            Usuario usuarioActualizado = usuarioService.findById(u.getId());
             s.setAttribute("usuario", usuarioActualizado);
 
-            return "redirect:/usuario/perfil";
+            response.put("success", true);
+            response.put("message", "Datos guardados correctamente.");
         } catch (Exception e) {
-            PRG.error("Error al actualizar el perfil: " + e.getMessage(), "/usuario/perfil");
-            return null;
+            response.put("success", false);
+            response.put("message", "Error al actualizar el perfil.");
         }
+        return response;
+    }
+
+    @GetMapping("/check")
+    @ResponseBody
+    public Map<String, Object> checkUsuarioEmail(
+            @RequestParam(required = false) String usuario,
+            @RequestParam(required = false) String email) {
+        Map<String, Object> response = new HashMap<>();
+        if (usuario != null && usuarioService.existsByName(usuario)) {
+            response.put("usuario", true);
+        }
+        if (email != null && usuarioService.existsByEmail(email)) {
+            response.put("email", true);
+        }
+        return response;
     }
 }

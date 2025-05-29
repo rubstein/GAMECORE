@@ -91,6 +91,10 @@ public class UsuarioService {
         return usuarioRepository.findByNombreUsuario(nombreUsuario);
     }
 
+    public Usuario findByEmail(String email) {
+    return usuarioRepository.findByEmail(email);
+    }
+
     public Usuario save(Usuario usuario) {
 
         return usuarioRepository.save(usuario);
