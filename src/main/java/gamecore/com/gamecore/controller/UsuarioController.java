@@ -161,14 +161,56 @@ public class UsuarioController {
     @GetMapping("/check")
     @ResponseBody
     public Map<String, Object> checkUsuarioEmail(
-            @RequestParam(required = false) String usuario,
-            @RequestParam(required = false) String email) {
+            @RequestParam String usuario,
+            @RequestParam String email) {
         Map<String, Object> response = new HashMap<>();
         if (usuario != null && usuarioService.existsByName(usuario)) {
             response.put("usuario", true);
         }
         if (email != null && usuarioService.existsByEmail(email)) {
             response.put("email", true);
+        }
+        return response;
+    }
+
+    @GetMapping("/contrasenya")
+    public String perfilContrasenya(ModelMap m, HttpSession hs) {
+        Usuario u = (Usuario) hs.getAttribute("usuario");
+        m.put("usuario", u);
+        m.put("view", "usuario/cambiarContrasenya");
+        return "_t/frame";
+    }
+
+    @PostMapping("/contrasenya")
+    @ResponseBody
+    public Map<String, Object> perfilContrasenyaPost(
+            ModelMap m, HttpSession hs,
+            @RequestParam String contrasenyaActual,
+            @RequestParam String nuevaContrasenya,
+            @RequestParam String confirmarContrasenya) {
+
+        Map<String, Object> response = new HashMap<>();
+        Usuario u = (Usuario) hs.getAttribute("usuario");
+        try {
+            
+            if (!usuarioService.comprobarContrasenya(u, contrasenyaActual)) {
+                response.put("success", false);
+                response.put("message", "La contraseña actual no es correcta.");
+                return response;
+            }
+
+            if (!nuevaContrasenya.equals(confirmarContrasenya)) {
+                response.put("success", false);
+                response.put("message", "Las contraseñas no coinciden.");
+                return response;
+            }
+       
+            usuarioService.cambiarContrasenya(u, nuevaContrasenya);
+            response.put("success", true);
+            response.put("message", "Contraseña cambiada correctamente.");
+        } catch (Exception e) {
+            response.put("success", false);
+            response.put("message", "Error al cambiar la contraseña.");
         }
         return response;
     }

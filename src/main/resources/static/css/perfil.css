@@ -38,6 +38,9 @@ form {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    margin-top: 25px;
+    align-items: center;
+    text-align: center;
 }
 
 .data-perfil {
@@ -102,4 +105,40 @@ form {
     margin-left: auto;
     margin-right: auto;
     max-width: 450px;
+}
+
+a {
+    color: #FF8E0C;
+    text-decoration: none;
+}
+
+h1 {
+    border-bottom: 1px solid black;
+    margin-bottom: -60px;
+}
+
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.input-email-password {
+    flex: 1;
+    padding-right: 40px; 
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px; 
+    cursor: pointer;
+    font-size: 18px;
+    user-select: none;
+    color: #888;
+}
+
+#infoContrasenya {
+    margin-top: 50px;
+    color: #FF8E0C;
 }

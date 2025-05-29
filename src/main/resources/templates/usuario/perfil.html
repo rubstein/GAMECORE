@@ -3,7 +3,7 @@
         <h1 class="title-perfil" th:text="'Perfil de ' + ${usuario.nombreUsuario}"></h1>
         <div class="editarDatos">
             <p class="subtitle-perfil">Editar datos</p>
-            <hr>
+
             <form action="/usuario/perfil" method="post" id="formulario">
                 <div class="data-perfil">
                      <div id ="mensajeUsuario"></div>
@@ -15,7 +15,8 @@
                 <div class="data-perfil">
                     <label for="nuevoEmail" class="txt-form-perfil">Email:</label>
                     <input type="text" id="nuevoEmail" name="nuevoEmail" th:value="${usuario.email}" disabled class="input-form-perfil"><br>
-                        <div id ="mensajeCorreo"></div>
+                        <!--<div id ="mensajeCorreo"></div>-->
+                    <a href ="/usuario/contrasenya">Quiero cambiar mi contraseña</a>
                     <input type="button" value="Editar" id="editar" class="button-perfil">
                     <!--<button class="button-perfil" type="submit" id="editar">
                         <p class="button-text">Editar</p>
