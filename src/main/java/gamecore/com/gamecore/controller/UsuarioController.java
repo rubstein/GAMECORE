@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import gamecore.com.gamecore.entity.Usuario;
 import gamecore.com.gamecore.exception.DangerException;
-import gamecore.com.gamecore.helper.PRG;
 import gamecore.com.gamecore.service.EmailService;
 import gamecore.com.gamecore.service.UsuarioService;
 import jakarta.servlet.http.HttpSession;

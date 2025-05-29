@@ -24,13 +24,8 @@ form {
     border-radius: 8px;
 }
 
-<<<<<<< HEAD
-.title-perfil{
-    font-family: 'Inter', sans-serif;
-=======
 .title-perfil {
-    font-family: Inter;
->>>>>>> origin/main
+    font-family: 'Inter', sans-serif;
     font-size: 32px;
     font-style: normal;
     font-weight: 700;
@@ -56,13 +51,8 @@ form {
     gap: 8px;
 }
 
-<<<<<<< HEAD
 .txt-form-perfil{
     font-family: 'Inter', sans-serif;
-=======
-.txt-form-perfil {
-    font-family: Inter;
->>>>>>> origin/main
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
@@ -90,6 +80,7 @@ form {
     flex-shrink: 0;
     border-radius: 8px;
     background: #FF8E0C;
+    font-family: 'Inter', sans-serif;
 }
 
 .button-text {
