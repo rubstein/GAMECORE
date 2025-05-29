@@ -1,0 +1,36 @@
+<div class="back">
+    <div class="main">
+        <h1>Cambiar mi contraseña</h1>
+        <div id ="infoContrasenya"></div>
+        <form action="/usuario/contrasenya" method="post" id="formulario">
+            <div class="data-perfil">
+                <label for="contrasenyaActual" class="txt-form-perfil">Contraseña actual:</label>
+                <div class="password-container">
+                    <input class="input-email-password input-form-perfil" type="password" id="contrasenyaActual" name="contrasenyaActual"
+                        required placeholder="Contraseña actual">
+                    <span id="togglePasswordActual" class="toggle-password">👁️</span>
+                </div>
+            </div>
+            <div class="data-perfil">
+                <label for="nuevaContrasenya" class="txt-form-perfil">Nueva contraseña:</label>
+                <div class="password-container">
+                    <input class="input-email-password input-form-perfil" type="password" id="nuevaContrasenya" name="nuevaContrasenya"
+                        required placeholder="Nueva contraseña">
+                    <span id="togglePasswordNueva" class="toggle-password">👁️</span>
+                </div>
+            </div>
+            <div class="data-perfil">
+                <label for="confirmarContrasenya" class="txt-form-perfil">Confirmar nueva contraseña:</label>
+                <input type="password" id="confirmarContrasenya" name="confirmarContrasenya" required class="input-form-perfil" placeholder="Confirmar nueva contraseña">
+            </div>
+            <a href ="/usuario/perfil">Volver</a>
+            <button type="button" class="button-perfil" id ="cambiarContrasenya">
+                <p class="button-text">Cambiar contraseña</p>
+            </button>
+        </form>
+    </div>
+</div>
+
+<link rel="stylesheet" href="/css/perfil.css">
+<script src="/lib/jquery-3.7.1.min.js"></script>
+<script src ="/js/cambiarContrasenya.js"></script>

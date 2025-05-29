@@ -91,6 +91,10 @@ public class UsuarioService {
         return usuarioRepository.findByNombreUsuario(nombreUsuario);
     }
 
+    public Usuario findByEmail(String email) {
+        return usuarioRepository.findByEmail(email);
+    }
+
     public Usuario save(Usuario usuario) {
 
         return usuarioRepository.save(usuario);
@@ -120,4 +124,16 @@ public class UsuarioService {
         usuario.getFavoritos().remove(juego);
         usuarioRepository.save(usuario);
     }
+
+    public boolean comprobarContrasenya(Usuario usuario, String contrasenyaActual) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        return encoder.matches(contrasenyaActual, usuario.getContrasenya());
+    }
+
+    public void cambiarContrasenya(Usuario usuario, String nuevaContrasenya) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        usuario.setContrasenya(encoder.encode(nuevaContrasenya));
+        usuarioRepository.save(usuario);
+    }
+
 }

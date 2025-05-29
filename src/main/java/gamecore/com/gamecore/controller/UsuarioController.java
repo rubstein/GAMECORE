@@ -124,22 +124,94 @@ public class UsuarioController {
     }
 
     @PostMapping("/perfil")
-    public String perfilPost(@RequestParam String nuevoNombreUsuario,
+    @ResponseBody
+    public Map<String, Object> perfilPost(@RequestParam String nuevoNombreUsuario,
             @RequestParam String nuevoEmail,
-            HttpSession s) throws DangerException {
+            HttpSession s) {
+        Map<String, Object> response = new HashMap<>();
         try {
-            Usuario usuarioActual = (Usuario) s.getAttribute("usuario");
-            if (usuarioActual == null) {
-                throw new DangerException("No hay un usuario autenticado.");
+            Usuario u = (Usuario) s.getAttribute("usuario");
+            Usuario usuarioPorNombre = usuarioService.findByNombreUsuario(nuevoNombreUsuario);
+            if (usuarioPorNombre != null && !usuarioPorNombre.getId().equals(u.getId())) {
+                response.put("success", false);
+                response.put("message", "El nombre de usuario ya está en uso.");
+                return response;
             }
-            Usuario usuarioActualizado = usuarioService.u(usuarioActual.getId(), nuevoNombreUsuario, nuevoEmail);
 
+            Usuario usuarioPorEmail = usuarioService.findByEmail(nuevoEmail);
+            if (usuarioPorEmail != null && !usuarioPorEmail.getId().equals(u.getId())) {
+                response.put("success", false);
+                response.put("message", "El correo electrónico ya está en uso.");
+                return response;
+            }
+
+            usuarioService.u(u.getId(), nuevoNombreUsuario, nuevoEmail);
+            Usuario usuarioActualizado = usuarioService.findById(u.getId());
             s.setAttribute("usuario", usuarioActualizado);
 
-            return "redirect:/usuario/perfil";
+            response.put("success", true);
+            response.put("message", "Datos guardados correctamente.");
         } catch (Exception e) {
-            PRG.error("Error al actualizar el perfil: " + e.getMessage(), "/usuario/perfil");
-            return null;
+            response.put("success", false);
+            response.put("message", "Error al actualizar el perfil.");
         }
+        return response;
+    }
+
+    @GetMapping("/check")
+    @ResponseBody
+    public Map<String, Object> checkUsuarioEmail(
+            @RequestParam String usuario,
+            @RequestParam String email) {
+        Map<String, Object> response = new HashMap<>();
+        if (usuario != null && usuarioService.existsByName(usuario)) {
+            response.put("usuario", true);
+        }
+        if (email != null && usuarioService.existsByEmail(email)) {
+            response.put("email", true);
+        }
+        return response;
+    }
+
+    @GetMapping("/contrasenya")
+    public String perfilContrasenya(ModelMap m, HttpSession hs) {
+        Usuario u = (Usuario) hs.getAttribute("usuario");
+        m.put("usuario", u);
+        m.put("view", "usuario/cambiarContrasenya");
+        return "_t/frame";
+    }
+
+    @PostMapping("/contrasenya")
+    @ResponseBody
+    public Map<String, Object> perfilContrasenyaPost(
+            ModelMap m, HttpSession hs,
+            @RequestParam String contrasenyaActual,
+            @RequestParam String nuevaContrasenya,
+            @RequestParam String confirmarContrasenya) {
+
+        Map<String, Object> response = new HashMap<>();
+        Usuario u = (Usuario) hs.getAttribute("usuario");
+        try {
+            
+            if (!usuarioService.comprobarContrasenya(u, contrasenyaActual)) {
+                response.put("success", false);
+                response.put("message", "La contraseña actual no es correcta.");
+                return response;
+            }
+
+            if (!nuevaContrasenya.equals(confirmarContrasenya)) {
+                response.put("success", false);
+                response.put("message", "Las contraseñas no coinciden.");
+                return response;
+            }
+       
+            usuarioService.cambiarContrasenya(u, nuevaContrasenya);
+            response.put("success", true);
+            response.put("message", "Contraseña cambiada correctamente.");
+        } catch (Exception e) {
+            response.put("success", false);
+            response.put("message", "Error al cambiar la contraseña.");
+        }
+        return response;
     }
 }

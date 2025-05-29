@@ -24,8 +24,13 @@ form {
     border-radius: 8px;
 }
 
+<<<<<<< HEAD
 .title-perfil{
     font-family: 'Inter', sans-serif;
+=======
+.title-perfil {
+    font-family: Inter;
+>>>>>>> origin/main
     font-size: 32px;
     font-style: normal;
     font-weight: 700;
@@ -38,9 +43,12 @@ form {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    margin-top: 25px;
+    align-items: center;
+    text-align: center;
 }
 
-.data-perfil{
+.data-perfil {
     display: flex;
     width: 324px;
     flex-direction: column;
@@ -48,17 +56,22 @@ form {
     gap: 8px;
 }
 
+<<<<<<< HEAD
 .txt-form-perfil{
     font-family: 'Inter', sans-serif;
+=======
+.txt-form-perfil {
+    font-family: Inter;
+>>>>>>> origin/main
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
 }
 
-.input-form-perfil{
+.input-form-perfil {
     display: flex;
-    width: 320px;
+    width: 100%;
     height: 40px;
     padding: 10px;
     align-items: flex-start;
@@ -66,11 +79,11 @@ form {
     border-radius: 8px;
 }
 
-.button-perfil{
+.button-perfil {
     display: flex;
-    width: 344px;
+    width: 100%;
     height: 48px;
-    padding: 12px 140px;
+    padding: 12px;
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -85,4 +98,57 @@ form {
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+}
+
+.mensaje-ok {
+    color: green;
+}
+
+.mensaje-error {
+    color: #b30000;
+}
+
+.mensaje-ok,
+.mensaje-error {
+    margin-bottom: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 450px;
+}
+
+a {
+    color: #FF8E0C;
+    text-decoration: none;
+}
+
+h1 {
+    border-bottom: 1px solid black;
+    margin-bottom: -60px;
+}
+
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.input-email-password {
+    flex: 1;
+    padding-right: 40px; 
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px; 
+    cursor: pointer;
+    font-size: 18px;
+    user-select: none;
+    color: #888;
+}
+
+#infoContrasenya {
+    margin-top: 50px;
+    color: #FF8E0C;
 }

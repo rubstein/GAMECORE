@@ -3,17 +3,20 @@
         <h1 class="title-perfil" th:text="'Perfil de ' + ${usuario.nombreUsuario}"></h1>
         <div class="editarDatos">
             <p class="subtitle-perfil">Editar datos</p>
-            <hr>
+
             <form action="/usuario/perfil" method="post" id="formulario">
                 <div class="data-perfil">
-                    <label for="nuevoNombreUsuario" class="txt-form-perfil">Nombre de usuario:</label>
+                     <div id ="mensajeUsuario"></div>
+                    <label for="nuevoNombreUsuario" 
+                    class="txt-form-perfil">Nombre de usuario:</label>
                     <input type="text" id="nuevoNombreUsuario" name="nuevoNombreUsuario"
                         th:value="${usuario.nombreUsuario}" disabled class="input-form-perfil"><br>
                 </div>
                 <div class="data-perfil">
                     <label for="nuevoEmail" class="txt-form-perfil">Email:</label>
-                    <input type="text" id="nuevoEmail" name="nuevoEmail" th:value="${usuario.email}" disabled
-                        class="input-form-perfil"><br>
+                    <input type="text" id="nuevoEmail" name="nuevoEmail" th:value="${usuario.email}" disabled class="input-form-perfil"><br>
+                        <!--<div id ="mensajeCorreo"></div>-->
+                    <a href ="/usuario/contrasenya">Quiero cambiar mi contraseña</a>
                     <input type="button" value="Editar" id="editar" class="button-perfil">
                     <!--<button class="button-perfil" type="submit" id="editar">
                         <p class="button-text">Editar</p>
@@ -24,4 +27,6 @@
     </div>
 </div>
 <link rel="stylesheet" href="/css/perfil.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/perfil.js"></script>
+<script src ="/jquery/perfil.js"></script>
