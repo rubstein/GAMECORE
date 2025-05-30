@@ -5,11 +5,13 @@
     <div class="main">
         <div class="usuarios-info">
             <div class="separador">
-                <h1>Usuarios</h1>
+                <h1>Creación de usuario</h1>
                 <hr>
             </div>
             <div class="contenedor">
                 <form action="/admin/usuarios-c" method="post" class="formulario">
+                    <div id ="error-message"></div>
+                    <div id ="infoUsuario"></div>
                     <div class="datos">
                         <label for="nombreUsuario">Nombre Usuario</label>
                         <input type="text" name="nombreUsuario" id="nombreUsuario" class="input-txt" required>
@@ -27,13 +29,13 @@
                         <div class="checkbox">
                             <div th:each="rol : ${roles}">
                                 <label>
-                                    <input type="radio" name="rol" th:value="${rol.nombre}">
+                                    <input type="radio" name="rol" th:value="${rol.nombre}" required>
                                     <span th:text="${rol.nombre}"></span>
                                 </label>
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn-submit">
+                    <button type="button" class="btn-submit" id ="anyadirUsuario">
                         <p class="btn-txt">Añadir Usuario</p>
                     </button>
                 </form>
@@ -43,3 +45,6 @@
 </div>
 
 <link rel="stylesheet" href="/css/admin/usuarios-c.css">
+<script src ="/lib/jquery-3.7.1.min.js"></script>
+<script src ="/js/crearUsuarioAdmin.js"></script>
+<script src = "/jquery/crearUsuarioAdmin.js"></script>

@@ -6,8 +6,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import gamecore.com.gamecore.entity.Rol;
@@ -127,20 +130,35 @@ public class AdminController {
     }
 
     @PostMapping("usuarios-c")
-    public String cPostU(
+    @ResponseBody
+    public Map<String, Object> cPostU(
             @RequestParam("nombreUsuario") String nombreUsuario,
             @RequestParam("contrasenya") String contrasenya,
             @RequestParam("email") String email,
-            @RequestParam("rol") String rol) throws DangerException {
+            @RequestParam("rol") String rol) {
 
+        Map<String, Object> response = new HashMap<>();
         try {
-
+            // Comprobar si el nombre de usuario ya existe
+            if (usuarioService.existsByName(nombreUsuario)) {
+                response.put("success", false);
+                response.put("message", "El nombre de usuario ya está en uso.");
+                return response;
+            }
+            // Comprobar si el email ya existe
+            if (usuarioService.existsByEmail(email)) {
+                response.put("success", false);
+                response.put("message", "El email ya está en uso.");
+                return response;
+            }
             usuarioService.validarUsuarioRegistro(nombreUsuario, contrasenya, email, rol);
-
+            response.put("success", true);
+            response.put("message", "Usuario creado correctamente.");
         } catch (Exception e) {
-            PRG.error("Este nombre " + nombreUsuario + " ya en uso", "/admin/usuarios");
+            response.put("success", false);
+            response.put("message", "Error al crear el usuario.");
         }
-        return "redirect:/admin/usuarios";
+        return response;
     }
 
     @PostMapping("usuarios-d")

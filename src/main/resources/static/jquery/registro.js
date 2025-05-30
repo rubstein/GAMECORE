@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    // Mostrar/ocultar contraseña (opcional)
+   
     $('#togglePassword').click(function () {
         var passwordField = $('#idContrasenya');
         var type = passwordField.attr('type') === 'password' ? 'text' : 'password';
