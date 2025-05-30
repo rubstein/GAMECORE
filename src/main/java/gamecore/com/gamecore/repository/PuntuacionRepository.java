@@ -14,4 +14,7 @@ import gamecore.com.gamecore.entity.Videojuego;
 public interface PuntuacionRepository extends JpaRepository<Puntuacion, Long> {
     public Puntuacion findByUsuarioAndVideojuego(Usuario usuario, Videojuego videojuego);
     public List<Puntuacion> findByVideojuego(Videojuego videojuego);
+    public void deleteByUsuarioId(Long usuarioId);
+
+
 }

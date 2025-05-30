@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import gamecore.com.gamecore.entity.Rol;
 import gamecore.com.gamecore.entity.Usuario;
 import gamecore.com.gamecore.entity.Videojuego;
+import gamecore.com.gamecore.repository.PuntuacionRepository;
 import gamecore.com.gamecore.repository.RolRepository;
 import gamecore.com.gamecore.repository.UsuarioRepository;
 import jakarta.transaction.Transactional;
@@ -24,6 +25,9 @@ public class UsuarioService {
 
     @Autowired
     private RolRepository rolRepository;
+
+    @Autowired
+    private PuntuacionRepository puntuacionRepository;
 
     public Usuario validarUsuarioRegistro(String nombreUsuario, String contrasenya, String email, String rol) {
         Usuario u = new Usuario(nombreUsuario, new BCryptPasswordEncoder().encode(contrasenya), email);
@@ -70,7 +74,10 @@ public class UsuarioService {
         return usuarioRepository.findAll();
     }
 
+    @Transactional
     public void d(Long id) throws Exception {
+        puntuacionRepository.deleteByUsuarioId(id);
+        usuarioRepository.deleteById(id);
         usuarioRepository.deleteById(id);
     }
 
