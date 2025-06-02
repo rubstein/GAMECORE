@@ -118,6 +118,9 @@ public class VideojuegoController {
                 }
             }
 
+            Resenya resenyaExistente = resenyaService.buscarPorUsuarioYVideojuego(usuarioSesion, videojuego);
+            
+            m.addAttribute("resenyaExistente", resenyaExistente);
             m.addAttribute("resenyas", resenyas);
             m.addAttribute("enFavoritos", enFavoritos);
             m.addAttribute("puntuacionUsuario", puntuacionUsuario);

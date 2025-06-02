@@ -3,9 +3,7 @@ package gamecore.com.gamecore.entity;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -45,7 +43,7 @@ public class Usuario {
     private List<Videojuego> favoritos;
 
     @ManyToMany
-    private Set<Videojuego> carrito;
+    private List<Videojuego> carrito;
 
     public Usuario(String nombreUsuario, String contrasenya, String email) {
         this.nombreUsuario = nombreUsuario;
@@ -53,7 +51,7 @@ public class Usuario {
         this.email = email;
         this.roles = new ArrayList<>();
         this.favoritos = new ArrayList<Videojuego>();
-        this.carrito = new HashSet<Videojuego>();
+        this.carrito = new ArrayList<Videojuego>();
         this.fechaRegistro = LocalDate.now();
     }
 
