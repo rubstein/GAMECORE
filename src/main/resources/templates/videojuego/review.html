@@ -168,11 +168,10 @@
 
 
 
-
-                        <button class="button-carrito" type="button">
-                            <p class="button-text-carrito">Añadir al Carrito</p>
-                        </button>
-
+                        
+                            <button class="button-carrito" type="submit">
+                                <p class="button-text-carrito">Añadir al Carrito</p>
+                            </button>
                     </div>
 
                     <div class="botones" th:if="${session.usuario == null}">
@@ -191,7 +190,7 @@
                     <hr>
                     <div class="reviews">
                         <div th:if="${#lists.isEmpty(resenyas)}">
-                            <p>No hay reseñas aún. ¡Sé el primero en opinar!</p>
+                            <p class="no-resenyas-txt">No hay reseñas aún. ¡Sé el primero en opinar!</p>
                         </div>
                         <div th:each="resenya : ${resenyas}" class="resenya_container">
                             <div class="user-info">
@@ -224,7 +223,7 @@
         buttons.forEach(btn => {
             const val = parseInt(btn.getAttribute('data-value'));
             if (val === ratingValue) {
-                btn.style.border = '2px solid #FF8E0C';
+                btn.style.border = '2px solid #7c7c7c';
                 btn.style.filter = 'brightness(1.2)';
                 puntuacionSeleccionada = val; // Guardamos la puntuación inicial si ya existía
             }

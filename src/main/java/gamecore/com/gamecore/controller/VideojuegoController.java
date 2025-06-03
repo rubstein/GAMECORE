@@ -142,4 +142,13 @@ public class VideojuegoController {
         return "_t/frame";
     }
 
+    @GetMapping("/plataforma/{nombre}")
+    public String juegosPorPlataforma(@PathVariable String nombre, Model m) {
+        List<Videojuego> juegos = videojuegoService.obtenerPorPlataforma(nombre);
+        m.addAttribute("videojuegos", juegos);
+        m.addAttribute("plataformaSeleccionada", nombre);
+        m.addAttribute("view", "videojuego/porPlataforma");
+        return "_t/frame";
+    }
+
 }

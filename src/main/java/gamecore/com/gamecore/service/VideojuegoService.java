@@ -95,4 +95,8 @@ public class VideojuegoService {
     public List<Videojuego> obtenerPorGenero(String nombreGenero) {
         return videojuegoRepository.findByGeneroNombre(nombreGenero);
     }
+
+    public List<Videojuego> obtenerPorPlataforma(String nombrePlatafroma) {
+        return videojuegoRepository.findByPlataformasNombre(nombrePlatafroma);
+    }
 }

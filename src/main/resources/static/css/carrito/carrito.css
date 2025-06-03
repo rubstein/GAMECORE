@@ -101,6 +101,8 @@ h1 {
     gap: 32px;
     border-radius: 8px;
     background: #EFEFEF;
+    width: 592px;
+    height: 159px;
 }
 
 .precio-container {
