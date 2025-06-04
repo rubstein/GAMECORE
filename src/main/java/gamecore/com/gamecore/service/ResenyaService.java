@@ -12,7 +12,7 @@ import gamecore.com.gamecore.repository.ResenyaRepository;
 
 @Service
 public class ResenyaService {
-    
+
     @Autowired
     private ResenyaRepository resenyaRepository;
 
@@ -29,7 +29,11 @@ public class ResenyaService {
         resenyaRepository.save(resenya);
     }
 
-     public List<Resenya> obtenerPorVideojuego(Videojuego videojuego) {
+    public List<Resenya> obtenerPorVideojuego(Videojuego videojuego) {
         return resenyaRepository.findByVideojuego(videojuego);
+    }
+
+    public Resenya buscarPorUsuarioYVideojuego(Usuario usuario, Videojuego videojuego) {
+        return resenyaRepository.findByUsuarioAndVideojuego(usuario, videojuego);
     }
 }

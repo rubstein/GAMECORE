@@ -106,7 +106,7 @@
                                     <div class="puntuacion-info-modal">
                                         <div class="puntuacion-usuario-container"
                                             th:classappend="${puntuacionUsuario >= 7} ? ' color-verde' : (${puntuacionUsuario >= 5} ? ' color-naranja' : ' color-rojo')">
-                                            <p id="ratingValue"
+                                            <p id="ratingValueModal"
                                                 th:text="${puntuacionUsuario != null ? puntuacionUsuario : 0}">0</p>
                                         </div>
                                         <p class="puntuacion-text">Mi Puntuación</p>
@@ -151,7 +151,9 @@
                                 <form action="/resenyas/guardar" method="post" id="formResenya">
                                     <input type="hidden" name="slug" th:value="${videojuego.slug}" />
                                     <textarea name="contenido" class="modal-textarea"
-                                        placeholder="Escribe aquí tu opinión"></textarea>
+                                        placeholder="Escribe aquí tu opinión"
+                                        th:text="${resenyaExistente != null} ? ${resenyaExistente.contenido} : ''"
+                                        minlength="5" maxlength="349" required></textarea>
                                     <div class="modal-botones-container">
                                         <button type="button" class="modal-boton"
                                             onclick="cerrarModal()">Cancelar</button>
@@ -162,9 +164,14 @@
                         </dialog>
                         <!--Modal-->
 
-                        <button class="button-carrito" type="button">
-                            <p class="button-text-carrito">Añadir al Carrito</p>
-                        </button>
+
+
+
+
+                        
+                            <button class="button-carrito" type="submit">
+                                <p class="button-text-carrito">Añadir al Carrito</p>
+                            </button>
                     </div>
 
                     <div class="botones" th:if="${session.usuario == null}">
@@ -183,14 +190,18 @@
                     <hr>
                     <div class="reviews">
                         <div th:if="${#lists.isEmpty(resenyas)}">
-                            <p>No hay reseñas aún. ¡Sé el primero en opinar!</p>
+                            <p class="no-resenyas-txt">No hay reseñas aún. ¡Sé el primero en opinar!</p>
                         </div>
                         <div th:each="resenya : ${resenyas}" class="resenya_container">
                             <div class="user-info">
-                                <div class="puntuacion-usuario-resenya"><p class="puntuacion-usuario-resenya-txt" th:text="${puntuacionesResenyas[resenya.id]}"></p></div>
+                                <div class="puntuacion-usuario-resenya"
+                                    th:classappend="${puntuacionesResenyas[resenya.id] >= 7} ? ' color-verde' : (${puntuacionesResenyas[resenya.id] >= 5} ? ' color-naranja' : ' color-rojo')">
+                                    <p class="puntuacion-usuario-resenya-txt"
+                                        th:text="${puntuacionesResenyas[resenya.id]}"></p>
+                                </div>
                                 <p class="autor-review" th:text="${resenya.usuario.nombreUsuario}"></p>
                             </div>
-                            
+
                             <p class="contenido-review" th:text="${resenya.contenido}"></p>
                         </div>
                     </div>
@@ -203,6 +214,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 <link rel="stylesheet" href="/css/videojuego/review.css">
 <script>
+    let puntuacionSeleccionada = null;
+
     document.addEventListener('DOMContentLoaded', () => {
         const ratingValue = parseInt(document.getElementById('ratingValue').textContent);
         const buttons = document.querySelectorAll('#myRating button.cuadrado');
@@ -210,8 +223,9 @@
         buttons.forEach(btn => {
             const val = parseInt(btn.getAttribute('data-value'));
             if (val === ratingValue) {
-                btn.style.border = '2px solid #FF8E0C';  // por ejemplo borde naranja para destacar
+                btn.style.border = '2px solid #7c7c7c';
                 btn.style.filter = 'brightness(1.2)';
+                puntuacionSeleccionada = val; // Guardamos la puntuación inicial si ya existía
             }
         });
     });
@@ -227,14 +241,41 @@
     }
 
     $(document).ready(function () {
-        $('#myRatingModal .cuadrado').on('click', function () {
-            const valor = $(this).data('value');
+        // Manejar click en los botones de puntuación
+        $('#myRating .cuadrado').on('click', function () {
+            puntuacionSeleccionada = $(this).data('value');
             const slug = $('input[name="slug"]').val();
 
-            $.post('/puntuaciones/agregar', { slug: slug, valor: valor }, function () {
-                $('#ratingValue').text(valor); // actualiza visualmente
+            $.post('/puntuaciones/agregar', { slug: slug, valor: puntuacionSeleccionada }, function () {
+                $('#ratingValueModal').text(puntuacionSeleccionada);
+
+                const container = $('#ratingValueModal').closest('.puntuacion-usuario-container');
+                container.removeClass('color-verde color-naranja color-rojo');
+
+                if (puntuacionSeleccionada >= 7) {
+                    container.addClass('color-verde');
+                } else if (puntuacionSeleccionada >= 5) {
+                    container.addClass('color-naranja');
+                } else {
+                    container.addClass('color-rojo');
+                }
             });
+        });
+
+        // Validar al enviar la reseña
+        $('#formResenya').on('submit', function (e) {
+            const contenido = $('textarea[name="contenido"]').val().trim();
+
+            if (puntuacionSeleccionada === null || contenido.length < 5) {
+                alert('Debes seleccionar una puntuación y escribir una reseña de al menos 5 caracteres.');
+                e.preventDefault(); // Cancela el envío del formulario
+            }
         });
     });
 
+    function cerrarModal() {
+        const dialog = document.getElementById("myDialog");
+        dialog.close();
+        document.body.style.overflow = '';
+    }
 </script>

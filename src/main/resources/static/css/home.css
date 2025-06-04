@@ -293,14 +293,11 @@ h1 {
     align-self: stretch;
 }
 
-.img-plataform1 {
+.img-plataform{
     width: 100px;
     height: 100px;
-}
-
-.img-plataform2 {
-    width: 100px;
-    height: 100px;
+    border-radius: 8px;
+    margin: 10px;
 }
 
 .color-verde {

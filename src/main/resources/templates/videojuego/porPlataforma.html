@@ -1,0 +1,29 @@
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<div class="back">
+    <div class="main">
+        <div class="juegos">
+            <div class="separador">
+                <h1 th:text="'Juegos de ' + ${plataformaSeleccionada}"> </h1>
+                <hr>
+            </div>
+            <div class="card-container">
+                <div class="card" th:each="videojuego : ${videojuegos}">
+                    <a th:href="@{'/videojuego/' + ${videojuego.slug}}" class="card-link">
+                        <div class="card-img" th:style="'background-image: url(' + ${videojuego.imagenUrl} + ')'">
+
+                        </div>
+                        <div class="card-footer">
+                            <div class="average" th:classappend="' ' + ${videojuego.colorPorPuntuacion}">
+                                <p class="average-txt" th:text="${videojuego.puntuacionMedia}"></p>
+                            </div>
+                            <p class="nombre-juego" th:text="${videojuego.nombre}"></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="/css/videojuego/r.css">

@@ -106,10 +106,10 @@
                 <p class="plataform-txt">Accede a juegos en tu plataforma favorita</p>
             </div>
             <div class="plataforms-img-container">
-                <img src="/img/Playstation.png" alt="" class="img-plataform1">
-                <img src="/img/nintendo.jpg" alt="" class="img-plataform1">
-                <img src="/img/pc.png" alt="" class="img-plataform2">
-                <img src="/img/xbox.png" alt="" class="img-plataform2">
+                <a th:href="@{'/videojuego/plataforma/' + ${plataformas[1].nombre}}"><img src="/img/imagen nintendo.jpg" alt="" class="img-plataform"></a>
+                <a th:href="@{'/videojuego/plataforma/' + ${plataformas[0].nombre}}"><img src="/img/imagen Play.jpg" alt="" class="img-plataform"></a>
+                <a th:href="@{'/videojuego/plataforma/' + ${plataformas[3].nombre}}"><img src="/img/imagen PC.jpg" alt="" class="img-plataform"></a>
+                <a th:href="@{'/videojuego/plataforma/' + ${plataformas[2].nombre}}"><img src="/img/imagen Xbox.jpg" alt="" class="img-plataform"></a>
             </div>
         </div>
     </div>

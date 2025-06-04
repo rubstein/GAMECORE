@@ -61,16 +61,6 @@ public class ListaController {
         return "_t/frame";
     }
 
-    @GetMapping("/carrito")
-    public String carrito(HttpSession session, ModelMap model) {
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
-        if (usuario == null) {
-            return "redirect:/usuario/login";
-        }
-        Collection<Videojuego> videojuegosCarrito = usuario.getCarrito();
-        model.put("videojuegos", videojuegosCarrito);
-        model.put("view", "lista/carrito");
-        return "_t/frame";
-    }
+    
 
 }

@@ -123,6 +123,9 @@ public class VideojuegoController {
                 }
             }
 
+            Resenya resenyaExistente = resenyaService.buscarPorUsuarioYVideojuego(usuarioSesion, videojuego);
+            
+            m.addAttribute("resenyaExistente", resenyaExistente);
             m.addAttribute("resenyas", resenyas);
             m.addAttribute("enFavoritos", enFavoritos);
             m.addAttribute("puntuacionUsuario", puntuacionUsuario);
@@ -144,9 +147,13 @@ public class VideojuegoController {
         return "_t/frame";
     }
 
-    @GetMapping("/buscar")
-    @ResponseBody
-    public List<Videojuego> buscarJuegos(@RequestParam("q") String consulta) {
-        return videoJuegoRepository.findByNombreContainingIgnoreCase(consulta);
+    @GetMapping("/plataforma/{nombre}")
+    public String juegosPorPlataforma(@PathVariable String nombre, Model m) {
+        List<Videojuego> juegos = videojuegoService.obtenerPorPlataforma(nombre);
+        m.addAttribute("videojuegos", juegos);
+        m.addAttribute("plataformaSeleccionada", nombre);
+        m.addAttribute("view", "videojuego/porPlataforma");
+        return "_t/frame";
     }
+
 }

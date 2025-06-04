@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import gamecore.com.gamecore.entity.Usuario;
 import gamecore.com.gamecore.entity.Videojuego;
 import gamecore.com.gamecore.service.GeneroService;
+import gamecore.com.gamecore.service.PlataformaService;
 import gamecore.com.gamecore.service.VideojuegoService;
 
 import java.util.List;
@@ -26,6 +27,9 @@ public class HomeController {
 
     @Autowired
     private GeneroService generoService;
+    
+    @Autowired
+    private PlataformaService plataformasService;
 
     @GetMapping("/")
     public String home(ModelMap m, HttpSession hs) {
@@ -34,6 +38,7 @@ public class HomeController {
         m.put("view", "/home/home");
         m.put("videojuegos", videojuegoService.r());
         m.addAttribute("generos", generoService.r());
+        m.addAttribute("plataformas", plataformasService.r());
         List<Videojuego> videojuegos = videojuegoService.r();
         List<Videojuego> topVideojuegos = videojuegos.stream()
                 .sorted((v1, v2) -> Double.compare(v2.getPuntuacionMedia(), v1.getPuntuacionMedia()))

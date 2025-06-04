@@ -20,5 +20,6 @@ public interface VideoJuegoRepository extends JpaRepository<Videojuego, Long> {
     @Query("SELECT v FROM Videojuego v JOIN v.generos g WHERE g.nombre = :nombreGenero")
     public List<Videojuego> findByGeneroNombre(@Param("nombreGenero") String nombreGenero);
 
-    public List<Videojuego> findByNombreContainingIgnoreCase(String nombre);
+    @Query("SELECT v FROM Videojuego v JOIN v.plataformas p WHERE p.nombre = :nombrePlataforma")
+    public List<Videojuego> findByPlataformasNombre(@Param("nombrePlataforma") String nombrePlataforma);
 }
