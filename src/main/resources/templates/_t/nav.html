@@ -2,7 +2,10 @@
 	<meta charset="UTF-8" />
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="/css/nav.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="/js/buscador.js"></script>
 </head>
+
 <div id="navigationBarNoLogin" th:if="${session.usuario == null}">
 	<div class="nav-bg">
 		<div class="navcontainer">
@@ -24,11 +27,13 @@
 				</li>
 				<li><a href="/usuario/login" class="txt-nav-links">Tu Lista</a></li>
 			</ul>
+
 			<div class="busqueda">
-				<input type="text" name="busqueda" id="id-busqueda" placeholder="Buscar" />
+				<input type="text" name="busqueda" id="id-busqueda" placeholder="Buscar" autocomplete="off" />
 				<button id="img-lupa">
 					<img src="/img/icons/magnifier.png" alt="lupa" id="lupa">
 				</button>
+				<div id="resultados-busqueda"></div> <!-- Sugerencias aquí -->
 			</div>
 
 			<div id="carrito">
@@ -76,6 +81,8 @@
 					<img src="/img/icons/magnifier.png" alt="lupa" id="lupa">
 				</button>
 			</div>
+
+			<div id="resultados-busqueda"></div>
 
 			<div id="carrito">
 				<a href="/lista/carrito">

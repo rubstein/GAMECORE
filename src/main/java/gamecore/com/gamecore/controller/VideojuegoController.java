@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import gamecore.com.gamecore.entity.Puntuacion;
 import gamecore.com.gamecore.entity.Resenya;
@@ -21,6 +22,7 @@ import gamecore.com.gamecore.entity.Usuario;
 import gamecore.com.gamecore.entity.Videojuego;
 import gamecore.com.gamecore.exception.DangerException;
 import gamecore.com.gamecore.helper.PRG;
+import gamecore.com.gamecore.repository.VideoJuegoRepository;
 import gamecore.com.gamecore.service.PuntuacionService;
 import gamecore.com.gamecore.service.ResenyaService;
 import gamecore.com.gamecore.service.UsuarioService;
@@ -44,6 +46,9 @@ public class VideojuegoController {
 
     @Autowired
     private ResenyaService resenyaService;
+
+    @Autowired
+    private VideoJuegoRepository videoJuegoRepository;
 
     @GetMapping("/r")
     public String r(
@@ -139,4 +144,9 @@ public class VideojuegoController {
         return "_t/frame";
     }
 
+    @GetMapping("/buscar")
+    @ResponseBody
+    public List<Videojuego> buscarJuegos(@RequestParam("q") String consulta) {
+        return videoJuegoRepository.findByNombreContainingIgnoreCase(consulta);
+    }
 }
