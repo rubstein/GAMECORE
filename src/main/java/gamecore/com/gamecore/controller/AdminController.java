@@ -49,6 +49,9 @@ public class AdminController {
     @Autowired
     RolService rolService;
 
+    @Autowired
+    private EmailService emailService;
+
     AdminController(RolService rolService) {
         this.rolService = rolService;
     }
@@ -139,13 +142,13 @@ public class AdminController {
 
         Map<String, Object> response = new HashMap<>();
         try {
-            // Comprobar si el nombre de usuario ya existe
+            
             if (usuarioService.existsByName(nombreUsuario)) {
                 response.put("success", false);
                 response.put("message", "El nombre de usuario ya está en uso.");
                 return response;
             }
-            // Comprobar si el email ya existe
+           
             if (usuarioService.existsByEmail(email)) {
                 response.put("success", false);
                 response.put("message", "El email ya está en uso.");
@@ -154,6 +157,7 @@ public class AdminController {
             usuarioService.validarUsuarioRegistro(nombreUsuario, contrasenya, email, rol);
             response.put("success", true);
             response.put("message", "Usuario creado correctamente.");
+            emailService.enviarEmailRegistro(email, nombreUsuario);
         } catch (Exception e) {
             response.put("success", false);
             response.put("message", "Error al crear el usuario.");
