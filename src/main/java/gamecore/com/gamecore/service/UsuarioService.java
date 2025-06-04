@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -29,10 +30,16 @@ public class UsuarioService {
     @Autowired
     private PuntuacionRepository puntuacionRepository;
 
+    @Autowired
+    private EmailService emailService;
+
     public Usuario validarUsuarioRegistro(String nombreUsuario, String contrasenya, String email, String rol) {
         Usuario u = new Usuario(nombreUsuario, new BCryptPasswordEncoder().encode(contrasenya), email);
-
+        u.setVerificationToken(UUID.randomUUID().toString());
+        u.setVerificado(false);
         u.getRoles().add(rolRepository.findRolByNombre(rol));
+        usuarioRepository.save(u);
+        emailService.enviarEmailVerificacion(email, nombreUsuario, u.getVerificationToken());
 
         return usuarioRepository.save(u);
     }
@@ -42,7 +49,12 @@ public class UsuarioService {
         if (u == null) {
             throw new Exception("Usuario no encontrado");
         }
-
+        if (!u.isVerificado()) {
+            boolean esAdmin = u.getRoles().stream().anyMatch(r -> r.getNombre().equalsIgnoreCase("ADMIN"));
+            if (!esAdmin) {
+                throw new Exception("Por favor, verifica tu cuenta en tu email antes de iniciar sesión.");
+            }
+        }
         if (!new BCryptPasswordEncoder().matches(contrasenya, u.getContrasenya())) {
             throw new Exception("Contraseña incorrecta");
         }

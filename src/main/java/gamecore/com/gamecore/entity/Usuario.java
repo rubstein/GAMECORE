@@ -45,6 +45,10 @@ public class Usuario {
     @ManyToMany
     private List<Videojuego> carrito;
 
+    private String verificationToken;
+
+    private boolean verificado = false;
+
     public Usuario(String nombreUsuario, String contrasenya, String email) {
         this.nombreUsuario = nombreUsuario;
         this.contrasenya = contrasenya;

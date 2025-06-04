@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import gamecore.com.gamecore.entity.Usuario;
 import gamecore.com.gamecore.exception.DangerException;
+import gamecore.com.gamecore.repository.UsuarioRepository;
 import gamecore.com.gamecore.service.EmailService;
 import gamecore.com.gamecore.service.UsuarioService;
 import jakarta.servlet.http.HttpSession;
@@ -27,6 +28,9 @@ public class UsuarioController {
 
     @Autowired
     private EmailService emailService;
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     @GetMapping("/registro")
     public String registro(ModelMap m, HttpSession hs) {
@@ -72,7 +76,7 @@ public class UsuarioController {
             response.put("success", true);
             response.put("message", "Registro correcto");
 
-            emailService.enviarEmailRegistro(nuevoEmail, nuevoUsuario);
+            emailService.enviarEmailVerificacion(nuevoEmail, nuevoUsuario, u.getVerificationToken());
 
         } catch (Exception e) {
             response.put("success", false);
@@ -103,7 +107,9 @@ public class UsuarioController {
             response.put("message", "Login exitoso");
         } catch (Exception e) {
             response.put("success", false);
-            response.put("message", "Usuario o contraseña incorrectos");
+            response.put("message", e.getMessage() != null
+                    ? e.getMessage()
+                    : "Usuario o contraseña incorrectos.");
         }
         return response;
     }
@@ -191,7 +197,7 @@ public class UsuarioController {
         Map<String, Object> response = new HashMap<>();
         Usuario u = (Usuario) hs.getAttribute("usuario");
         try {
-            
+
             if (!usuarioService.comprobarContrasenya(u, contrasenyaActual)) {
                 response.put("success", false);
                 response.put("message", "La contraseña actual no es correcta.");
@@ -203,7 +209,7 @@ public class UsuarioController {
                 response.put("message", "Las contraseñas no coinciden.");
                 return response;
             }
-       
+
             usuarioService.cambiarContrasenya(u, nuevaContrasenya);
             response.put("success", true);
             response.put("message", "Contraseña cambiada correctamente.");
@@ -212,5 +218,20 @@ public class UsuarioController {
             response.put("message", "Error al cambiar la contraseña.");
         }
         return response;
+    }
+
+    @GetMapping("/verificar")
+    public String verificarCuenta(@RequestParam String token, ModelMap m) {
+        Usuario u = usuarioRepository.findByVerificationToken(token);
+        if (u != null) {
+            u.setVerificado(true);
+            u.setVerificationToken(null);
+            usuarioRepository.save(u);
+            m.put("mensaje", "¡Cuenta verificada correctamente!✅");
+        } else {
+            m.put("mensaje", "Token inválido o expirado.");
+        }
+        m.put("view", "usuario/verificacion");
+        return "_t/frame";
     }
 }
