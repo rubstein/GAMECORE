@@ -15,6 +15,7 @@ public interface PuntuacionRepository extends JpaRepository<Puntuacion, Long> {
     public Puntuacion findByUsuarioAndVideojuego(Usuario usuario, Videojuego videojuego);
     public List<Puntuacion> findByVideojuego(Videojuego videojuego);
     public void deleteByUsuarioId(Long usuarioId);
+    public void deleteByVideojuegoId(Long videojuegoId);
 
 
 }

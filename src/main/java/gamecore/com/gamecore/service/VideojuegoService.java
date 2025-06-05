@@ -10,7 +10,9 @@ import gamecore.com.gamecore.entity.Videojuego;
 import gamecore.com.gamecore.exception.DangerException;
 import gamecore.com.gamecore.repository.GeneroRepository;
 import gamecore.com.gamecore.repository.PlataformaRepository;
+import gamecore.com.gamecore.repository.PuntuacionRepository;
 import gamecore.com.gamecore.repository.VideoJuegoRepository;
+import jakarta.transaction.Transactional;
 
 @Service
 public class VideojuegoService {
@@ -23,6 +25,9 @@ public class VideojuegoService {
 
     @Autowired
     private VideoJuegoRepository videojuegoRepository;
+
+    @Autowired
+    private PuntuacionRepository puntuacionRepository;
 
     public List<Videojuego> r() {
         return videojuegoRepository.findAll();
@@ -57,7 +62,9 @@ public class VideojuegoService {
         videojuegoRepository.save(vd);
     }
 
+    @Transactional
     public void d(Long id) throws Exception {
+        puntuacionRepository.deleteByVideojuegoId(id);
         videojuegoRepository.deleteById(id);
     }
 

@@ -1,8 +1,17 @@
 html,
 body {
-    min-height: 100%;
-    overflow-x: hidden;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.back {
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 .main {
@@ -43,6 +52,28 @@ form {
     text-align: center;
 }
 
+h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.container {
+    display: flex;
+    padding: 32px 16px 32px 16px;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    border-radius: 8px;
+    background: #F5F5F5;
+}
+
+.titulo{
+    align-items: center;
+}
+
 .data-perfil {
     display: flex;
     width: 324px;
@@ -51,7 +82,7 @@ form {
     gap: 8px;
 }
 
-.txt-form-perfil{
+.txt-form-perfil {
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     font-style: normal;
@@ -127,12 +158,12 @@ h1 {
 
 .input-email-password {
     flex: 1;
-    padding-right: 40px; 
+    padding-right: 40px;
 }
 
 .toggle-password {
     position: absolute;
-    right: 10px; 
+    right: 10px;
     cursor: pointer;
     font-size: 18px;
     user-select: none;
