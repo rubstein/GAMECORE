@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -24,8 +26,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import gamecore.com.gamecore.entity.Genero;
+import gamecore.com.gamecore.entity.Plataforma;
 import gamecore.com.gamecore.entity.Rol;
 import gamecore.com.gamecore.entity.Usuario;
+import gamecore.com.gamecore.entity.Videojuego;
 import gamecore.com.gamecore.exception.DangerException;
 import gamecore.com.gamecore.helper.PRG;
 import gamecore.com.gamecore.service.*;
@@ -87,17 +92,23 @@ public class AdminController {
         generosIds = generosIds == null ? new ArrayList<>() : generosIds;
         plataformasIds = plataformasIds == null ? new ArrayList<>() : plataformasIds;
 
-        String nombreArchivo = UUID.randomUUID() + "_" + imagen.getOriginalFilename();
-        Path rutaDestino = Paths.get("src/main/resources/static/img/", nombreArchivo);
-        try {
-            Files.createDirectories(rutaDestino.getParent());
-            imagen.transferTo(rutaDestino);
-        } catch (IOException e) {
-            e.printStackTrace();
+        String nombreArchivo = null;
+        if (imagen != null && !imagen.isEmpty()) {
+            nombreArchivo = UUID.randomUUID() + "_" + imagen.getOriginalFilename();
+
+            // Ruta absoluta donde guardar la imagen (fuera de src/main/resources)
+            Path rutaDestino = Paths.get("/uploads/img/", nombreArchivo);
+            try {
+                Files.createDirectories(rutaDestino.getParent());
+                imagen.transferTo(rutaDestino.toFile());
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Aquí podrías manejar la excepción o lanzar otra
+            }
         }
 
         try {
-            videojuegoService.c(nombre, descripcion, "/img/" + nombreArchivo, fechaLanzamiento, 0.0,
+            videojuegoService.c(nombre, descripcion, nombreArchivo, fechaLanzamiento, 0.0,
                     creadores, precio,
                     generosIds, plataformasIds);
 
@@ -142,13 +153,13 @@ public class AdminController {
 
         Map<String, Object> response = new HashMap<>();
         try {
-            
+
             if (usuarioService.existsByName(nombreUsuario)) {
                 response.put("success", false);
                 response.put("message", "El nombre de usuario ya está en uso.");
                 return response;
             }
-           
+
             if (usuarioService.existsByEmail(email)) {
                 response.put("success", false);
                 response.put("message", "El email ya está en uso.");
@@ -199,6 +210,79 @@ public class AdminController {
         usuarioService.save(usuario);
 
         return "redirect:/admin/usuarios";
+    }
+
+    @GetMapping("juegos-u")
+    public String mostrarEditorJuegos(@RequestParam("id") Long id, ModelMap m) throws Exception {
+        Videojuego videojuego = videojuegoService.findById(id);
+        Collection<Plataforma> plataformas = plataformaService.r();
+        Collection<Genero> generos = generoService.r();
+
+        m.addAttribute("videojuego", videojuego);
+        m.addAttribute("plataformas", plataformas);
+        m.addAttribute("generos", generos);
+
+        m.addAttribute("view", "/admin/juegos-u");
+
+        return "_t/frame";
+    }
+
+    @PostMapping("juegos-u")
+    public String actualizarJuego(
+            @RequestParam Long id,
+            @RequestParam("nombre") String nombre,
+            @RequestParam("descripcion") String descripcion,
+            @RequestParam("fechaLanzamiento") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaLanzamiento,
+            @RequestParam("creadores") String creadores,
+            @RequestParam("precio") double precio,
+            @RequestParam("imagen") MultipartFile imagen,
+            @RequestParam("generos") List<Long> generosIds,
+            @RequestParam("plataformas") List<Long> plataformasIds) throws Exception {
+
+        Videojuego videojuego = videojuegoService.findById(id);
+
+        if (videojuego == null) {
+            throw new Exception("Videojuego no encontrado con ID: " + id);
+        }
+
+        videojuego.setNombre(nombre);
+        videojuego.setDescripcion(descripcion);
+        videojuego.setFechaLanzamiento(fechaLanzamiento);
+        videojuego.setCreadores(creadores);
+        videojuego.setPrecio(precio);
+
+        if (!imagen.isEmpty()) {
+            String nombreArchivo = UUID.randomUUID() + "_" + imagen.getOriginalFilename();
+
+            // Carpeta relativa externa
+            Path rutaArchivo = Paths.get("uploads/img/" + nombreArchivo);
+
+            // Asegúrate de que exista la carpeta (por si acaso)
+            Files.createDirectories(rutaArchivo.getParent());
+
+            try {
+                Files.copy(imagen.getInputStream(), rutaArchivo, StandardCopyOption.REPLACE_EXISTING);
+                videojuego.setImagenUrl(nombreArchivo);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        // Actualizamos los géneros
+        List<Genero> generos = (generosIds != null)
+                ? new ArrayList<>(generosIds.stream().map(generoService::findById).toList())
+                : new ArrayList<>();
+        videojuego.setGeneros(generos);
+
+        // Actualizamos las plataformas
+        List<Plataforma> plataformas = (plataformasIds != null)
+                ? new ArrayList<>(plataformasIds.stream().map(plataformaService::findById).toList())
+                : new ArrayList<>();
+        videojuego.setPlataformas(plataformas);
+
+        videojuegoService.save(videojuego);
+
+        return "redirect:/admin/juegos";
     }
 
 }

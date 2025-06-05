@@ -89,7 +89,7 @@ public class BDinit {
         try {
             videojuegoService.c("Cyberpunk",
                     "Cyberpunk 2077 is an action role-playing game played from a first-person perspective as V, a mercenary whose voice, face, hairstyle, body type and modifications, background, and clothing are customisable.",
-                    "/img/Cyber.jpg", LocalDate.of(2020, 12, 10),
+                    "Cyber.jpg", LocalDate.of(2020, 12, 10),
                     9.6, "CD PROJEKT RED, WB Games", 87.9, generosRPG, plataformasPC);
 
             Videojuego nombreJuego = videojuegoService.obtenerPorNombre("Cyberpunk");
@@ -112,7 +112,7 @@ public class BDinit {
         try {
             videojuegoService.c("Dark Souls III",
                     "Ambientado en el mundo decadente de Lothric, el jugador asume el papel de un no muerto sin llama, cuya misión es devolver a sus tronos a los Señores de la Ceniza, poderosas figuras que una vez vincularon la Primera Llama, una fuente de poder vital para el mundo. A través de escenarios sombríos y ruinas olvidadas, el jugador se enfrenta a criaturas grotescas, jefes colosales y trampas letales.",
-                    "/img/DarkSouls3.jpg", LocalDate.of(2016, 4, 12),
+                    "DarkSouls3.jpg", LocalDate.of(2016, 4, 12),
                     6.9, "FROM SOFTWARE, BANDAI", 69.9, generosRPG, plataformasPC);
 
             Videojuego nombreJuego = videojuegoService.obtenerPorNombre("Dark Souls III");
@@ -134,7 +134,7 @@ public class BDinit {
         try {
             videojuegoService.c("Final Fantasy VII",
                     "Final Fantasy VII es un videojuego de rol japonés que combina una historia épica con exploración, combates por turnos y un mundo de ciencia ficción con toques steampunk. El jugador encarna a Cloud Strife, un exsoldado que se une al grupo rebelde AVALANCHA para luchar contra la corporación Shinra, que está agotando los recursos del planeta.",
-                    "/img/FF7.jpg", LocalDate.of(1997, 1, 31),
+                    "FF7.jpg", LocalDate.of(1997, 1, 31),
                     8.3, "Square Enix", 87.9, generosRPG, plataformasPC);
 
             Videojuego nombreJuego = videojuegoService.obtenerPorNombre("Final Fantasy VII");
@@ -156,7 +156,7 @@ public class BDinit {
         try {
             videojuegoService.c("Sekiro",
                     "Sekiro: Shadows Die Twice es un videojuego de acción y aventura con elementos de sigilo y combate intenso, desarrollado por FromSoftware. Ambientado en un Japón feudal ficticio con toques sobrenaturales, el juego pone al jugador en la piel de Sekiro, un shinobi que busca vengar el secuestro de su joven señor y recuperar su honor.",
-                    "/img/sekiro.jpg", LocalDate.of(2019, 3, 22),
+                    "sekiro.jpg", LocalDate.of(2019, 3, 22),
                     5.5, "FromSoftware", 29.9, generosRPG, plataformasPC);
 
             Videojuego nombreJuego = videojuegoService.obtenerPorNombre("Sekiro");
@@ -178,7 +178,7 @@ public class BDinit {
         try {
             videojuegoService.c("Monster Hunter Wild",
                     "Sekiro: Shadows Die Twice es un videojuego de acción y aventura con elementos de sigilo y combate intenso, desarrollado por FromSoftware. Ambientado en un Japón feudal ficticio con toques sobrenaturales, el juego pone al jugador en la piel de Sekiro, un shinobi que busca vengar el secuestro de su joven señor y recuperar su honor.",
-                    "/img/MHW.jpg", LocalDate.of(2019, 3, 22),
+                    "MHW.jpg", LocalDate.of(2019, 3, 22),
                     7.2, "FromSoftware", 29.9, generosRPG, plataformasPC);
 
             Videojuego nombreJuego = videojuegoService.obtenerPorNombre("Monster Hunter Wild");
@@ -200,7 +200,7 @@ public class BDinit {
         try {
             videojuegoService.c("Red Dead Redemption II",
                     "Sekiro: Shadows Die Twice es un videojuego de acción y aventura con elementos de sigilo y combate intenso, desarrollado por FromSoftware. Ambientado en un Japón feudal ficticio con toques sobrenaturales, el juego pone al jugador en la piel de Sekiro, un shinobi que busca vengar el secuestro de su joven señor y recuperar su honor.",
-                    "/img/RDDII.jpg", LocalDate.of(2019, 3, 22),
+                    "RDDII.jpg", LocalDate.of(2019, 3, 22),
                     4.8, "FromSoftware", 29.9, generosRPG, plataformasPC);
 
             Videojuego nombreJuego = videojuegoService.obtenerPorNombre("Red Dead Redemption II");
@@ -222,7 +222,7 @@ public class BDinit {
         try {
             videojuegoService.c("Ghost of Yotey",
                     "Sekiro: Shadows Die Twice es un videojuego de acción y aventura con elementos de sigilo y combate intenso, desarrollado por FromSoftware. Ambientado en un Japón feudal ficticio con toques sobrenaturales, el juego pone al jugador en la piel de Sekiro, un shinobi que busca vengar el secuestro de su joven señor y recuperar su honor.",
-                    "/img/GOY.jpg", LocalDate.of(2019, 3, 22),
+                    "GOY.jpg", LocalDate.of(2019, 3, 22),
                     6.3, "FromSoftware", 29.9, generosRPG, plataformasPC);
 
             Videojuego nombreJuego = videojuegoService.obtenerPorNombre("Ghost of Yotey");
@@ -244,7 +244,7 @@ public class BDinit {
         try {
             videojuegoService.c("Resident Evil 2",
                     "Sekiro: Shadows Die Twice es un videojuego de acción y aventura con elementos de sigilo y combate intenso, desarrollado por FromSoftware. Ambientado en un Japón feudal ficticio con toques sobrenaturales, el juego pone al jugador en la piel de Sekiro, un shinobi que busca vengar el secuestro de su joven señor y recuperar su honor.",
-                    "/img/residentevil.jpg", LocalDate.of(2019, 3, 22),
+                    "residentevil.jpg", LocalDate.of(2019, 3, 22),
                     8.7, "FromSoftware", 29.9, generosRPG, plataformasPC);
 
             Videojuego nombreJuego = videojuegoService.obtenerPorNombre("Resident Evil 2");
@@ -266,7 +266,7 @@ public class BDinit {
         try {
             videojuegoService.c("Rainbow 6",
                     "Sekiro: Shadows Die Twice es un videojuego de acción y aventura con elementos de sigilo y combate intenso, desarrollado por FromSoftware. Ambientado en un Japón feudal ficticio con toques sobrenaturales, el juego pone al jugador en la piel de Sekiro, un shinobi que busca vengar el secuestro de su joven señor y recuperar su honor.",
-                    "/img/R6.jpg", LocalDate.of(2019, 3, 22),
+                    "R6.jpg", LocalDate.of(2019, 3, 22),
                     5.5, "FromSoftware", 29.9, generosRPG, plataformasPC);
 
             Videojuego nombreJuego = videojuegoService.obtenerPorNombre("Rainbow 6");
@@ -288,7 +288,7 @@ public class BDinit {
         try {
             videojuegoService.c("God of War Ragnarok",
                     "Sekiro: Shadows Die Twice es un videojuego de acción y aventura con elementos de sigilo y combate intenso, desarrollado por FromSoftware. Ambientado en un Japón feudal ficticio con toques sobrenaturales, el juego pone al jugador en la piel de Sekiro, un shinobi que busca vengar el secuestro de su joven señor y recuperar su honor.",
-                    "/img/GOF.jpg", LocalDate.of(2019, 3, 22),
+                    "GOF.jpg", LocalDate.of(2019, 3, 22),
                     9.2, "FromSoftware", 29.9, generosRPG, plataformasPC);
 
             Videojuego nombreJuego = videojuegoService.obtenerPorNombre("God of War Ragnarok");

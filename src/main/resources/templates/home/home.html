@@ -12,7 +12,7 @@
                 <div th:each="videojuego : ${news}" class="cards1">
                     <div class="bg" th:classappend="' ' + ${videojuego.colorPorPuntuacion}"></div>
                     <a th:href="@{'/videojuego/' + ${videojuego.slug}}" class="card-link">
-                        <img th:src="@{${videojuego.imagenUrl}}" alt="imagen del videojuego" class="imgCards1">
+                        <img th:src="@{'/img/' + ${videojuego.imagenUrl}}" alt="imagen del videojuego" class="imgCards1">
                         <div class="info-juego">
                             <p class="titulo-juego" th:text="${videojuego.nombre}">Nombre del juego</p>
                             <div class="valoracion-juego">
@@ -56,7 +56,7 @@
                 <div class="cards2" th:each="videojuego : ${grupo1}">
                     <a th:href="@{'/videojuego/' + ${videojuego.slug}}" class="card-link">
                         <div class="background-card"
-                            th:style="'background-image: url(' + ${videojuego.imagenUrl} + ')'">
+                            th:style="'background-image: url(\'/img/' + ${videojuego.imagenUrl} + '\')'">
                             <div class="average2" th:classappend="' ' + ${videojuego.colorPorPuntuacion}">
                                 <p class="average2-text" th:text="${videojuego.puntuacionMedia}">8.6</p>
                             </div>
@@ -71,7 +71,7 @@
                 <div class="cards2" th:each="videojuego : ${grupo2}">
                     <a th:href="@{'/videojuego/' + ${videojuego.slug}}" class="card-link">
                         <div class="background-card"
-                            th:style="'background-image: url(' + ${videojuego.imagenUrl} + ')'">
+                            th:style="'background-image: url(\'/img/' + ${videojuego.imagenUrl} + '\')'">
                             <div class="average2" th:classappend="' ' + ${videojuego.colorPorPuntuacion}">
                                 <p class="average2-text" th:text="${videojuego.puntuacionMedia}">8.6</p>
                             </div>
@@ -86,7 +86,7 @@
                 <div class="cards2" th:each="videojuego : ${grupo3}">
                     <a th:href="@{'/videojuego/' + ${videojuego.slug}}" class="card-link">
                         <div class="background-card"
-                            th:style="'background-image: url(' + ${videojuego.imagenUrl} + ')'">
+                            th:style="'background-image: url(\'/img/' + ${videojuego.imagenUrl} + '\')'">
                             <div class="average2" th:classappend="' ' + ${videojuego.colorPorPuntuacion}">
                                 <p class="average2-text" th:text="${videojuego.puntuacionMedia}">8.6</p>
                             </div>

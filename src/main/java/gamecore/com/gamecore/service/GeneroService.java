@@ -11,12 +11,12 @@ import gamecore.com.gamecore.repository.GeneroRepository;
 
 @Service
 public class GeneroService {
-    
+
     @Autowired
     private GeneroRepository generoRepository;
 
     public Genero buscarPorNombre(String nombre) {
-        return generoRepository.findByNombre(nombre); 
+        return generoRepository.findByNombre(nombre);
     }
 
     public Collection<Genero> r() {
@@ -26,4 +26,10 @@ public class GeneroService {
     public void c(String nombre) throws DangerException {
         generoRepository.save(new Genero(nombre));
     }
+
+    public Genero findById(Long id) {
+        return generoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Género no encontrado con ID: " + id));
+    }
+
 }

@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PlataformaService {
- 
-     @Autowired
+
+    @Autowired
     private PlataformaRepository plataformaRepository;
 
     public Plataforma buscarPorNombre(String nombre) {
@@ -22,8 +22,13 @@ public class PlataformaService {
         return plataformaRepository.findAll();
     }
 
-     public void c(String nombre)
+    public void c(String nombre)
             throws DangerException {
-                plataformaRepository.save(new Plataforma(nombre));
+        plataformaRepository.save(new Plataforma(nombre));
+    }
+
+    public Plataforma findById(Long id) {
+        return plataformaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Plataforma no encontrado con ID: " + id));
     }
 }

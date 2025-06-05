@@ -33,30 +33,35 @@ public class VideojuegoService {
         return videojuegoRepository.findAll();
     }
 
-    public void c(String nombre, String descripcion, String imagenUrl, LocalDate fechaLanzamiento,
+    public void c(String nombre, String descripcion, String nombreArchivoImagen, LocalDate fechaLanzamiento,
             Double puntuacionMedia, String creadores, Double precio, List<Long> idsGeneros, List<Long> idsPlataformas)
             throws DangerException {
+
         Videojuego videojuegoExistente = videojuegoRepository.findByNombre(nombre);
         if (videojuegoExistente != null) {
             throw new DangerException("El videojuego '" + nombre + "' ya está registrado.");
         }
 
-        Videojuego vd = new Videojuego(nombre, descripcion, imagenUrl, fechaLanzamiento, puntuacionMedia, creadores,
+        // Aquí pasamos el nombreArchivoImagen directamente (puede ser null si no se
+        // subió imagen)
+        Videojuego vd = new Videojuego(nombre, descripcion, nombreArchivoImagen, fechaLanzamiento, puntuacionMedia,
+                creadores,
                 precio);
 
+        // Generar slug (como ya tienes)
         String slug = nombre.toLowerCase()
-                .replaceAll("[^a-z0-9\s]", "")
+                .replaceAll("[^a-z0-9\\s]", "")
                 .replaceAll("-", " ")
-                .replaceAll("\s+", "-");
+                .replaceAll("\\s+", "-");
 
         vd.setSlug(slug);
 
         for (Long idGenero : idsGeneros) {
-            vd.getGeneros().add(generoRepository.findById(idGenero).get());
+            generoRepository.findById(idGenero).ifPresent(vd.getGeneros()::add);
         }
 
         for (Long idPlataforma : idsPlataformas) {
-            vd.getPlataformas().add(plataformaRepository.findById(idPlataforma).get());
+            plataformaRepository.findById(idPlataforma).ifPresent(vd.getPlataformas()::add);
         }
 
         videojuegoRepository.save(vd);
@@ -105,5 +110,10 @@ public class VideojuegoService {
 
     public List<Videojuego> obtenerPorPlataforma(String nombrePlatafroma) {
         return videojuegoRepository.findByPlataformasNombre(nombrePlatafroma);
+    }
+
+    public Videojuego save(Videojuego videojuego) {
+
+        return videojuegoRepository.save(videojuego);
     }
 }

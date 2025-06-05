@@ -15,30 +15,46 @@
             <div class="card-container">
                 <div class="card" th:each="videojuego : ${videojuegos}">
                     <a th:href="@{'/videojuego/' + ${videojuego.slug}}" class="card-link">
-                        <th:block>
-                            <form action="/admin/juegos-d" method="post" class="btn-eliminar" onclick="return confirmarEliminacion();">
-                                <input type="hidden" name="id" th:value="${videojuego.id}" />
-                                <button type="submit" class="btn-eliminar">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px"
-                                        viewBox="0 0 19 19" fill="none" class="svg-j">
-                                        <path d="M3.1875 5H4.6875H16.6875" stroke="white" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                        <path
-                                            d="M15.1875 5V15.5C15.1875 15.8978 15.0295 16.2794 14.7482 16.5607C14.4669 16.842 14.0853 17 13.6875 17H6.1875C5.78968 17 5.40814 16.842 5.12684 16.5607C4.84554 16.2794 4.6875 15.8978 4.6875 15.5V5M6.9375 5V3.5C6.9375 3.10218 7.09554 2.72064 7.37684 2.43934C7.65814 2.15804 8.03968 2 8.4375 2H11.4375C11.8353 2 12.2169 2.15804 12.4982 2.43934C12.7795 2.72064 12.9375 3.10218 12.9375 3.5V5"
-                                            stroke="white" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M8.4375 8.75V13.25" stroke="white" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                        <path d="M11.4375 8.75V13.25" stroke="white" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                    <p class="eliminar-txt">Eliminar</p>
-                                </button>
-                            </form>
-                        </th:block>
-                        <div class="card-img" th:style="'background-image: url(' + ${videojuego.imagenUrl} + ')'">
-
+                        <div class="btn-eliminar-editar">
+                            <th:block>
+                                <form action="/admin/juegos-d" method="post" class="btn-eliminar"
+                                    onclick="return confirmarEliminacion();">
+                                    <input type="hidden" name="id" th:value="${videojuego.id}" />
+                                    <button type="submit" class="btn-eliminar">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px"
+                                            viewBox="0 0 19 19" fill="none" class="svg-j">
+                                            <path d="M3.1875 5H4.6875H16.6875" stroke="white" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path
+                                                d="M15.1875 5V15.5C15.1875 15.8978 15.0295 16.2794 14.7482 16.5607C14.4669 16.842 14.0853 17 13.6875 17H6.1875C5.78968 17 5.40814 16.842 5.12684 16.5607C4.84554 16.2794 4.6875 15.8978 4.6875 15.5V5M6.9375 5V3.5C6.9375 3.10218 7.09554 2.72064 7.37684 2.43934C7.65814 2.15804 8.03968 2 8.4375 2H11.4375C11.8353 2 12.2169 2.15804 12.4982 2.43934C12.7795 2.72064 12.9375 3.10218 12.9375 3.5V5"
+                                                stroke="white" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M8.4375 8.75V13.25" stroke="white" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M11.4375 8.75V13.25" stroke="white" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                        <p class="eliminar-txt">Eliminar</p>
+                                    </button>
+                                </form>
+                            </th:block>
+                            <th:block>
+                                <form action="/admin/juegos-u" method="get" class="btn-eliminar">
+                                    <input type="hidden" name="id" th:value="${videojuego.id}" />
+                                    <button type="submit" class="btn-eliminar">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17" fill="none"
+                                            class="lapiz">
+                                            <path
+                                                d="M11.9659 2.08492C12.1513 1.89948 12.3714 1.75238 12.6137 1.65201C12.856 1.55165 13.1157 1.5 13.378 1.5C13.6402 1.5 13.8999 1.55165 14.1422 1.65201C14.3845 1.75238 14.6046 1.89948 14.7901 2.08492C14.9755 2.27036 15.1226 2.49051 15.223 2.7328C15.3233 2.97509 15.375 3.23478 15.375 3.49703C15.375 3.75928 15.3233 4.01897 15.223 4.26126C15.1226 4.50355 14.9755 4.7237 14.7901 4.90914L5.25831 14.4409L1.375 15.5L2.43409 11.6167L11.9659 2.08492Z"
+                                                fill="white" stroke="white" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                        <p class="eliminar-txt">Editar</p>
+                                    </button>
+                                </form>
+                            </th:block>
                         </div>
+                        <div class="card-img" th:style="'background-image: url(\'/img/' + ${videojuego.imagenUrl} + '\')'"></div>
                         <div class="card-footer">
                             <div class="average" th:classappend="' ' + ${videojuego.colorPorPuntuacion}">
                                 <p class="average-txt" th:text="${videojuego.puntuacionMedia}"></p>
@@ -52,8 +68,8 @@
     </div>
 </div>
 <script>
-  function confirmarEliminacion() {
-    return confirm("¿Estás seguro de que quieres eliminar este juego?");
-  }
+    function confirmarEliminacion() {
+        return confirm("¿Estás seguro de que quieres eliminar este juego?");
+    }
 </script>
 <link rel="stylesheet" href="/css/admin/juegos.css">
