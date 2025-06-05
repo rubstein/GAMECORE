@@ -1,24 +1,34 @@
 $(document).ready(function () {
-    $("#id-busqueda").on("input", function () {
+    $("#id-busqueda").on("input", function () 
+    {
         var query = $(this).val().trim();
-        if (query.length >= 2) {
+
+        if (query.length = 1)
+        {
             $.ajax({
                 url: "/videojuego/buscar",
                 method: "GET",
                 data: { q: query },
+
                 success: function (data) {
                     let html = "";
-                    if (data.length > 0) {
-                        data.forEach(function (juego) {
+
+                    if (data.length > 0) 
+                    {
+                        data.forEach(function (juego) 
+                        {
                             html += `<a href="/videojuego/${juego.slug}">${juego.nombre}</a>`;
                         });
-                    } else {
+                    }
+                    else
+                    {
                         html = "<div style='padding:10px;'>No se encontraron juegos</div>";
                     }
                     $("#resultados-busqueda").html(html).show();
                 },
+
                 error: function () {
-                    $("#resultados-busqueda").html("<div style='padding:10px;'>Error al buscar</div>").show();
+                    $("#resultados-busqueda").html("<div style='padding:10px;'>No se encontraron juegos</div>").show();
                 }
             });
         } else {

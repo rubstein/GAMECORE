@@ -156,4 +156,9 @@ public class VideojuegoController {
         return "_t/frame";
     }
 
+    @GetMapping("/buscar")
+    @ResponseBody
+    public List<Videojuego> buscarJuegos(@RequestParam("q") String consulta) {
+        return videoJuegoRepository.findByNombreContainingIgnoreCase(consulta);
+    }
 }

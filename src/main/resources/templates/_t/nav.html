@@ -1,9 +1,7 @@
 <head>
 	<meta charset="UTF-8" />
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="/css/nav.css">
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="/js/buscador.js"></script>
+	
 </head>
 
 <div id="navigationBarNoLogin" th:if="${session.usuario == null}">
@@ -192,3 +190,7 @@
 		</div>
 	</div>
 </th:block>
+
+<link rel="stylesheet" href="/css/nav.css">
+<script src="/lib/jquery-3.7.1.min.js"></script>
+<script src="/js/buscador.js"></script>
